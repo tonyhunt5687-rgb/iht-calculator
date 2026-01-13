@@ -20,14 +20,12 @@
             font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
         }
 
-        body::before {
-            content: '';
+        .background-layer {
             position: fixed;
             top: 0;
             left: 0;
@@ -36,19 +34,18 @@
             background-image: url('water-background.jpg');
             background-size: cover;
             background-position: center;
-            z-index: 0;
-            opacity: 0.4;
+            z-index: -1;
         }
 
         .hero {
             position: relative;
             text-align: center;
-            padding: 80px 20px 60px;
-            z-index: 1;
+            padding: 60px 20px 60px;
+            z-index: auto;
         }
 
         .logo-container {
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             animation: fadeIn 1s ease-out;
         }
 
@@ -65,11 +62,9 @@
         }
 
         .logo {
-            width: 100px;
+            width: 400px;
             height: auto;
             filter: drop-shadow(0 10px 30px rgba(11, 122, 143, 0.3));
-            border: 5px solid red;
-            /* TEST - remove this later */
         }
 
         .hero h1 {
@@ -97,7 +92,9 @@
             margin: 0 auto;
             padding: 0 20px 60px;
             position: relative;
-            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
         }
 
         .calculators {
@@ -106,25 +103,20 @@
             gap: 35px;
             margin-bottom: 40px;
             animation: fadeIn 1s ease-out 0.6s both;
+            isolation: isolate;
         }
 
         .calculator-card {
-            background: rgba(255, 255, 255, 0.18);
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            background: rgba(197, 229, 234, 0.5);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
             padding: 40px;
             border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .calculator-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 48px rgba(11, 122, 143, 0.3);
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(11, 122, 143, 0.4);
-        }
 
         .calculator-card h2 {
             font-family: 'Gloock', serif;
@@ -241,8 +233,9 @@
         }
 
         .disclaimer {
-            background: rgba(197, 229, 234, 0.15);
-            backdrop-filter: blur(20px);
+            background: rgba(197, 229, 234, 0.5);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
             padding: 28px;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -303,11 +296,12 @@
 </head>
 
 <body>
+    <div class="background-layer"></div>
     <div class="hero">
         <div class="logo-container">
             <!-- YOUR SVG LOGO GOES HERE -->
             <?xml version="1.0" encoding="UTF-8"?>
-            <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1190.6 841.9">
+            <svg class="logo" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1190.6 841.9">
                 <!-- Generator: Adobe Illustrator 30.1.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 136)  -->
                 <defs>
                     <style>
@@ -358,77 +352,75 @@
     </div>
 
     <div class="container">
-        <div class="calculators">
-            <div class="calculator-card">
-                <h2>Calculate My IHT</h2>
-                <form id="personalForm">
-                    <div class="form-group">
-                        <label for="propertyValue">Property Value (£)</label>
-                        <input type="number" id="propertyValue" min="0" step="1000" placeholder="500000">
-                        <p class="help-text">Value of your main residence and any additional properties</p>
-                    </div>
+        <div class="calculator-card">
+            <h2>Calculate My IHT</h2>
+            <form id="personalForm">
+                <div class="form-group">
+                    <label for="propertyValue">Property Value (£)</label>
+                    <input type="number" id="propertyValue" min="0" step="1000" placeholder="500000">
+                    <p class="help-text">Value of your main residence and any additional properties</p>
+                </div>
 
-                    <div class="form-group">
-                        <label for="savings">Savings & Investments (£)</label>
-                        <input type="number" id="savings" min="0" step="1000" placeholder="100000">
-                        <p class="help-text">Cash, ISAs, stocks, bonds, and other investments</p>
-                    </div>
+                <div class="form-group">
+                    <label for="savings">Savings & Investments (£)</label>
+                    <input type="number" id="savings" min="0" step="1000" placeholder="100000">
+                    <p class="help-text">Cash, ISAs, stocks, bonds, and other investments</p>
+                </div>
 
-                    <div class="form-group">
-                        <label for="otherAssets">Other Assets (£)</label>
-                        <input type="number" id="otherAssets" min="0" step="1000" placeholder="50000">
-                        <p class="help-text">Vehicles, jewelry, art, and other valuables</p>
-                    </div>
+                <div class="form-group">
+                    <label for="otherAssets">Other Assets (£)</label>
+                    <input type="number" id="otherAssets" min="0" step="1000" placeholder="50000">
+                    <p class="help-text">Vehicles, jewelry, art, and other valuables</p>
+                </div>
 
-                    <div class="form-group">
-                        <label for="debts">Debts & Liabilities (£)</label>
-                        <input type="number" id="debts" min="0" step="1000" placeholder="0">
-                        <p class="help-text">Mortgages, loans, and other debts</p>
-                    </div>
+                <div class="form-group">
+                    <label for="debts">Debts & Liabilities (£)</label>
+                    <input type="number" id="debts" min="0" step="1000" placeholder="0">
+                    <p class="help-text">Mortgages, loans, and other debts</p>
+                </div>
 
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="married">
-                        <label for="married">Married or in a civil partnership</label>
-                    </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="married">
+                    <label for="married">Married or in a civil partnership</label>
+                </div>
 
-                    <button type="submit">Calculate My IHT</button>
-                </form>
-            </div>
+                <button type="submit">Calculate My IHT</button>
+            </form>
+        </div>
 
-            <div class="calculator-card">
-                <h2>Value My Company</h2>
-                <form id="companyForm">
-                    <div class="form-group">
-                        <label for="annualRevenue">Annual Revenue (£)</label>
-                        <input type="number" id="annualRevenue" min="0" step="1000" placeholder="500000">
-                        <p class="help-text">Your company's annual turnover</p>
-                    </div>
+        <div class="calculator-card">
+            <h2>Value My Company</h2>
+            <form id="companyForm">
+                <div class="form-group">
+                    <label for="annualRevenue">Annual Revenue (£)</label>
+                    <input type="number" id="annualRevenue" min="0" step="1000" placeholder="500000">
+                    <p class="help-text">Your company's annual turnover</p>
+                </div>
 
-                    <div class="form-group">
-                        <label for="profitMargin">Estimated Profit Margin (%)</label>
-                        <input type="number" id="profitMargin" min="0" max="100" step="1" placeholder="20">
-                        <p class="help-text">Approximate percentage of revenue that is profit</p>
-                    </div>
+                <div class="form-group">
+                    <label for="profitMargin">Estimated Profit Margin (%)</label>
+                    <input type="number" id="profitMargin" min="0" max="100" step="1" placeholder="20">
+                    <p class="help-text">Approximate percentage of revenue that is profit</p>
+                </div>
 
-                    <div class="form-group">
-                        <label for="sector">Business Sector</label>
-                        <select id="sector">
-                            <option value="2">Services / Consulting (2x revenue)</option>
-                            <option value="1.5">Retail / E-commerce (1.5x revenue)</option>
-                            <option value="2.5">Technology / SaaS (2.5x revenue)</option>
-                            <option value="1">Manufacturing (1x revenue)</option>
-                        </select>
-                        <p class="help-text">This affects the valuation multiple applied</p>
-                    </div>
+                <div class="form-group">
+                    <label for="sector">Business Sector</label>
+                    <select id="sector">
+                        <option value="2">Services / Consulting (2x revenue)</option>
+                        <option value="1.5">Retail / E-commerce (1.5x revenue)</option>
+                        <option value="2.5">Technology / SaaS (2.5x revenue)</option>
+                        <option value="1">Manufacturing (1x revenue)</option>
+                    </select>
+                    <p class="help-text">This affects the valuation multiple applied</p>
+                </div>
 
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="companyMarried">
-                        <label for="companyMarried">Married or in a civil partnership</label>
-                    </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="companyMarried">
+                    <label for="companyMarried">Married or in a civil partnership</label>
+                </div>
 
-                    <button type="submit">Value My Company</button>
-                </form>
-            </div>
+                <button type="submit">Value My Company</button>
+            </form>
         </div>
 
         <div class="disclaimer">
