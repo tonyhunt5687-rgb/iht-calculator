@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - IHT Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .thank-you-card {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0b7a8f 0%, #1a5566 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: scaleIn 0.5s ease-out;
+        }
+        
+        .success-icon svg {
+            width: 50px;
+            height: 50px;
+            stroke: white;
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        h1 {
+            font-family: 'Gloock', serif;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #1a5566;
+        }
+        
+        .message {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .details-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .details-box h3 {
+            margin-bottom: 15px;
+            color: #1a5566;
+            font-family: 'Gloock', serif;
+            font-size: 1.3em;
+        }
+        
+        .details-box p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .details-box strong {
+            color: #1a5566;
+        }
+        
+        .next-steps {
+            background: linear-gradient(135deg, #c5e5ea 0%, #e8f4f8 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: left;
+            border: 2px solid #0b7a8f;
+        }
+        
+        .next-steps h3 {
+            margin-bottom: 15px;
+            color: #1a5566;
+            font-family: 'Gloock', serif;
+            font-size: 1.3em;
+        }
+        
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .next-steps li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+        
+        .next-steps li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #0b7a8f;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        
+        .button {
+            padding: 15px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .button-primary {
+            background: #0b7a8f;
+            color: white;
+        }
+        
+        .button-secondary {
+            background: #ecf0f1;
+            color: #1a5566;
+        }
+        
+        .reference-number {
+            font-size: 0.9em;
+            color: #95a5a6;
+            margin-top: 30px;
+            font-family: monospace;
+        }
+        
+        @media (max-width: 600px) {
+            .thank-you-card {
+                padding: 40px 30px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="thank-you-card">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            
+            <h1>Thank You!</h1>
+            
+            <p class="message">
+                Your enquiry has been successfully submitted. We've received your information and will be in touch shortly to discuss your inheritance tax planning needs.
+            </p>
+            
+            <div class="details-box">
+                <h3>Your Details</h3>
+                <p><strong>Name:</strong> <span id="userName"></span></p>
+                <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                <p><strong>Phone:</strong> <span id="userPhone"></span></p>
+                <p><strong>Estimated IHT Liability:</strong> <span id="userIHT"></span></p>
+            </div>
+            
+            <div class="next-steps">
+                <h3>What Happens Next?</h3>
+                <ul>
+                    <li>A member of our team will review your calculation and enquiry</li>
+                    <li>We'll contact you within 1-2 business days to arrange a consultation</li>
+                    <li>During the consultation, we'll discuss your specific circumstances and potential strategies</li>
+                    <li>You'll receive personalized recommendations tailored to your needs</li>
+                </ul>
+            </div>
+            
+            <div class="button-group">
+                <a href="index.html" class="button button-primary">Return to Calculator</a>
+                <a href="education.html" class="button button-secondary">Learn More</a>
+            </div>
+            
+            <p class="reference-number">Reference: <span id="referenceNumber"></span></p>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        const name = urlParams.get('name') || 'Not provided';
+        const email = urlParams.get('email') || 'Not provided';
+        const phone = urlParams.get('phone') || 'Not provided';
+        const ihtLiability = parseFloat(urlParams.get('iht')) || 0;
+        
+        document.getElementById('userName').textContent = name;
+        document.getElementById('userEmail').textContent = email;
+        document.getElementById('userPhone').textContent = phone;
+        document.getElementById('userIHT').textContent = 
+            '£' + ihtLiability.toLocaleString('en-GB', {maximumFractionDigits: 0});
+        
+        const refNumber = 'ENQ-' + Date.now().toString(36).toUpperCase();
+        document.getElementById('referenceNumber').textContent = refNumber;
+        
+        console.log('Enquiry completed:', {
+            reference: refNumber,
+            name,
+            email,
+            phone,
+            ihtLiability
+        });
+    </script>
+</body>
+</html>
