@@ -89,22 +89,10 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 700px;
             margin: 0 auto;
             padding: 0 20px 60px;
             position: relative;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 35px;
-        }
-
-        .calculators {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 35px;
-            margin-bottom: 40px;
-            animation: fadeIn 1s ease-out 0.6s both;
-            isolation: isolate;
         }
 
         .calculator-card {
@@ -116,8 +104,8 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeIn 1s ease-out 0.6s both;
         }
-
 
         .calculator-card h2 {
             font-family: 'Gloock', serif;
@@ -236,6 +224,39 @@
             line-height: 1.4;
         }
 
+        .section-title {
+            font-family: 'Gloock', serif;
+            font-size: 1.4em;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .business-section {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+            margin-top: 0;
+        }
+
+        .business-section.active {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 20px;
+        }
+
+        .business-section-inner {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .business-section-inner .section-title {
+            margin-top: 0;
+        }
+
         .disclaimer {
             background: rgba(58, 76, 79, 0.5);
             backdrop-filter: blur(5px);
@@ -243,7 +264,7 @@
             padding: 28px;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            grid-column: 1 / -1;
+            margin-top: 40px;
             animation: fadeIn 1s ease-out 0.8s both;
         }
 
@@ -266,11 +287,6 @@
         }
 
         @media (max-width: 968px) {
-            .container {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-
             .hero h1 {
                 font-size: 2.5em;
             }
@@ -308,10 +324,8 @@
     <div class="background-layer"></div>
     <div class="hero">
         <div class="logo-container">
-            <!-- YOUR SVG LOGO GOES HERE -->
             <?xml version="1.0" encoding="UTF-8"?>
             <svg class="logo" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1190.6 841.9">
-                <!-- Generator: Adobe Illustrator 30.1.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 136)  -->
                 <defs>
                     <style>
                         .st0 {
@@ -363,7 +377,8 @@
     <div class="container">
         <div class="calculator-card">
             <h2>Calculate My IHT</h2>
-            <form id="personalForm">
+            <form id="ihtForm">
+                <!-- Personal Assets Section -->
                 <div class="form-group">
                     <label for="propertyValue">Property Value (£)</label>
                     <input type="text" id="propertyValue" placeholder="£500,000" inputmode="numeric" autocomplete="off">
@@ -393,32 +408,37 @@
                     <label for="married">Married or in a civil partnership</label>
                 </div>
 
+                <div class="checkbox-group">
+                    <input type="checkbox" id="ownsBusiness">
+                    <label for="ownsBusiness">I own a business</label>
+                </div>
+
+                <!-- Business Section (Hidden by default) -->
+                <div class="business-section" id="businessSection">
+                    <div class="business-section-inner">
+                        <h3 class="section-title">Business Valuation</h3>
+                        
+                        <div class="form-group">
+                            <label for="netProfit">Annual Net Profit (£)</label>
+                            <input type="text" id="netProfit" placeholder="£100,000" inputmode="numeric" autocomplete="off">
+                            <p class="help-text">Your company's annual net profit (before tax)</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sector">Business Sector</label>
+                            <select id="sector">
+                                <option value="4">Services / Consulting</option>
+                                <option value="3">Retail</option>
+                                <option value="4" data-type="ecommerce">E-commerce</option>
+                                <option value="6">Technology / SaaS</option>
+                                <option value="4" data-type="manufacturing">Manufacturing</option>
+                            </select>
+                            <p class="help-text">Select the sector that best describes your business</p>
+                        </div>
+                    </div>
+                </div>
+
                 <button type="submit">Calculate My IHT</button>
-            </form>
-        </div>
-
-        <div class="calculator-card">
-            <h2>Value My Company</h2>
-            <form id="companyForm">
-                <div class="form-group">
-                    <label for="netProfit">Annual Net Profit (£)</label>
-                    <input type="text" id="netProfit" placeholder="£100,000" inputmode="numeric" autocomplete="off">
-                    <p class="help-text">Your company's annual net profit (before tax)</p>
-                </div>
-
-                <div class="form-group">
-                    <label for="sector">Business Sector</label>
-                    <select id="sector">
-                        <option value="4">Services / Consulting</option>
-                        <option value="3">Retail</option>
-                        <option value="4" data-type="ecommerce">E-commerce</option>
-                        <option value="6">Technology / SaaS</option>
-                        <option value="4" data-type="manufacturing">Manufacturing</option>
-                    </select>
-                    <p class="help-text">Select the sector that best describes your business</p>
-                </div>
-
-                <button type="submit">Value My Company</button>
             </form>
         </div>
 
@@ -430,6 +450,7 @@
             <p><strong>Business valuation estimate:</strong> This figure is based on a simple multiple of annual net profit commonly used for broad comparison purposes. Real business valuations depend on many factors including assets, debt, growth prospects, customer concentration and transferability. This is not a valuation for sale, tax or legal purposes.</p>
         </div>
     </div>
+    
     <script>
         function formatCurrency(input) {
             let value = input.value.replace(/[^\d]/g, '');
@@ -471,40 +492,50 @@
             }
         });
 
-        document.getElementById('personalForm').addEventListener('submit', function (e) {
+        // Toggle business section visibility
+        const ownsBusinessCheckbox = document.getElementById('ownsBusiness');
+        const businessSection = document.getElementById('businessSection');
+
+        ownsBusinessCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                businessSection.classList.add('active');
+            } else {
+                businessSection.classList.remove('active');
+            }
+        });
+
+        // Form submission
+        document.getElementById('ihtForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
             const propertyValue = getNumericValue('propertyValue');
             const savings = getNumericValue('savings');
             const otherAssets = getNumericValue('otherAssets');
             const debts = getNumericValue('debts');
+            const married = document.getElementById('married').checked ? '1' : '0';
+            const ownsBusiness = document.getElementById('ownsBusiness').checked;
 
             if (propertyValue < 0 || savings < 0 || otherAssets < 0 || debts < 0) {
                 alert('Please enter valid amounts');
                 return;
             }
 
-            const married = document.getElementById('married').checked ? '1' : '0';
-
-            window.location.href = `results.html?property=${propertyValue}&savings=${savings}&other=${otherAssets}&debts=${debts}&married=${married}`;
-        });
-
-        document.getElementById('companyForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const netProfit = getNumericValue('netProfit');
-            const sectorSelect = document.getElementById('sector');
-            const multiple = parseFloat(sectorSelect.value);
-            const sectorText = sectorSelect.options[sectorSelect.selectedIndex].text;
-
-            if (netProfit < 0) {
-                alert('Please enter a valid amount');
-                return;
+            let companyValue = 0;
+            
+            if (ownsBusiness) {
+                const netProfit = getNumericValue('netProfit');
+                const multiple = parseFloat(document.getElementById('sector').value);
+                companyValue = netProfit * multiple;
             }
 
-            const companyValue = netProfit * multiple;
+            // Build URL and navigate to results
+            let url = `results.html?property=${propertyValue}&savings=${savings}&other=${otherAssets}&debts=${debts}&married=${married}`;
+            
+            if (companyValue > 0) {
+                url += `&company=${companyValue}`;
+            }
 
-            window.location.href = `company-followup.html?profit=${netProfit}&multiple=${multiple}&sector=${encodeURIComponent(sectorText)}&value=${companyValue}`;
+            window.location.href = url;
         });
     </script>
 </body>
