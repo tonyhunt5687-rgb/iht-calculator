@@ -173,6 +173,31 @@
             color: #c0392b;
         }
         
+        .legislation-warning {
+            background: #fff8e6;
+            border: 2px solid #f0c36d;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .legislation-warning h3 {
+            margin-bottom: 15px;
+            color: #8a6d3b;
+            font-family: 'Gloock', serif;
+            font-size: 1.3em;
+        }
+        
+        .legislation-warning p {
+            color: #6d5a2e;
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+        
+        .legislation-warning p:last-child {
+            margin-bottom: 0;
+        }
+        
         .explanation {
             margin-bottom: 30px;
         }
@@ -360,8 +385,12 @@
                     </div>
                 </div>
                 
-                <div class="breakdown-section">
-                    <div class="breakdown-section-title">IHT Calculation</div>
+                <div class="breakdown-section" id="personalIHTSection">
+                    <div class="breakdown-section-title">IHT on Personal Assets</div>
+                    <div class="breakdown-item">
+                        <span>Personal Assets Value</span>
+                        <span id="personalAssetsValue">£0</span>
+                    </div>
                     <div class="breakdown-item">
                         <span>IHT-Free Allowance</span>
                         <span id="allowance">£0</span>
@@ -370,8 +399,36 @@
                         <span>Taxable Amount</span>
                         <span id="taxableAmount">£0</span>
                     </div>
+                    <div class="breakdown-item">
+                        <span>IHT on Personal Assets (40%)</span>
+                        <span id="personalIHT">£0</span>
+                    </div>
+                </div>
+                
+                <div class="breakdown-section" id="businessIHTSection" style="display: none;">
+                    <div class="breakdown-section-title">IHT on Business Assets (with BPR)</div>
+                    <div class="breakdown-item">
+                        <span>Company Value</span>
+                        <span id="businessValue">£0</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>BPR Allowance (100% relief)</span>
+                        <span id="bprAllowance">£0</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>Business Value Exceeding BPR</span>
+                        <span id="businessTaxable">£0</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>IHT on Excess Business Value (20%)</span>
+                        <span id="businessIHT">£0</span>
+                    </div>
+                </div>
+                
+                <div class="breakdown-section">
+                    <div class="breakdown-section-title">Total IHT Liability</div>
                     <div class="breakdown-item total">
-                        <span>IHT Liability (40%)</span>
+                        <span>Total Estimated IHT</span>
                         <span id="ihtLiability">£0</span>
                     </div>
                 </div>
@@ -380,7 +437,13 @@
             <div class="explanation">
                 <h3>Understanding Your Result</h3>
                 <p id="explanationText"></p>
-                <p>This is an illustrative calculation based on standard IHT rates and allowances. Your actual liability may differ based on various factors including business property relief, agricultural property relief, gifts made during your lifetime, and changes in tax legislation.</p>
+                <p>This is an illustrative calculation based on standard IHT rates and allowances as of January 2025. Your actual liability may differ based on various factors including the specific nature of your business assets, agricultural property relief, gifts made during your lifetime, and other exemptions.</p>
+            </div>
+            
+            <div class="legislation-warning">
+                <h3>⚠️ Important: Upcoming Changes</h3>
+                <p><strong>Pensions &amp; IHT (from April 2027):</strong> Unused pension funds and death benefits will be included in your estate for IHT purposes. This could significantly increase your IHT liability if you have substantial pension savings.</p>
+                <p><strong>Legislation Changes:</strong> IHT rules are subject to frequent change. The BPR rules referenced in this calculation reflect recent government announcements, but these may be amended before or after implementation. Regular review of your estate plan is essential.</p>
             </div>
         </div>
         
@@ -394,7 +457,7 @@
                 </a>
                 <a href="#" class="pill contact-pill" id="contactButton">
                     <h3>Speak to an Expert</h3>
-                    <p>Get personalized advice from a qualified professional</p>
+                    <p>With rules constantly changing, get personalised advice tailored to your situation</p>
                 </a>
             </div>
         </div>
@@ -462,39 +525,84 @@
         }
         
         function calculateIHT() {
+            // Personal allowances
             const nilRateBand = married ? 650000 : 325000;
             const residenceNilRateBand = married ? 350000 : 175000;
             
-            const hasProperty = propertyValue > 0;
-            const totalAllowance = hasProperty ? nilRateBand + residenceNilRateBand : nilRateBand;
+            // BPR allowances (new rules)
+            const bprAllowance = married ? 5000000 : 2500000;
             
-            const taxableAmount = Math.max(0, totalEstate - totalAllowance);
-            const ihtLiability = taxableAmount * 0.4;
+            const hasProperty = propertyValue > 0;
+            const personalAllowance = hasProperty ? nilRateBand + residenceNilRateBand : nilRateBand;
+            
+            // Calculate personal assets (excluding company)
+            const personalAssets = propertyValue + savings + otherAssets - debts;
+            
+            // Personal IHT calculation (40%)
+            const personalTaxable = Math.max(0, personalAssets - personalAllowance);
+            const personalIHT = personalTaxable * 0.4;
+            
+            // Business IHT calculation (20% on amount exceeding BPR allowance)
+            let businessTaxable = 0;
+            let businessIHT = 0;
+            
+            if (companyValue > 0) {
+                businessTaxable = Math.max(0, companyValue - bprAllowance);
+                businessIHT = businessTaxable * 0.2;
+            }
+            
+            const totalIHT = personalIHT + businessIHT;
             
             return {
                 totalEstate,
-                totalAllowance,
-                taxableAmount,
-                ihtLiability
+                personalAssets,
+                personalAllowance,
+                personalTaxable,
+                personalIHT,
+                bprAllowance,
+                businessTaxable,
+                businessIHT,
+                totalIHT
             };
         }
         
         const results = calculateIHT();
         
-        document.getElementById('ihtAmount').textContent = formatGBP(results.ihtLiability);
+        // Update display
+        document.getElementById('ihtAmount').textContent = formatGBP(results.totalIHT);
         document.getElementById('totalEstate').textContent = formatGBP(results.totalEstate);
-        document.getElementById('allowance').textContent = formatGBP(results.totalAllowance);
-        document.getElementById('taxableAmount').textContent = formatGBP(results.taxableAmount);
-        document.getElementById('ihtLiability').textContent = formatGBP(results.ihtLiability);
+        
+        // Personal assets section
+        document.getElementById('personalAssetsValue').textContent = formatGBP(results.personalAssets);
+        document.getElementById('allowance').textContent = formatGBP(results.personalAllowance);
+        document.getElementById('taxableAmount').textContent = formatGBP(results.personalTaxable);
+        document.getElementById('personalIHT').textContent = formatGBP(results.personalIHT);
+        
+        // Business section (only show if company value exists)
+        if (companyValue > 0) {
+            document.getElementById('businessIHTSection').style.display = 'block';
+            document.getElementById('businessValue').textContent = formatGBP(companyValue);
+            document.getElementById('bprAllowance').textContent = formatGBP(Math.min(companyValue, results.bprAllowance));
+            document.getElementById('businessTaxable').textContent = formatGBP(results.businessTaxable);
+            document.getElementById('businessIHT').textContent = formatGBP(results.businessIHT);
+        }
+        
+        document.getElementById('ihtLiability').textContent = formatGBP(results.totalIHT);
         
         let explanation = '';
-        if (results.ihtLiability === 0) {
+        if (results.totalIHT === 0) {
             explanation = 'Great news! Based on this calculation, your estate appears to be below the IHT threshold. This means your beneficiaries would not face an inheritance tax bill under current rules.';
         } else {
-            explanation = `Your estate value of ${formatGBP(results.totalEstate)} exceeds the IHT-free allowance of ${formatGBP(results.totalAllowance)}. This results in an estimated IHT liability of ${formatGBP(results.ihtLiability)}.`;
-            
             if (companyValue > 0) {
-                explanation += ' Note: Your business may qualify for Business Property Relief (BPR), which could reduce or eliminate IHT on business assets. This calculation does not account for BPR.';
+                explanation = `Your total estate value is ${formatGBP(results.totalEstate)}. After applying your IHT-free allowance of ${formatGBP(results.personalAllowance)} on personal assets`;
+                if (results.businessTaxable > 0) {
+                    explanation += ` and Business Property Relief of ${formatGBP(results.bprAllowance)} on your business`;
+                } else {
+                    explanation += ` (your business is fully covered by BPR)`;
+                }
+                explanation += `, your estimated IHT liability is ${formatGBP(results.totalIHT)}. This assumes your business qualifies for Business Property Relief (BPR).`;
+            } else {
+                explanation = `Your estate value of ${formatGBP(results.totalEstate)} exceeds the IHT-free allowance of ${formatGBP(results.personalAllowance)}. This results in an estimated IHT liability of ${formatGBP(results.totalIHT)}.`;
             }
         }
         
@@ -505,9 +613,9 @@
             e.preventDefault();
             // Store calculated results in session storage for enquiry page
             const resultsData = JSON.parse(sessionStorage.getItem('ihtData') || '{}');
-            resultsData.calculatedIHT = results.ihtLiability;
+            resultsData.calculatedIHT = results.totalIHT;
             resultsData.totalEstate = results.totalEstate;
-            resultsData.totalAllowance = results.totalAllowance;
+            resultsData.totalAllowance = results.personalAllowance;
             sessionStorage.setItem('ihtData', JSON.stringify(resultsData));
             window.location.href = 'enquiry.html';
         });
