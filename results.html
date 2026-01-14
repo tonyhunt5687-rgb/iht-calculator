@@ -126,19 +126,51 @@
             font-size: 1.4em;
         }
         
+        .breakdown-section {
+            margin-bottom: 15px;
+        }
+        
+        .breakdown-section-title {
+            font-weight: 600;
+            color: #1a5566;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(26,85,102,0.2);
+        }
+        
         .breakdown-item {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(26,85,102,0.2);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(26,85,102,0.1);
         }
         
         .breakdown-item:last-child {
             border-bottom: none;
+        }
+        
+        .breakdown-item.subtotal {
             font-weight: 600;
+            padding-top: 12px;
+            margin-top: 5px;
+            border-top: 1px solid rgba(26,85,102,0.2);
+            border-bottom: none;
+        }
+        
+        .breakdown-item.total {
+            font-weight: 700;
+            font-size: 1.1em;
             padding-top: 15px;
             margin-top: 10px;
             border-top: 2px solid rgba(26,85,102,0.3);
+            border-bottom: none;
+        }
+        
+        .breakdown-item.deduction span:last-child {
+            color: #c0392b;
         }
         
         .explanation {
@@ -299,21 +331,49 @@
             
             <div class="breakdown">
                 <h3>Calculation Breakdown</h3>
-                <div class="breakdown-item">
-                    <span>Total Estate Value</span>
-                    <span id="totalEstate">£0</span>
+                
+                <div class="breakdown-section">
+                    <div class="breakdown-section-title">Your Assets</div>
+                    <div class="breakdown-item" id="propertyRow">
+                        <span>Property</span>
+                        <span id="propertyDisplay">£0</span>
+                    </div>
+                    <div class="breakdown-item" id="savingsRow">
+                        <span>Savings & Investments</span>
+                        <span id="savingsDisplay">£0</span>
+                    </div>
+                    <div class="breakdown-item" id="otherRow">
+                        <span>Other Assets</span>
+                        <span id="otherDisplay">£0</span>
+                    </div>
+                    <div class="breakdown-item" id="companyRow" style="display: none;">
+                        <span>Company Value (estimated)</span>
+                        <span id="companyDisplay">£0</span>
+                    </div>
+                    <div class="breakdown-item deduction" id="debtsRow">
+                        <span>Less: Debts & Liabilities</span>
+                        <span id="debtsDisplay">-£0</span>
+                    </div>
+                    <div class="breakdown-item subtotal">
+                        <span>Total Estate Value</span>
+                        <span id="totalEstate">£0</span>
+                    </div>
                 </div>
-                <div class="breakdown-item">
-                    <span>IHT-Free Allowance</span>
-                    <span id="allowance">£0</span>
-                </div>
-                <div class="breakdown-item">
-                    <span>Taxable Amount</span>
-                    <span id="taxableAmount">£0</span>
-                </div>
-                <div class="breakdown-item">
-                    <span>IHT Liability (40%)</span>
-                    <span id="ihtLiability">£0</span>
+                
+                <div class="breakdown-section">
+                    <div class="breakdown-section-title">IHT Calculation</div>
+                    <div class="breakdown-item">
+                        <span>IHT-Free Allowance</span>
+                        <span id="allowance">£0</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>Taxable Amount</span>
+                        <span id="taxableAmount">£0</span>
+                    </div>
+                    <div class="breakdown-item total">
+                        <span>IHT Liability (40%)</span>
+                        <span id="ihtLiability">£0</span>
+                    </div>
                 </div>
             </div>
             
@@ -333,18 +393,19 @@
                     <p>Discover strategies to reduce your IHT liability and understand your options</p>
                 </a>
                 <a href="#" class="pill contact-pill" id="contactButton">
-                <h3>Speak to an Expert</h3>
-                <p>Get personalized advice from a qualified professional</p>
-            </a>
+                    <h3>Speak to an Expert</h3>
+                    <p>Get personalized advice from a qualified professional</p>
+                </a>
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            <h3>Important Disclaimer</h3>
+            <p>This calculator provides an illustrative estimate only and should not be considered financial or legal advice. Actual IHT liability can vary significantly based on many factors including timing of gifts, exemptions, reliefs (such as Business Property Relief), and changing legislation. For accurate, personalized advice tailored to your specific circumstances, please consult a qualified tax advisor or solicitor.</p>
         </div>
     </div>
     
-    <div class="disclaimer">
-        <h3>Important Disclaimer</h3>
-        <p>This calculator provides an illustrative estimate only and should not be considered financial or legal advice. Actual IHT liability can vary significantly based on many factors including timing of gifts, exemptions, reliefs (such as Business Property Relief), and changing legislation. For accurate, personalized advice tailored to your specific circumstances, please consult a qualified tax advisor or solicitor.</p>
-    </div>
-</div>
-<script>
+    <script>
         const urlParams = new URLSearchParams(window.location.search);
         
         const propertyValue = parseFloat(urlParams.get('property')) || 0;
@@ -354,8 +415,25 @@
         const married = urlParams.get('married') === '1';
         const companyValue = parseFloat(urlParams.get('company')) || 0;
         
-        const netEstate = propertyValue + savings + otherAssets - debts;
-        const totalEstate = netEstate + companyValue;
+        const netEstate = propertyValue + savings + otherAssets + companyValue - debts;
+        const totalEstate = netEstate;
+        
+        // Format currency helper
+        function formatGBP(value) {
+            return '£' + value.toLocaleString('en-GB', {maximumFractionDigits: 0});
+        }
+        
+        // Display individual asset values
+        document.getElementById('propertyDisplay').textContent = formatGBP(propertyValue);
+        document.getElementById('savingsDisplay').textContent = formatGBP(savings);
+        document.getElementById('otherDisplay').textContent = formatGBP(otherAssets);
+        document.getElementById('debtsDisplay').textContent = '-' + formatGBP(debts);
+        
+        // Show company row if there's a company value
+        if (companyValue > 0) {
+            document.getElementById('companyRow').style.display = 'flex';
+            document.getElementById('companyDisplay').textContent = formatGBP(companyValue);
+        }
         
         function calculateIHT() {
             const nilRateBand = married ? 650000 : 325000;
@@ -377,33 +455,24 @@
         
         const results = calculateIHT();
         
-        document.getElementById('ihtAmount').textContent = 
-            '£' + results.ihtLiability.toLocaleString('en-GB', {maximumFractionDigits: 0});
-        
-        document.getElementById('totalEstate').textContent = 
-            '£' + results.totalEstate.toLocaleString('en-GB', {maximumFractionDigits: 0});
-        
-        document.getElementById('allowance').textContent = 
-            '£' + results.totalAllowance.toLocaleString('en-GB', {maximumFractionDigits: 0});
-        
-        document.getElementById('taxableAmount').textContent = 
-            '£' + results.taxableAmount.toLocaleString('en-GB', {maximumFractionDigits: 0});
-        
-        document.getElementById('ihtLiability').textContent = 
-            '£' + results.ihtLiability.toLocaleString('en-GB', {maximumFractionDigits: 0});
+        document.getElementById('ihtAmount').textContent = formatGBP(results.ihtLiability);
+        document.getElementById('totalEstate').textContent = formatGBP(results.totalEstate);
+        document.getElementById('allowance').textContent = formatGBP(results.totalAllowance);
+        document.getElementById('taxableAmount').textContent = formatGBP(results.taxableAmount);
+        document.getElementById('ihtLiability').textContent = formatGBP(results.ihtLiability);
         
         let explanation = '';
         if (results.ihtLiability === 0) {
             explanation = 'Great news! Based on this calculation, your estate appears to be below the IHT threshold. This means your beneficiaries would not face an inheritance tax bill under current rules.';
         } else {
-            explanation = `Your estate value of £${results.totalEstate.toLocaleString('en-GB')} exceeds the IHT-free allowance of £${results.totalAllowance.toLocaleString('en-GB')}. This results in an estimated IHT liability of £${results.ihtLiability.toLocaleString('en-GB')}.`;
+            explanation = `Your estate value of ${formatGBP(results.totalEstate)} exceeds the IHT-free allowance of ${formatGBP(results.totalAllowance)}. This results in an estimated IHT liability of ${formatGBP(results.ihtLiability)}.`;
             
             if (companyValue > 0) {
                 explanation += ' Note: Your business may qualify for Business Property Relief (BPR), which could reduce or eliminate IHT on business assets. This calculation does not account for BPR.';
             }
         }
         
-document.getElementById('explanationText').textContent = explanation;
+        document.getElementById('explanationText').textContent = explanation;
         
         // Fix the contact button to pass data
         document.getElementById('contactButton').addEventListener('click', function(e) {

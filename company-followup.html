@@ -80,7 +80,7 @@
             padding: 35px;
             border-radius: 8px;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             border: 2px solid #0b7a8f;
         }
         
@@ -97,6 +97,27 @@
             font-size: 3.5em;
             font-weight: normal;
             color: #0b7a8f;
+        }
+        
+        .value-details {
+            font-size: 0.95em;
+            color: #1a5566;
+            margin-top: 15px;
+        }
+        
+        .disclaimer-box {
+            background: #fff8e6;
+            border: 1px solid #e6d9a8;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .disclaimer-box p {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin: 0;
         }
         
         .form-card {
@@ -130,7 +151,8 @@
             color: #1a5566;
         }
         
-        input[type="number"] {
+        input[type="number"],
+        input[type="text"] {
             width: 100%;
             padding: 12px;
             border: 2px solid #c5e5ea;
@@ -140,15 +162,46 @@
             transition: border-color 0.3s;
         }
         
-        input[type="number"]:focus {
+        input[type="number"]:focus,
+        input[type="text"]:focus {
             outline: none;
             border-color: #0b7a8f;
+        }
+        
+        input[type="number"]::placeholder,
+        input[type="text"]::placeholder {
+            color: #999;
         }
         
         .help-text {
             font-size: 0.9em;
             color: #666;
             margin-top: 5px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+            padding: 14px;
+            background: #f8f8f8;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            accent-color: #0b7a8f;
+        }
+
+        .checkbox-group label {
+            font-weight: 500;
+            margin: 0;
+            cursor: pointer;
+            color: #333;
         }
         
         button {
@@ -225,6 +278,11 @@
         <div class="value-display">
             <h2>Estimated Company Value</h2>
             <div class="amount" id="companyValueDisplay">£0</div>
+            <div class="value-details" id="valueDetails"></div>
+        </div>
+        
+        <div class="disclaimer-box">
+            <p><strong>Educational estimate only.</strong> This figure is based on a simple multiple of annual net profit commonly used for broad comparison purposes. Real business valuations depend on many factors including assets, debt, growth prospects, customer concentration and transferability. This is not a valuation for sale, tax or legal purposes.</p>
         </div>
         
         <div class="form-card">
@@ -234,26 +292,31 @@
             <form id="personalAssetsForm">
                 <div class="form-group">
                     <label for="propertyValue">Property Value (£)</label>
-                    <input type="number" id="propertyValue" min="0" step="1000" placeholder="500000">
+                    <input type="text" id="propertyValue" placeholder="£500,000" inputmode="numeric" autocomplete="off">
                     <p class="help-text">Value of your main residence and any additional properties</p>
                 </div>
                 
                 <div class="form-group">
                     <label for="savings">Savings & Investments (£)</label>
-                    <input type="number" id="savings" min="0" step="1000" placeholder="100000">
+                    <input type="text" id="savings" placeholder="£100,000" inputmode="numeric" autocomplete="off">
                     <p class="help-text">Cash, ISAs, stocks, bonds, and other investments</p>
                 </div>
                 
                 <div class="form-group">
                     <label for="otherAssets">Other Assets (£)</label>
-                    <input type="number" id="otherAssets" min="0" step="1000" placeholder="50000">
+                    <input type="text" id="otherAssets" placeholder="£50,000" inputmode="numeric" autocomplete="off">
                     <p class="help-text">Vehicles, jewelry, art, and other valuables</p>
                 </div>
                 
                 <div class="form-group">
                     <label for="debts">Debts & Liabilities (£)</label>
-                    <input type="number" id="debts" min="0" step="1000" placeholder="0">
+                    <input type="text" id="debts" placeholder="£0" inputmode="numeric" autocomplete="off">
                     <p class="help-text">Mortgages, loans, and other debts</p>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="married">
+                    <label for="married">Married or in a civil partnership</label>
                 </div>
                 
                 <button type="submit">Calculate My Total IHT Liability</button>
@@ -262,42 +325,82 @@
     </div>
     
     <script>
-        // Load and display company data
-        const companyData = JSON.parse(sessionStorage.getItem('companyData'));
-        
-        if (!companyData) {
-            window.location.href = 'index.html';
-        } else {
-            document.getElementById('companyValueDisplay').textContent = 
-                '£' + companyData.companyValue.toLocaleString('en-GB', {maximumFractionDigits: 0});
+        function formatCurrency(input) {
+            let value = input.value.replace(/[^\d]/g, '');
+
+            if (value === '') {
+                input.value = '';
+                return;
+            }
+
+            input.value = '£' + Number(value).toLocaleString('en-GB');
         }
+
+        function getNumericValue(id) {
+            const el = document.getElementById(id);
+            if (!el) return 0;
+            const raw = el.value || '';
+            return parseInt(raw.replace(/[^\d]/g, ''), 10) || 0;
+        }
+
+        const currencyInputs = [
+            'propertyValue',
+            'savings',
+            'otherAssets',
+            'debts'
+        ];
+
+        currencyInputs.forEach(id => {
+            const input = document.getElementById(id);
+            if (input) {
+                input.addEventListener('input', () => formatCurrency(input));
+                input.addEventListener('blur', () => formatCurrency(input));
+                input.addEventListener('paste', (e) => {
+                    e.preventDefault();
+                    const text = (e.clipboardData || window.clipboardData).getData('text') || '';
+                    input.value = text.replace(/[^\d]/g, '');
+                    formatCurrency(input);
+                });
+            }
+        });
+
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const netProfit = parseInt(urlParams.get('profit')) || 0;
+        const multiple = parseFloat(urlParams.get('multiple')) || 4;
+        const sector = decodeURIComponent(urlParams.get('sector') || 'Services / Consulting');
+        const companyValue = parseInt(urlParams.get('value')) || 0;
+        
+        // Redirect if no data
+        if (!netProfit && !companyValue) {
+            window.location.href = 'index.html';
+        }
+        
+        // Display company value
+        document.getElementById('companyValueDisplay').textContent = 
+            '£' + companyValue.toLocaleString('en-GB', {maximumFractionDigits: 0});
+        
+        // Display calculation details
+        document.getElementById('valueDetails').textContent = 
+            `Based on £${netProfit.toLocaleString('en-GB')} net profit × ${multiple}`;
         
         // Handle form submission
         document.getElementById('personalAssetsForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const propertyValue = parseFloat(document.getElementById('propertyValue').value) || 0;
-            const savings = parseFloat(document.getElementById('savings').value) || 0;
-            const otherAssets = parseFloat(document.getElementById('otherAssets').value) || 0;
-            const debts = parseFloat(document.getElementById('debts').value) || 0;
+            const propertyValue = getNumericValue('propertyValue');
+            const savings = getNumericValue('savings');
+            const otherAssets = getNumericValue('otherAssets');
+            const debts = getNumericValue('debts');
+            const married = document.getElementById('married').checked ? '1' : '0';
             
-            const personalNetEstate = propertyValue + savings + otherAssets - debts;
-            const totalEstate = personalNetEstate + companyData.companyValue;
+            if (propertyValue < 0 || savings < 0 || otherAssets < 0 || debts < 0) {
+                alert('Please enter valid amounts');
+                return;
+            }
             
-            // Store combined data
-            sessionStorage.setItem('personalData', JSON.stringify({
-                propertyValue,
-                savings,
-                otherAssets,
-                debts,
-                married: companyData.married,
-                netEstate: personalNetEstate,
-                companyValue: companyData.companyValue,
-                totalEstate
-            }));
-            
-            // Navigate to results
-            window.location.href = 'results.html';
+            // Navigate to results with all parameters
+            window.location.href = `results.html?property=${propertyValue}&savings=${savings}&other=${otherAssets}&debts=${debts}&married=${married}&company=${companyValue}`;
         });
     </script>
 </body>

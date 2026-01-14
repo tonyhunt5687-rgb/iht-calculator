@@ -70,6 +70,7 @@
         .hero h1 {
             font-family: 'Gloock', serif;
             font-size: 3.2em;
+            letter-spacing: 3px;
             margin-bottom: 15px;
             color: white;
             line-height: 1.2;
@@ -107,12 +108,12 @@
         }
 
         .calculator-card {
-            background: rgba(197, 229, 234, 0.5);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
+            background: rgba(58, 76, 79, 0.5);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             padding: 40px;
             border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -121,9 +122,9 @@
         .calculator-card h2 {
             font-family: 'Gloock', serif;
             font-size: 2em;
+            letter-spacing: 2px;
             margin-bottom: 25px;
             color: white;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .form-group {
@@ -139,6 +140,7 @@
         }
 
         input[type="number"],
+        input[type="text"],
         select {
             width: 100%;
             padding: 14px 16px;
@@ -152,7 +154,8 @@
             transition: all 0.3s ease;
         }
 
-        input[type="number"]::placeholder {
+        input[type="number"]::placeholder,
+        input[type="text"]::placeholder {
             color: rgba(255, 255, 255, 0.5);
         }
 
@@ -167,9 +170,10 @@
         }
 
         input[type="number"]:focus,
+        input[type="text"]:focus,
         select:focus {
             outline: none;
-            border-color: rgba(11, 122, 143, 0.8);
+            border-color: rgba(255, 255, 255, 0.8);
             background: rgba(255, 255, 255, 0.15);
             box-shadow: 0 0 0 3px rgba(11, 122, 143, 0.2);
         }
@@ -202,7 +206,7 @@
         button {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, #0b7a8f 0%, #1a5566 100%);
+            background: linear-gradient(135deg, #2fcae9 0%, #2baccf 100%);
             color: white;
             border: none;
             border-radius: 12px;
@@ -233,13 +237,13 @@
         }
 
         .disclaimer {
-            background: rgba(197, 229, 234, 0.5);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
+            background: rgba(58, 76, 79, 0.5);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             padding: 28px;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            margin-top: 40px;
+            grid-column: 1 / -1;
             animation: fadeIn 1s ease-out 0.8s both;
         }
 
@@ -248,6 +252,7 @@
             color: white;
             font-family: 'Gloock', serif;
             font-size: 1.4em;
+            letter-spacing: 1px;
         }
 
         .disclaimer p {
@@ -256,8 +261,12 @@
             line-height: 1.7;
         }
 
+        .disclaimer p + p {
+            margin-top: 12px;
+        }
+
         @media (max-width: 968px) {
-            .calculators {
+            .container {
                 grid-template-columns: 1fr;
                 gap: 25px;
             }
@@ -357,25 +366,25 @@
             <form id="personalForm">
                 <div class="form-group">
                     <label for="propertyValue">Property Value (£)</label>
-                    <input type="number" id="propertyValue" min="0" step="1000" placeholder="500000">
+                    <input type="text" id="propertyValue" placeholder="£500,000" inputmode="numeric" autocomplete="off">
                     <p class="help-text">Value of your main residence and any additional properties</p>
                 </div>
 
                 <div class="form-group">
                     <label for="savings">Savings & Investments (£)</label>
-                    <input type="number" id="savings" min="0" step="1000" placeholder="100000">
+                    <input type="text" id="savings" placeholder="£100,000" inputmode="numeric" autocomplete="off">
                     <p class="help-text">Cash, ISAs, stocks, bonds, and other investments</p>
                 </div>
 
                 <div class="form-group">
                     <label for="otherAssets">Other Assets (£)</label>
-                    <input type="number" id="otherAssets" min="0" step="1000" placeholder="50000">
+                    <input type="text" id="otherAssets" placeholder="£50,000" inputmode="numeric" autocomplete="off">
                     <p class="help-text">Vehicles, jewelry, art, and other valuables</p>
                 </div>
 
                 <div class="form-group">
                     <label for="debts">Debts & Liabilities (£)</label>
-                    <input type="number" id="debts" min="0" step="1000" placeholder="0">
+                    <input type="text" id="debts" placeholder="£0" inputmode="numeric" autocomplete="off">
                     <p class="help-text">Mortgages, loans, and other debts</p>
                 </div>
 
@@ -392,31 +401,21 @@
             <h2>Value My Company</h2>
             <form id="companyForm">
                 <div class="form-group">
-                    <label for="annualRevenue">Annual Revenue (£)</label>
-                    <input type="number" id="annualRevenue" min="0" step="1000" placeholder="500000">
-                    <p class="help-text">Your company's annual turnover</p>
-                </div>
-
-                <div class="form-group">
-                    <label for="profitMargin">Estimated Profit Margin (%)</label>
-                    <input type="number" id="profitMargin" min="0" max="100" step="1" placeholder="20">
-                    <p class="help-text">Approximate percentage of revenue that is profit</p>
+                    <label for="netProfit">Annual Net Profit (£)</label>
+                    <input type="text" id="netProfit" placeholder="£100,000" inputmode="numeric" autocomplete="off">
+                    <p class="help-text">Your company's annual net profit (before tax)</p>
                 </div>
 
                 <div class="form-group">
                     <label for="sector">Business Sector</label>
                     <select id="sector">
-                        <option value="2">Services / Consulting (2x revenue)</option>
-                        <option value="1.5">Retail / E-commerce (1.5x revenue)</option>
-                        <option value="2.5">Technology / SaaS (2.5x revenue)</option>
-                        <option value="1">Manufacturing (1x revenue)</option>
+                        <option value="4">Services / Consulting (4× net profit)</option>
+                        <option value="3">Retail (3× net profit)</option>
+                        <option value="4" data-type="ecommerce">E-commerce (4× net profit)</option>
+                        <option value="6">Technology / SaaS (6× net profit)</option>
+                        <option value="4" data-type="manufacturing">Manufacturing (4× net profit)</option>
                     </select>
-                    <p class="help-text">This affects the valuation multiple applied</p>
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="companyMarried">
-                    <label for="companyMarried">Married or in a civil partnership</label>
+                    <p class="help-text">Select the sector that best describes your business</p>
                 </div>
 
                 <button type="submit">Value My Company</button>
@@ -428,16 +427,63 @@
             <p>This calculator provides an illustrative estimate only and should not be considered financial or legal
                 advice. Actual IHT liability can vary based on many factors including timing of gifts, exemptions,
                 reliefs, and changing legislation. For personalised advice, please consult a qualified professional.</p>
+            <p><strong>Business valuation estimate:</strong> This figure is based on a simple multiple of annual net profit commonly used for broad comparison purposes. Real business valuations depend on many factors including assets, debt, growth prospects, customer concentration and transferability. This is not a valuation for sale, tax or legal purposes.</p>
         </div>
     </div>
     <script>
+        function formatCurrency(input) {
+            let value = input.value.replace(/[^\d]/g, '');
+
+            if (value === '') {
+                input.value = '';
+                return;
+            }
+
+            input.value = '£' + Number(value).toLocaleString('en-GB');
+        }
+
+        function getNumericValue(id) {
+            const el = document.getElementById(id);
+            if (!el) return 0;
+            const raw = el.value || '';
+            return parseInt(raw.replace(/[^\d]/g, ''), 10) || 0;
+        }
+
+        const currencyInputs = [
+            'propertyValue',
+            'savings',
+            'otherAssets',
+            'debts',
+            'netProfit'
+        ];
+
+        currencyInputs.forEach(id => {
+            const input = document.getElementById(id);
+            if (input) {
+                input.addEventListener('input', () => formatCurrency(input));
+                input.addEventListener('blur', () => formatCurrency(input));
+                input.addEventListener('paste', (e) => {
+                    e.preventDefault();
+                    const text = (e.clipboardData || window.clipboardData).getData('text') || '';
+                    input.value = text.replace(/[^\d]/g, '');
+                    formatCurrency(input);
+                });
+            }
+        });
+
         document.getElementById('personalForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const propertyValue = parseFloat(document.getElementById('propertyValue').value) || 0;
-            const savings = parseFloat(document.getElementById('savings').value) || 0;
-            const otherAssets = parseFloat(document.getElementById('otherAssets').value) || 0;
-            const debts = parseFloat(document.getElementById('debts').value) || 0;
+            const propertyValue = getNumericValue('propertyValue');
+            const savings = getNumericValue('savings');
+            const otherAssets = getNumericValue('otherAssets');
+            const debts = getNumericValue('debts');
+
+            if (propertyValue < 0 || savings < 0 || otherAssets < 0 || debts < 0) {
+                alert('Please enter valid amounts');
+                return;
+            }
+
             const married = document.getElementById('married').checked ? '1' : '0';
 
             window.location.href = `results.html?property=${propertyValue}&savings=${savings}&other=${otherAssets}&debts=${debts}&married=${married}`;
@@ -446,14 +492,19 @@
         document.getElementById('companyForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const annualRevenue = parseFloat(document.getElementById('annualRevenue').value) || 0;
-            const profitMargin = parseFloat(document.getElementById('profitMargin').value) || 0;
-            const sector = parseFloat(document.getElementById('sector').value);
-            const married = document.getElementById('companyMarried').checked ? '1' : '0';
+            const netProfit = getNumericValue('netProfit');
+            const sectorSelect = document.getElementById('sector');
+            const multiple = parseFloat(sectorSelect.value);
+            const sectorText = sectorSelect.options[sectorSelect.selectedIndex].text;
 
-            const companyValue = annualRevenue * sector;
+            if (netProfit < 0) {
+                alert('Please enter a valid amount');
+                return;
+            }
 
-            window.location.href = `company-followup.html?revenue=${annualRevenue}&margin=${profitMargin}&sector=${sector}&value=${companyValue}&married=${married}`;
+            const companyValue = netProfit * multiple;
+
+            window.location.href = `company-followup.html?profit=${netProfit}&multiple=${multiple}&sector=${encodeURIComponent(sectorText)}&value=${companyValue}`;
         });
     </script>
 </body>
