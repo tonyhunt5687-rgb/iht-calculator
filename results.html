@@ -406,14 +406,40 @@
     </div>
     
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
+        // Try to get data from session storage first, fall back to URL params for backwards compatibility
+        let propertyValue, savings, otherAssets, debts, married, companyValue;
         
-        const propertyValue = parseFloat(urlParams.get('property')) || 0;
-        const savings = parseFloat(urlParams.get('savings')) || 0;
-        const otherAssets = parseFloat(urlParams.get('other')) || 0;
-        const debts = parseFloat(urlParams.get('debts')) || 0;
-        const married = urlParams.get('married') === '1';
-        const companyValue = parseFloat(urlParams.get('company')) || 0;
+        const storedData = sessionStorage.getItem('ihtData');
+        
+        if (storedData) {
+            const data = JSON.parse(storedData);
+            propertyValue = data.propertyValue || 0;
+            savings = data.savings || 0;
+            otherAssets = data.otherAssets || 0;
+            debts = data.debts || 0;
+            married = data.married || false;
+            companyValue = data.companyValue || 0;
+        } else {
+            // Fallback to URL params for backwards compatibility
+            const urlParams = new URLSearchParams(window.location.search);
+            propertyValue = parseFloat(urlParams.get('property')) || 0;
+            savings = parseFloat(urlParams.get('savings')) || 0;
+            otherAssets = parseFloat(urlParams.get('other')) || 0;
+            debts = parseFloat(urlParams.get('debts')) || 0;
+            married = urlParams.get('married') === '1';
+            companyValue = parseFloat(urlParams.get('company')) || 0;
+            
+            // If we got data from URL, save it to session storage for persistence
+            if (propertyValue || savings || otherAssets || companyValue) {
+                const ihtData = { propertyValue, savings, otherAssets, debts, married, companyValue };
+                sessionStorage.setItem('ihtData', JSON.stringify(ihtData));
+            }
+        }
+        
+        // If no data at all, redirect to calculator
+        if (!propertyValue && !savings && !otherAssets && !companyValue) {
+            window.location.href = 'index.html';
+        }
         
         const netEstate = propertyValue + savings + otherAssets + companyValue - debts;
         const totalEstate = netEstate;
@@ -477,8 +503,13 @@
         // Fix the contact button to pass data
         document.getElementById('contactButton').addEventListener('click', function(e) {
             e.preventDefault();
-            const resultsParams = `estate=${results.totalEstate}&allowance=${results.totalAllowance}&iht=${results.ihtLiability}`;
-            window.location.href = `enquiry.html?${resultsParams}`;
+            // Store calculated results in session storage for enquiry page
+            const resultsData = JSON.parse(sessionStorage.getItem('ihtData') || '{}');
+            resultsData.calculatedIHT = results.ihtLiability;
+            resultsData.totalEstate = results.totalEstate;
+            resultsData.totalAllowance = results.totalAllowance;
+            sessionStorage.setItem('ihtData', JSON.stringify(resultsData));
+            window.location.href = 'enquiry.html';
         });
     </script>
 </body>

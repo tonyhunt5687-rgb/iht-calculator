@@ -528,14 +528,19 @@
                 companyValue = netProfit * multiple;
             }
 
-            // Build URL and navigate to results
-            let url = `results.html?property=${propertyValue}&savings=${savings}&other=${otherAssets}&debts=${debts}&married=${married}`;
-            
-            if (companyValue > 0) {
-                url += `&company=${companyValue}`;
-            }
+            // Save to session storage
+            const ihtData = {
+                propertyValue,
+                savings,
+                otherAssets,
+                debts,
+                married: document.getElementById('married').checked,
+                companyValue
+            };
+            sessionStorage.setItem('ihtData', JSON.stringify(ihtData));
 
-            window.location.href = url;
+            // Navigate to results
+            window.location.href = 'results.html';
         });
     </script>
 </body>

@@ -243,7 +243,7 @@
     </div>
     
     <div class="container">
-        <a href="results.html" class="back-link">← Back to results</a>
+        <a href="results.html" class="back-link">← Back to your results</a>
         
         <header>
             <h1>Request a Consultation</h1>
@@ -251,7 +251,7 @@
         </header>
         
         <div class="form-card">
-            <div class="summary-box">
+            <div class="summary-box" id="summaryBox">
                 <h3>Your Calculation Summary</h3>
                 <p>Total Estate Value: <strong id="estateSummary">£0</strong></p>
                 <p>IHT-Free Allowance: <strong id="allowanceSummary">£0</strong></p>
@@ -293,20 +293,30 @@
         </div>
     </div>
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
+        // Get data from session storage
+        const storedData = sessionStorage.getItem('ihtData');
+        let totalEstate = 0;
+        let totalAllowance = 0;
+        let ihtLiability = 0;
         
-        const totalEstate = parseFloat(urlParams.get('estate')) || 0;
-        const totalAllowance = parseFloat(urlParams.get('allowance')) || 0;
-        const ihtLiability = parseFloat(urlParams.get('iht')) || 0;
-        
-        document.getElementById('estateSummary').textContent = 
-            '£' + totalEstate.toLocaleString('en-GB', {maximumFractionDigits: 0});
-        
-        document.getElementById('allowanceSummary').textContent = 
-            '£' + totalAllowance.toLocaleString('en-GB', {maximumFractionDigits: 0});
-        
-        document.getElementById('ihtSummary').textContent = 
-            '£' + ihtLiability.toLocaleString('en-GB', {maximumFractionDigits: 0});
+        if (storedData) {
+            const data = JSON.parse(storedData);
+            totalEstate = data.totalEstate || 0;
+            totalAllowance = data.totalAllowance || 0;
+            ihtLiability = data.calculatedIHT || 0;
+            
+            document.getElementById('estateSummary').textContent = 
+                '£' + totalEstate.toLocaleString('en-GB', {maximumFractionDigits: 0});
+            
+            document.getElementById('allowanceSummary').textContent = 
+                '£' + totalAllowance.toLocaleString('en-GB', {maximumFractionDigits: 0});
+            
+            document.getElementById('ihtSummary').textContent = 
+                '£' + ihtLiability.toLocaleString('en-GB', {maximumFractionDigits: 0});
+        } else {
+            // Hide summary box if no data
+            document.getElementById('summaryBox').style.display = 'none';
+        }
         
         document.getElementById('enquiryForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -337,8 +347,17 @@
             
             if (!isValid) return;
             
-            const enquiryParams = `name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&iht=${ihtLiability}`;
-            window.location.href = `thankyou.html?${enquiryParams}`;
+            // Store enquiry details in session storage for thank you page
+            const enquiryData = {
+                name,
+                email,
+                phone,
+                message,
+                ihtLiability
+            };
+            sessionStorage.setItem('enquiryData', JSON.stringify(enquiryData));
+            
+            window.location.href = 'thankyou.html';
         });
     </script>
 </body>
