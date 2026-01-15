@@ -254,8 +254,8 @@
             <div class="summary-box" id="summaryBox">
                 <h3>Your Calculation Summary</h3>
                 <p>Total Estate Value: <strong id="estateSummary">£0</strong></p>
-                <p>IHT-Free Allowance: <strong id="allowanceSummary">£0</strong></p>
-                <span class="highlight">Estimated IHT Liability: <span id="ihtSummary">£0</span></span>
+                <p>Estimated IHT Liability: <strong id="ihtSummary">£0</strong></p>
+                <span class="highlight">Recommended Protection Amount: <span id="protectionSummary">£0</span></span>
             </div>
             
             <form id="enquiryForm">
@@ -296,23 +296,23 @@
         // Get data from session storage
         const storedData = sessionStorage.getItem('ihtData');
         let totalEstate = 0;
-        let totalAllowance = 0;
         let ihtLiability = 0;
+        let protectionAmount = 0;
         
         if (storedData) {
             const data = JSON.parse(storedData);
             totalEstate = data.totalEstate || 0;
-            totalAllowance = data.totalAllowance || 0;
             ihtLiability = data.calculatedIHT || 0;
+            protectionAmount = data.protectionAmount || Math.ceil(ihtLiability * 1.1);
             
             document.getElementById('estateSummary').textContent = 
                 '£' + totalEstate.toLocaleString('en-GB', {maximumFractionDigits: 0});
             
-            document.getElementById('allowanceSummary').textContent = 
-                '£' + totalAllowance.toLocaleString('en-GB', {maximumFractionDigits: 0});
-            
             document.getElementById('ihtSummary').textContent = 
                 '£' + ihtLiability.toLocaleString('en-GB', {maximumFractionDigits: 0});
+            
+            document.getElementById('protectionSummary').textContent = 
+                '£' + protectionAmount.toLocaleString('en-GB', {maximumFractionDigits: 0});
         } else {
             // Hide summary box if no data
             document.getElementById('summaryBox').style.display = 'none';

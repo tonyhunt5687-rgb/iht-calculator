@@ -169,6 +169,27 @@
             border-bottom: none;
         }
         
+        .breakdown-item.total.protection {
+            margin-top: 15px;
+            padding-top: 15px;
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4eaef 100%);
+            margin-left: -25px;
+            margin-right: -25px;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-bottom: 15px;
+            border-top: 1px solid rgba(26,85,102,0.2);
+        }
+        
+        .protection-note {
+            font-size: 0.85em;
+            color: #555;
+            line-height: 1.6;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(26,85,102,0.15);
+        }
+        
         .breakdown-item.deduction span:last-child {
             color: #c0392b;
         }
@@ -251,7 +272,6 @@
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
             text-decoration: none;
-            color: white;
             border: none;
         }
         
@@ -261,11 +281,30 @@
         }
         
         .learn-pill {
-            background: linear-gradient(135deg, #1a5566 0%, #0b7a8f 100%);
+            background: #f8fafa;
+            border: 2px solid #0b7a8f;
+            color: #0b7a8f;
+        }
+        
+        .learn-pill h3 {
+            color: #0b7a8f;
+        }
+        
+        .learn-pill p {
+            color: #1a5566;
+        }
+        
+        .learn-pill:hover {
+            background: #eef6f7;
         }
         
         .contact-pill {
-            background: linear-gradient(135deg, #0b7a8f 0%, #1a5566 100%);
+            background: linear-gradient(135deg, #c0392b 0%, #a33327 100%);
+            color: white;
+        }
+        
+        .contact-pill:hover {
+            background: linear-gradient(135deg, #a33327 0%, #8b2c22 100%);
         }
         
         .pill h3 {
@@ -441,6 +480,11 @@
                         <span>Total Estimated IHT</span>
                         <span id="ihtLiability">£0</span>
                     </div>
+                    <div class="breakdown-item total protection">
+                        <span>Total Estimated Protection Amount Required</span>
+                        <span id="protectionAmount">£0</span>
+                    </div>
+                    <p class="protection-note">This estimate is for education only. When arranging protection, many families choose to allow a modest safety margin to cover valuation uncertainty, professional costs, interest, and future legislative or policy change. A 10% allowance is often inexpensive compared with the consequences of being short of liquidity when it is needed.</p>
                 </div>
             </div>
             
@@ -563,6 +607,7 @@
             }
             
             const totalIHT = personalIHT + businessIHT;
+            const protectionAmount = Math.ceil(totalIHT * 1.1); // 10% buffer
             
             return {
                 totalEstate,
@@ -573,7 +618,8 @@
                 bprAllowance,
                 businessTaxable,
                 businessIHT,
-                totalIHT
+                totalIHT,
+                protectionAmount
             };
         }
         
@@ -599,6 +645,7 @@
         }
         
         document.getElementById('ihtLiability').textContent = formatGBP(results.totalIHT);
+        document.getElementById('protectionAmount').textContent = formatGBP(results.protectionAmount);
         
         let explanation = '';
         if (results.totalIHT === 0) {
@@ -625,6 +672,7 @@
             // Store calculated results in session storage for enquiry page
             const resultsData = JSON.parse(sessionStorage.getItem('ihtData') || '{}');
             resultsData.calculatedIHT = results.totalIHT;
+            resultsData.protectionAmount = results.protectionAmount;
             resultsData.totalEstate = results.totalEstate;
             resultsData.totalAllowance = results.personalAllowance;
             sessionStorage.setItem('ihtData', JSON.stringify(resultsData));
