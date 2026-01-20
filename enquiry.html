@@ -154,6 +154,11 @@
             outline: none;
             border-color: #0b7a8f;
         }
+
+        input.invalid {
+            border-color: #e74c3c;
+            background-color: #fdf2f2;
+        }
         
         .help-text {
             font-size: 0.9em;
@@ -199,6 +204,74 @@
             color: #e74c3c;
             font-size: 0.9em;
             margin-top: 5px;
+            display: none;
+        }
+
+        input.invalid,
+        .checkbox-group.invalid {
+            border-color: #e74c3c;
+            background-color: #fdf2f2;
+        }
+
+        /* Honeypot field - hidden from humans */
+        .hp-field {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0;
+            width: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Consent checkboxes */
+        .consent-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            font-weight: 400;
+            color: #333;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .checkbox-group label a {
+            color: #0b7a8f;
+        }
+
+        .checkbox-group.required-consent {
+            background: #e8f4f8;
+        }
+
+        .consent-error {
+            color: #e74c3c;
+            font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 15px;
             display: none;
         }
         
@@ -283,15 +356,38 @@
                     <textarea id="message" placeholder="Is there anything specific you'd like to discuss?"></textarea>
                     <p class="help-text">Tell us about your priorities or any questions you have</p>
                 </div>
-                
-                <button type="submit">Submit Enquiry</button>
-                
-                <div class="privacy-notice">
-                    <strong>Privacy Notice:</strong> Your information will be used solely to contact you about your enquiry. We take your privacy seriously and will never share your details with third parties without your consent. By submitting this form, you agree to be contacted regarding your inheritance tax planning enquiry.
+
+                <!-- Honeypot field - hidden from humans, bots will fill it -->
+                <div class="hp-field" aria-hidden="true">
+                    <label for="website">Website</label>
+                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                 </div>
+
+                <!-- Consent checkboxes -->
+                <div class="consent-section">
+                    <div class="checkbox-group required-consent" id="consentGroup">
+                        <input type="checkbox" id="enquiryConsent" name="enquiryConsent">
+                        <label for="enquiryConsent">
+                            I agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and consent to being contacted about my enquiry. <span class="required">*</span>
+                        </label>
+                    </div>
+                    <div class="consent-error" id="consentError">Please tick the box to confirm you agree to be contacted</div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="marketingConsent" name="marketingConsent">
+                        <label for="marketingConsent">
+                            I would like to receive updates about other products and services from IHT Solutions (optional)
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit">Get My PDF Summary &amp; Submit Enquiry</button>
             </form>
         </div>
     </div>
+    <!-- jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <script>
         // Get data from session storage
         const storedData = sessionStorage.getItem('ihtData');
@@ -318,47 +414,330 @@
             document.getElementById('summaryBox').style.display = 'none';
         }
         
+        // Format currency helper
+        function formatGBP(value) {
+            return '£' + Number(value).toLocaleString('en-GB', { maximumFractionDigits: 0 });
+        }
+
+        // Real-time validation - clear errors as user types
+        document.getElementById('name').addEventListener('input', function() {
+            if (this.value.trim().length >= 2) {
+                this.classList.remove('invalid');
+                document.getElementById('nameError').style.display = 'none';
+            }
+        });
+
+        document.getElementById('email').addEventListener('input', function() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailRegex.test(this.value.trim())) {
+                this.classList.remove('invalid');
+                document.getElementById('emailError').style.display = 'none';
+            }
+        });
+
+        document.getElementById('phone').addEventListener('input', function() {
+            const phoneDigits = this.value.replace(/\D/g, '');
+            if (phoneDigits.length >= 10) {
+                this.classList.remove('invalid');
+                document.getElementById('phoneError').style.display = 'none';
+            }
+        });
+
+        document.getElementById('enquiryConsent').addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById('consentGroup').classList.remove('invalid');
+                document.getElementById('consentError').style.display = 'none';
+            }
+        });
+
         document.getElementById('enquiryForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
-            
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
+
+            // Honeypot check - if filled, silently reject (it's a bot)
+            const honeypot = document.getElementById('website').value;
+            if (honeypot) {
+                // Pretend success but do nothing
+                window.location.href = 'thankyou.html';
+                return;
+            }
+
+            // Reset all error states
+            document.querySelectorAll('.error, .consent-error').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
+            const consentCheckbox = document.getElementById('enquiryConsent');
+            const marketingCheckbox = document.getElementById('marketingConsent');
+
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const phone = phoneInput.value.trim();
             const message = document.getElementById('message').value.trim();
-            
+
             let isValid = true;
-            
-            if (!name) {
+            let firstInvalid = null;
+
+            // Name validation: at least 2 characters
+            if (!name || name.length < 2) {
                 document.getElementById('nameError').style.display = 'block';
+                nameInput.classList.add('invalid');
+                if (!firstInvalid) firstInvalid = nameInput;
                 isValid = false;
             }
-            
-            if (!email || !email.includes('@')) {
+
+            // Email validation: proper format with @ and domain
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
                 document.getElementById('emailError').style.display = 'block';
+                emailInput.classList.add('invalid');
+                if (!firstInvalid) firstInvalid = emailInput;
                 isValid = false;
             }
-            
-            if (!phone) {
+
+            // Phone validation: at least 10 digits (UK numbers)
+            const phoneDigits = phone.replace(/\D/g, '');
+            if (!phone || phoneDigits.length < 10) {
+                document.getElementById('phoneError').textContent = 'Please enter a valid UK phone number (at least 10 digits)';
                 document.getElementById('phoneError').style.display = 'block';
+                phoneInput.classList.add('invalid');
+                if (!firstInvalid) firstInvalid = phoneInput;
                 isValid = false;
             }
-            
-            if (!isValid) return;
-            
+
+            // Consent validation
+            if (!consentCheckbox.checked) {
+                document.getElementById('consentError').style.display = 'block';
+                document.getElementById('consentGroup').classList.add('invalid');
+                if (!firstInvalid) firstInvalid = consentCheckbox;
+                isValid = false;
+            }
+
+            if (!isValid) {
+                if (firstInvalid) {
+                    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstInvalid.focus();
+                }
+                return;
+            }
+
+            // Generate PDF
+            generatePDF(name, email, phone, message, marketingCheckbox.checked);
+
             // Store enquiry details in session storage for thank you page
             const enquiryData = {
                 name,
                 email,
                 phone,
                 message,
-                ihtLiability
+                marketingConsent: marketingCheckbox.checked,
+                ihtLiability,
+                totalEstate,
+                protectionAmount,
+                timestamp: new Date().toISOString()
             };
             sessionStorage.setItem('enquiryData', JSON.stringify(enquiryData));
-            
-            window.location.href = 'thankyou.html';
+
+            // Redirect to thank you page
+            setTimeout(() => {
+                window.location.href = 'thankyou.html';
+            }, 500);
         });
+
+        function generatePDF(name, email, phone, message, marketingConsent) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const pageWidth = doc.internal.pageSize.getWidth();
+            let y = 20;
+
+            // Header
+            doc.setFillColor(26, 85, 102);
+            doc.rect(0, 0, pageWidth, 40, 'F');
+
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(24);
+            doc.setFont('helvetica', 'bold');
+            doc.text('IHT Solutions', pageWidth / 2, 18, { align: 'center' });
+
+            doc.setFontSize(14);
+            doc.setFont('helvetica', 'normal');
+            doc.text('Inheritance Tax Planning Summary', pageWidth / 2, 30, { align: 'center' });
+
+            y = 55;
+            doc.setTextColor(0, 0, 0);
+
+            // Date
+            doc.setFontSize(10);
+            doc.setTextColor(100, 100, 100);
+            const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+            doc.text('Generated: ' + today, pageWidth - 20, y, { align: 'right' });
+            y += 15;
+
+            // Client Details Section
+            doc.setFillColor(232, 244, 248);
+            doc.rect(15, y - 5, pageWidth - 30, 45, 'F');
+
+            doc.setTextColor(26, 85, 102);
+            doc.setFontSize(14);
+            doc.setFont('helvetica', 'bold');
+            doc.text('Client Details', 20, y + 5);
+
+            doc.setTextColor(0, 0, 0);
+            doc.setFontSize(11);
+            doc.setFont('helvetica', 'normal');
+            y += 15;
+            doc.text('Name: ' + name, 20, y);
+            y += 8;
+            doc.text('Email: ' + email, 20, y);
+            y += 8;
+            doc.text('Phone: ' + phone, 20, y);
+            y += 20;
+
+            // Estate Summary Section
+            doc.setFillColor(26, 85, 102);
+            doc.rect(15, y, pageWidth - 30, 10, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(12);
+            doc.setFont('helvetica', 'bold');
+            doc.text('Estate Summary', 20, y + 7);
+            y += 18;
+
+            doc.setTextColor(0, 0, 0);
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(11);
+
+            // Get additional data from session storage
+            const ihtData = JSON.parse(sessionStorage.getItem('ihtData') || '{}');
+            const quoteData = JSON.parse(sessionStorage.getItem('quoteData') || '{}');
+
+            const summaryItems = [
+                ['Total Estate Value', formatGBP(ihtData.totalEstate || totalEstate || 0)],
+                ['Total Allowance', formatGBP(ihtData.totalAllowance || 0)],
+                ['Estimated IHT Liability', formatGBP(ihtData.calculatedIHT || ihtLiability || 0)],
+                ['Personal IHT', formatGBP(ihtData.personalIHT || 0)],
+                ['Business IHT', formatGBP(ihtData.businessIHT || 0)],
+                ['Recommended Protection', formatGBP(ihtData.protectionAmount || protectionAmount || 0)]
+            ];
+
+            summaryItems.forEach(([label, value]) => {
+                doc.text(label + ':', 20, y);
+                doc.setFont('helvetica', 'bold');
+                doc.text(value, pageWidth - 20, y, { align: 'right' });
+                doc.setFont('helvetica', 'normal');
+                y += 10;
+            });
+
+            y += 10;
+
+            // Quote Details (if available)
+            if (quoteData.age) {
+                doc.setFillColor(26, 85, 102);
+                doc.rect(15, y, pageWidth - 30, 10, 'F');
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'bold');
+                doc.text('Insurance Quote Details', 20, y + 7);
+                y += 18;
+
+                doc.setTextColor(0, 0, 0);
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(11);
+
+                doc.text('Age at Quote:', 20, y);
+                doc.setFont('helvetica', 'bold');
+                doc.text(quoteData.age.toString(), pageWidth - 20, y, { align: 'right' });
+                doc.setFont('helvetica', 'normal');
+                y += 10;
+
+                if (quoteData.personalCover) {
+                    doc.text('Personal Cover Amount:', 20, y);
+                    doc.setFont('helvetica', 'bold');
+                    doc.text(formatGBP(quoteData.personalCover), pageWidth - 20, y, { align: 'right' });
+                    doc.setFont('helvetica', 'normal');
+                    y += 10;
+                }
+
+                if (quoteData.businessCover) {
+                    doc.text('Business Cover Amount:', 20, y);
+                    doc.setFont('helvetica', 'bold');
+                    doc.text(formatGBP(quoteData.businessCover), pageWidth - 20, y, { align: 'right' });
+                    doc.setFont('helvetica', 'normal');
+                    y += 10;
+
+                    doc.text('Monthly Budget:', 20, y);
+                    doc.setFont('helvetica', 'bold');
+                    doc.text(formatGBP(quoteData.monthlyBudget || 0), pageWidth - 20, y, { align: 'right' });
+                    doc.setFont('helvetica', 'normal');
+                    y += 10;
+                }
+
+                y += 5;
+            }
+
+            // Additional Notes
+            if (message) {
+                y += 5;
+                doc.setFillColor(26, 85, 102);
+                doc.rect(15, y, pageWidth - 30, 10, 'F');
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'bold');
+                doc.text('Additional Notes', 20, y + 7);
+                y += 18;
+
+                doc.setTextColor(0, 0, 0);
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(10);
+
+                const splitMessage = doc.splitTextToSize(message, pageWidth - 40);
+                doc.text(splitMessage, 20, y);
+                y += splitMessage.length * 6 + 10;
+            }
+
+            // FCA Compliant Disclaimer
+            y = Math.max(y + 10, 200);
+            doc.setFillColor(248, 249, 250);
+            doc.rect(15, y, pageWidth - 30, 70, 'F');
+
+            doc.setTextColor(100, 100, 100);
+            doc.setFontSize(7);
+            doc.setFont('helvetica', 'bold');
+            doc.text('IMPORTANT INFORMATION', 20, y + 6);
+
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(6.5);
+
+            const disclaimerParts = [
+                'INDICATIVE QUOTES ONLY: Any insurance premiums shown are for illustration purposes only and are not guaranteed. ' +
+                'Actual premiums may vary based on individual circumstances, underwriting assessment, and market conditions at the time of application.',
+                '',
+                'SUBJECT TO UNDERWRITING: All insurance cover is subject to full underwriting by the insurer. Cover and premiums will be ' +
+                'confirmed following a personalised assessment of health, lifestyle and other relevant factors.',
+                '',
+                'NOT FINANCIAL ADVICE: This document provides general information only and does not constitute personal financial advice. ' +
+                'The calculations shown are estimates based on the information provided and current tax rules, which can change. ' +
+                'You should seek independent financial advice before making any decisions about inheritance tax planning or insurance products.',
+                '',
+                'IHT Solutions is an Appointed Representative of [FCA AUTHORISED FIRM NAME], which is authorised and regulated by the ' +
+                'Financial Conduct Authority (FCA Register Number: [NUMBER]).'
+            ];
+
+            const fullDisclaimer = disclaimerParts.join(' ');
+            const splitDisclaimer = doc.splitTextToSize(fullDisclaimer, pageWidth - 40);
+            doc.text(splitDisclaimer, 20, y + 14);
+
+            // Footer
+            doc.setTextColor(26, 85, 102);
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'normal');
+            doc.text('IHT Solutions - Protecting Your Legacy', pageWidth / 2, 285, { align: 'center' });
+
+            // Save the PDF
+            const fileName = 'IHT_Summary_' + name.replace(/\s+/g, '_') + '_' + new Date().toISOString().slice(0, 10) + '.pdf';
+            doc.save(fileName);
+        }
     </script>
 </body>
 </html>
