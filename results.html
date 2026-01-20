@@ -260,8 +260,8 @@
         
         .pill-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             margin-top: 30px;
         }
         
@@ -306,7 +306,16 @@
         .contact-pill:hover {
             background: linear-gradient(135deg, #1a5566 0%, #0b7a8f 100%);
         }
-        
+
+        .quote-pill {
+            background: linear-gradient(135deg, #2fcae9 0%, #0b7a8f 100%);
+            color: white;
+        }
+
+        .quote-pill:hover {
+            background: linear-gradient(135deg, #0b7a8f 0%, #2fcae9 100%);
+        }
+
         .pill h3 {
             font-family: 'Gloock', serif;
             font-size: 1.9em;
@@ -341,7 +350,7 @@
             line-height: 1.7;
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .pill-container {
                 grid-template-columns: 1fr;
             }
@@ -510,6 +519,10 @@
                     <h3>Learn More</h3>
                     <p>Discover strategies to reduce your IHT liability and understand your options</p>
                 </a>
+                <a href="#" class="pill quote-pill" id="quoteButton">
+                    <h3>What Will Cover Cost?</h3>
+                    <p>Get indicative insurance premium quotes to cover your IHT liability</p>
+                </a>
                 <a href="#" class="pill contact-pill" id="contactButton">
                     <h3>Speak to an Expert</h3>
                     <p>With rules constantly changing, get personalised advice tailored to your situation</p>
@@ -666,17 +679,30 @@
         
         document.getElementById('explanationText').textContent = explanation;
         
-        // Fix the contact button to pass data
-        document.getElementById('contactButton').addEventListener('click', function(e) {
-            e.preventDefault();
-            // Store calculated results in session storage for enquiry page
+        // Helper function to save results to session storage
+        function saveResultsToSession() {
             const resultsData = JSON.parse(sessionStorage.getItem('ihtData') || '{}');
             resultsData.calculatedIHT = results.totalIHT;
             resultsData.protectionAmount = results.protectionAmount;
             resultsData.totalEstate = results.totalEstate;
             resultsData.totalAllowance = results.personalAllowance;
+            resultsData.personalIHT = results.personalIHT;
+            resultsData.businessIHT = results.businessIHT;
             sessionStorage.setItem('ihtData', JSON.stringify(resultsData));
+        }
+
+        // Fix the contact button to pass data
+        document.getElementById('contactButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            saveResultsToSession();
             window.location.href = 'enquiry.html';
+        });
+
+        // Quote button to pass data to quote calculator
+        document.getElementById('quoteButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            saveResultsToSession();
+            window.location.href = 'quote-input.html';
         });
     </script>
 </body>

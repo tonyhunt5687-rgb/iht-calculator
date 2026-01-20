@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Quote - IHT Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .top-bar {
+            background: #1a5566;
+            padding: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .top-bar-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            width: 160px;
+            height: auto;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0b7a8f;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-family: 'Gloock', serif;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #1a5566;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        .results-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-family: 'Gloock', serif;
+            font-size: 1.5em;
+            color: #1a5566;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #c5e5ea;
+        }
+
+        .premium-display {
+            background: linear-gradient(135deg, #0b7a8f 0%, #1a5566 100%);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .premium-display h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .premium-display .amount {
+            font-family: 'Gloock', serif;
+            font-size: 3em;
+            font-weight: normal;
+            margin-bottom: 5px;
+        }
+
+        .premium-display .per-month {
+            font-size: 1em;
+            opacity: 0.85;
+        }
+
+        .personal-section {
+            background: #e8f4f8;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .personal-section h3 {
+            font-family: 'Gloock', serif;
+            font-size: 1.3em;
+            color: #1a5566;
+            margin-bottom: 15px;
+        }
+
+        .premium-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(26,85,102,0.15);
+        }
+
+        .premium-row:last-child {
+            border-bottom: none;
+        }
+
+        .premium-row.total {
+            font-weight: 700;
+            font-size: 1.1em;
+            border-top: 2px solid rgba(26,85,102,0.3);
+            margin-top: 10px;
+            padding-top: 15px;
+        }
+
+        .business-section {
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .business-section.show {
+            display: block;
+        }
+
+        .business-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .business-table th,
+        .business-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .business-table th {
+            background: #1a5566;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .business-table th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        .business-table th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        .business-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .business-table tr.total-row {
+            background: #e8f4f8;
+            font-weight: 700;
+        }
+
+        .business-table td:last-child,
+        .business-table th:last-child {
+            text-align: right;
+        }
+
+        .affordability-warning {
+            background: #fff8e6;
+            border: 2px solid #f0c36d;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .affordability-warning.show {
+            display: block;
+        }
+
+        .affordability-warning h3 {
+            margin-bottom: 15px;
+            color: #8a6d3b;
+            font-family: 'Gloock', serif;
+            font-size: 1.3em;
+        }
+
+        .affordability-warning p {
+            color: #6d5a2e;
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .affordability-warning .max-cover {
+            background: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .affordability-warning .max-cover p {
+            margin-bottom: 8px;
+        }
+
+        .summary-box {
+            background: linear-gradient(135deg, #c5e5ea 0%, #e8f4f8 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #0b7a8f;
+        }
+
+        .summary-box h3 {
+            font-family: 'Gloock', serif;
+            font-size: 1.3em;
+            color: #1a5566;
+            margin-bottom: 15px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+
+        .summary-row.grand-total {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #0b7a8f;
+            border-top: 2px solid rgba(26,85,102,0.3);
+            margin-top: 10px;
+            padding-top: 15px;
+        }
+
+        .disclaimer {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #95a5a6;
+        }
+
+        .disclaimer h3 {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .disclaimer p {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .cta-section h2 {
+            font-family: 'Gloock', serif;
+            font-size: 1.8em;
+            color: #1a5566;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 1.1em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #0b7a8f 0%, #1a5566 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #1a5566 0%, #0b7a8f 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(11, 122, 143, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .logo {
+                width: 130px;
+            }
+
+            .results-card {
+                padding: 25px;
+            }
+
+            .premium-display .amount {
+                font-size: 2.5em;
+            }
+
+            .business-table {
+                font-size: 0.85em;
+            }
+
+            .business-table th,
+            .business-table td {
+                padding: 8px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <svg class="logo" viewBox="0 0 1190.6 841.9" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#fff" d="M444.3,555.3v-2.7h.3c6.4,0,11.6-2,15.5-5.9,3.9-3.9,5.9-9.1,5.9-15.5v-93.1c0-6.8-1.4-12-4.1-15.8-2.8-3.7-8.6-5.6-17.5-5.6v-2.7h27.3c9.1,0,16-1,20.9-2.9,4.5-2,7.6-4.4,9.4-7.2h2.7v127.4c0,6.4,2,11.6,5.9,15.5,3.9,3.9,9.1,5.9,15.5,5.9h.3v2.7h-81.8Z"/>
+                <path fill="#fff" d="M521.8,555.3v-2.7c6.2,0,10.9-1.3,14-3.9,3.1-2.6,5.2-5.9,6.2-10,1-4.1,1.5-8.6,1.5-13.4v-146.6c0-6.4-2-11.6-6-15.5-4-3.9-9.2-5.9-15.6-5.9v-2.7h27.3c9.1,0,16-1,20.9-2.9,4.5-2,7.6-4.4,9.4-7.2h2.7v101.6c4.8-9.4,11.9-16.9,21.1-22.3,9.3-5.4,19.2-8.2,29.7-8.2s15.5,1.9,21.4,5.8c5.9,3.8,10.4,9,13.5,15.4,3.1,6.4,4.7,13.6,4.7,21.7v72.7c0,6.6,2,11.8,6,15.6,4,3.8,9.2,5.7,15.6,5.7v2.7h-81.6v-2.7c6.4,0,11.6-1.9,15.6-5.7,4-3.8,6-9,6-15.6v-75.4c0-3.9-.5-8.2-1.6-12.7-1.1-4.5-3-8.5-5.8-11.8-2.8-3.3-6.6-4.9-11.6-4.9s-9.1,1.4-13.2,4.1c-4.2,2.8-8,6.2-11.4,10.3-3.4,4.1-6.2,8.2-8.6,12.3v72.2c0,4.8.5,9.3,1.5,13.4,1,4.1,3,7.4,6.2,10,3.1,2.6,7.8,3.9,14,3.9v2.7h-81.8Z"/>
+                <path fill="#fff" d="M736.6,559.1c-9.3,0-16.8-2.9-22.7-8.8-5.9-5.9-8.8-13.5-8.8-23v-103h-22.7v-3.5c12.3-.9,23.3-4.8,33-11.8,9.7-7,17.7-16.3,23.9-28.1h4.3v38.5h35.6l-2.7,4.8h-32.9v97.1c0,14.3,4.8,21.4,14.4,21.4s6.9-1,11.1-2.9c4.2-2,8.2-4.5,11.9-7.8v2.7c-5.9,7.5-12.8,13.4-20.9,17.8-8,4.4-15.9,6.6-23.5,6.6Z"/>
+                <g>
+                    <path fill="#fff" d="M514.5,332.1c35.6,13.3,74.6-12.8,74.5-51.1.2-37.6-38.6-63.7-73.3-49.3-21.6,8.5-35.9,32.5-32.4,55.5,1.4,8.4,5.1,16.7,10,23.8,3.5,5,7.6,9.5,11.1,14.6,5.7,8,8.2,18,7.9,27.7-2,44.8-58.4,62.1-85,26-25.6-36,8.4-84.2,50.7-70.4.3.1.5.5.4.8-.1.3-.4.5-.7.4-11.7-2.9-24.3-.8-34.1,5.5-20.4,12.7-26.4,41.2-11.9,60.6,23.6,31.7,73.4,16.4,74.9-23.1.2-8.6-1.9-17.2-7-24.1-3.4-5-7.6-9.5-11.1-14.5-5.5-7.9-9.5-16.8-11-26.4-3.9-25.9,12.1-52.4,36.3-61.9,38.6-15.7,81.3,13.1,81,54.7.2,33.1-29.5,60.5-62.5,57-6.2-.6-12.3-2.2-17.9-4.8-.7-.3-.2-1.4.5-1.1h0Z"/>
+                    <path fill="#fff" d="M498.4,352.6c.9,26.2-27.3,43.1-50.2,30.9-23.2-12.3-24.8-45.3-2.6-59.5,5.7-3.5,12.4-5.4,19.1-5.1.8,0,.8,1.1,0,1.2-1.6.2-3.2.2-4.8.6-25.1,4.6-35.3,35.6-17.2,53.8,13.8,13.9,37.2,11.7,48.4-4.3,3.7-5.1,5.7-11.3,6-17.7,0-.8,1.2-.8,1.2,0h0Z"/>
+                    <path fill="#fff" d="M465.1,376.6c-25.5.8-33.6-32.8-11.6-44.8,15.9-8.5,35.8,3.4,34.8,21.7,0,.8-1.2.8-1.2,0-.5-8.7-6.3-16.4-14-19.3-9.7-3.9-21.3.4-26.1,9.6-6.3,11.3-.3,26.2,11.9,30.4,2,.7,4.1,1.1,6.3,1.3.8,0,.7,1.2,0,1.2h0Z"/>
+                    <path fill="#fff" d="M494.8,280.8c-.9-38.8,45.4-57.8,72.8-30.8,22.9,23.1,13,62.7-18.5,71.4-4,1.1-8.2,1.5-12.3,1.4-.8,0-.8-1.2,0-1.2,3.9-.2,7.9-1,11.7-2.2,27.9-9.5,36.8-45,15.9-66.1-17.4-17.4-46.6-14.6-60.7,5.4-3.4,4.8-5.8,10.4-6.8,16.2-.5,2-.5,4-.8,6,0,.7-1.2.7-1.2,0h0Z"/>
+                    <path fill="#fff" d="M514.9,261.2c10-11.5,28.5-12.7,40.2-3.1,12.3,9.5,15.1,28.2,6.1,41-10.5,15.6-33.8,17.8-46.4,3.6-.5-.6.3-1.4.9-.9,12.5,11.2,32.7,9.1,41.8-5.1,12.7-19.9-4.2-45-27.3-41.4-5.4.8-10.4,3.3-14.5,6.8-.6.5-1.4-.3-.9-.9h0Z"/>
+                </g>
+                <g>
+                    <path fill="#fff" d="M423.1,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9,2.1.8,4.2,1.2,6.5,1.2s3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9c-.8-.7-1.8-1.3-3.1-1.8s-2.6-.8-4.1-1.2c-1.5-.3-3-.7-4.5-1.2-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8-.8-1.2-1.2-2.7-1.2-4.6s.5-3.5,1.4-5c1-1.5,2.4-2.7,4.4-3.7,2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7,1.3.7,2.3,1.6,3,2.8.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/>
+                    <path fill="#fff" d="M469.3,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7s-1.4-4.6-1.4-7.1.5-5,1.4-7.1,2.2-4.1,3.9-5.7c1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7.9,2.2,1.4,4.6,1.4,7.2s-.5,5-1.4,7.2c-.9,2.2-2.2,4.1-3.9,5.7-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM469.3,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8,1.2-1.2,2.2-2.7,2.9-4.3.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9-1.2,1.2-2.2,2.7-2.9,4.3-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.7,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/>
+                    <path fill="#fff" d="M504.9,619.5v-35.2h5v30.8h19.1v4.4h-24.1Z"/>
+                    <path fill="#fff" d="M557.2,619.9c-4.6,0-8.3-1.3-10.9-4-2.6-2.6-4-6.5-4-11.6v-20h5v19.8c0,3.9.9,6.8,2.6,8.6s4.2,2.7,7.3,2.7,5.6-.9,7.4-2.7c1.7-1.8,2.6-4.7,2.6-8.6v-19.8h4.9v20c0,5.1-1.3,9-3.9,11.6-2.6,2.6-6.3,4-10.9,4Z"/>
+                    <path fill="#fff" d="M598.9,619.5v-30.8h-12.1v-4.4h29.1v4.4h-12.1v30.8h-5Z"/>
+                    <path fill="#fff" d="M630.7,619.5v-35.2h5v35.2h-5Z"/>
+                    <path fill="#fff" d="M671.5,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7-.9-2.2-1.4-4.6-1.4-7.1s.5-5,1.4-7.1c.9-2.2,2.2-4.1,3.9-5.7,1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7s1.4,4.6,1.4,7.2-.5,5-1.4,7.2-2.2,4.1-3.9,5.7c-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM671.4,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8s2.2-2.7,2.9-4.3c.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9s-2.2,2.7-2.9,4.3c-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.6,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/>
+                    <path fill="#fff" d="M707,619.5v-35.2h4.1l23.3,28.9h-2.2v-28.9h5v35.2h-4.1l-23.3-28.9h2.2v28.9h-5Z"/>
+                    <path fill="#fff" d="M767.3,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9s4.2,1.2,6.5,1.2,3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9-1.8-1.3-3.1-1.8c-1.3-.5-2.6-.8-4.1-1.2s-3-.7-4.5-1.2c-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8s-1.2-2.7-1.2-4.6.5-3.5,1.4-5,2.4-2.7,4.4-3.7c2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7,1.3.7,2.3,1.6,3,2.8.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="quote-input.html" class="back-link">← Adjust your inputs</a>
+
+        <header>
+            <h1>Your Insurance Quote</h1>
+            <p class="subtitle">Indicative premiums based on age <span id="ageDisplay">--</span></p>
+        </header>
+
+        <div class="results-card">
+            <!-- Total Premium Display -->
+            <div class="premium-display">
+                <h2>Total Estimated Monthly Cost</h2>
+                <div class="amount" id="totalPremium">£0</div>
+                <div class="per-month">per month</div>
+            </div>
+
+            <!-- Personal Cover Section -->
+            <div class="personal-section" id="personalSection">
+                <h3>Personal Cover - Whole of Life</h3>
+                <div class="premium-row">
+                    <span>Cover Amount</span>
+                    <span id="personalCoverAmount">£0</span>
+                </div>
+                <div class="premium-row total">
+                    <span>Monthly Premium</span>
+                    <span id="personalPremium">£0</span>
+                </div>
+            </div>
+
+            <!-- Business Cover Section -->
+            <div class="business-section" id="businessSection">
+                <h2 class="section-title">Business Cover Breakdown</h2>
+
+                <div class="affordability-warning" id="affordabilityWarning">
+                    <h3>Affordability Notice</h3>
+                    <p>Your budget of <strong id="budgetDisplay">£0</strong>/month is below what's needed for full cover.</p>
+                    <div class="max-cover">
+                        <p><strong>Maximum cover available within your budget:</strong></p>
+                        <p>RLP Cover: <span id="maxRlpCover">£0</span></p>
+                        <p>Key Man Cover: <span id="maxKeyManCover">£0</span></p>
+                        <p>Whole of Life Cover: <span id="maxWolCover">£0</span></p>
+                    </div>
+                    <p><em>"There are other professional routes businesses use to cover catastrophe risk immediately."</em></p>
+                </div>
+
+                <table class="business-table" id="businessTable">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Cover Amount</th>
+                            <th>Monthly Premium</th>
+                            <th>Net Cost to Business</th>
+                        </tr>
+                    </thead>
+                    <tbody id="businessTableBody">
+                        <!-- Filled by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Summary -->
+            <div class="summary-box">
+                <h3>Summary</h3>
+                <div class="summary-row" id="personalSummaryRow">
+                    <span>Personal Cover (WOL)</span>
+                    <span id="summaryPersonal">£0/month</span>
+                </div>
+                <div class="summary-row" id="businessSummaryRow" style="display: none;">
+                    <span>Business Cover (Net Cost)</span>
+                    <span id="summaryBusiness">£0/month</span>
+                </div>
+                <div class="summary-row grand-total">
+                    <span>Total Monthly Cost</span>
+                    <span id="summaryTotal">£0/month</span>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="disclaimer">
+                <h3>Important Information</h3>
+                <p>These are indicative quotes only based on standard rates for a male non-smoker. Actual premiums may vary based on health, lifestyle, and full underwriting. Please speak to an advisor for a personalised quote. RLP (Relevant Life Policy) and Key Man premiums shown are gross amounts; the net cost to business reflects 25% corporation tax relief.</p>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Protect Your Legacy?</h2>
+            <p>Speak to one of our experts to get a personalised quote and explore your options.</p>
+            <a href="enquiry.html" class="cta-button">Speak to an Expert</a>
+        </div>
+    </div>
+
+    <script>
+        // Rate tables (per £1,000,000 cover)
+        const RLP_RATES = {
+            40: 82.93, 41: 89.76, 42: 96.59, 43: 103.41, 44: 110.24,
+            45: 117.07, 46: 130.78, 47: 144.48, 48: 158.19, 49: 171.89,
+            50: 185.60, 51: 199.93, 52: 214.25, 53: 228.58, 54: 242.91,
+            55: 257.24, 56: 281.12, 57: 305.00, 58: 328.88, 59: 352.76,
+            60: 376.64, 61: 407.04, 62: 437.44, 63: 467.84, 64: 498.24,
+            65: 528.64, 66: 532.23, 67: 535.82, 68: 539.41, 69: 542.99,
+            70: 546.58, 71: 563.57, 72: 633.28, 73: 711.48, 74: 799.25
+        };
+
+        const WOL_RATES = {
+            40: 764.59, 41: 791.19, 42: 817.79, 43: 844.40, 44: 871.00,
+            45: 897.60, 46: 914.30, 47: 931.00, 48: 947.70, 49: 964.40,
+            50: 981.09, 51: 1013.70, 52: 1046.31, 53: 1078.91, 54: 1111.52,
+            55: 1144.12, 56: 1205.22, 57: 1266.33, 58: 1327.43, 59: 1388.53,
+            60: 1449.64, 61: 1543.55, 62: 1637.47, 63: 1731.38, 64: 1825.29,
+            65: 1919.21, 66: 2041.26, 67: 2163.31, 68: 2285.36, 69: 2407.41,
+            70: 2529.46, 71: 2685.92, 72: 2842.37, 73: 2998.83, 74: 3155.28
+        };
+
+        // Format currency helper
+        function formatGBP(value) {
+            return '£' + value.toLocaleString('en-GB', {maximumFractionDigits: 2, minimumFractionDigits: 2});
+        }
+
+        function formatGBPWhole(value) {
+            return '£' + value.toLocaleString('en-GB', {maximumFractionDigits: 0});
+        }
+
+        // Get data from session storage
+        const storedData = sessionStorage.getItem('quoteData');
+        if (!storedData) {
+            window.location.href = 'quote-input.html';
+        }
+
+        const data = JSON.parse(storedData);
+        const age = data.age;
+        const personalCover = data.personalCover || 0;
+        const businessCover = data.businessCover || 0;
+        const monthlyBudget = data.monthlyBudget || 0;
+
+        // Display age
+        document.getElementById('ageDisplay').textContent = age;
+
+        // Calculate Personal WOL Premium
+        const wolRate = WOL_RATES[age];
+        const personalPremium = (personalCover / 1000000) * wolRate;
+
+        // Display personal cover
+        if (personalCover > 0) {
+            document.getElementById('personalCoverAmount').textContent = formatGBPWhole(personalCover);
+            document.getElementById('personalPremium').textContent = formatGBP(personalPremium);
+            document.getElementById('summaryPersonal').textContent = formatGBP(personalPremium) + '/month';
+        } else {
+            document.getElementById('personalSection').style.display = 'none';
+            document.getElementById('personalSummaryRow').style.display = 'none';
+        }
+
+        // Business cover calculations
+        let businessNetCost = 0;
+        let showAffordabilityWarning = false;
+
+        if (businessCover > 0) {
+            document.getElementById('businessSection').classList.add('show');
+            document.getElementById('businessSummaryRow').style.display = 'flex';
+
+            const rlpRate = RLP_RATES[age];
+
+            // Tier 1: RLP (100% of business IHT)
+            const rlpCoverAmount = businessCover;
+            const rlpGrossPremium = (rlpCoverAmount / 1000000) * rlpRate;
+            const rlpNetCost = rlpGrossPremium * 0.75;
+
+            // Tier 2: Key Man (50% of business IHT)
+            const keyManCoverAmount = businessCover * 0.5;
+            const keyManGrossPremium = (keyManCoverAmount / 1000000) * rlpRate;
+            const keyManNetCost = keyManGrossPremium * 0.75;
+
+            // Affordability check
+            let actualRlpCover = 0;
+            let actualRlpGross = 0;
+            let actualRlpNet = 0;
+            let actualKeyManCover = 0;
+            let actualKeyManGross = 0;
+            let actualKeyManNet = 0;
+            let actualP11dCover = 0;
+            let actualP11dNet = 0;
+
+            if (monthlyBudget < rlpNetCost) {
+                // Can't afford full RLP
+                showAffordabilityWarning = true;
+
+                // Calculate max RLP cover possible
+                const maxRlpCover = (monthlyBudget / 0.75) / rlpRate * 1000000;
+                actualRlpCover = maxRlpCover;
+                actualRlpGross = (actualRlpCover / 1000000) * rlpRate;
+                actualRlpNet = actualRlpGross * 0.75;
+
+                document.getElementById('budgetDisplay').textContent = formatGBPWhole(monthlyBudget);
+                document.getElementById('maxRlpCover').textContent = formatGBPWhole(actualRlpCover);
+                document.getElementById('maxKeyManCover').textContent = '£0';
+                document.getElementById('maxWolCover').textContent = '£0';
+                document.getElementById('affordabilityWarning').classList.add('show');
+
+            } else if (monthlyBudget < rlpNetCost + keyManNetCost) {
+                // Can afford RLP but not full Key Man
+                actualRlpCover = rlpCoverAmount;
+                actualRlpGross = rlpGrossPremium;
+                actualRlpNet = rlpNetCost;
+
+                const remainingBudget = monthlyBudget - rlpNetCost;
+                const maxKeyManCover = (remainingBudget / 0.75) / rlpRate * 1000000;
+                actualKeyManCover = maxKeyManCover;
+                actualKeyManGross = (actualKeyManCover / 1000000) * rlpRate;
+                actualKeyManNet = actualKeyManGross * 0.75;
+
+            } else {
+                // Can afford RLP + Key Man, remaining goes to P11D
+                actualRlpCover = rlpCoverAmount;
+                actualRlpGross = rlpGrossPremium;
+                actualRlpNet = rlpNetCost;
+
+                actualKeyManCover = keyManCoverAmount;
+                actualKeyManGross = keyManGrossPremium;
+                actualKeyManNet = keyManNetCost;
+
+                const remainingBudget = monthlyBudget - rlpNetCost - keyManNetCost;
+                if (remainingBudget > 0) {
+                    // Calculate P11D cover from remaining budget using WOL rates
+                    actualP11dCover = (remainingBudget / wolRate) * 1000000;
+                    actualP11dNet = remainingBudget;
+                }
+            }
+
+            businessNetCost = actualRlpNet + actualKeyManNet + actualP11dNet;
+
+            // Build table
+            const tbody = document.getElementById('businessTableBody');
+            tbody.innerHTML = '';
+
+            // RLP row
+            if (actualRlpCover > 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>RLP (100% IHT)</td>
+                    <td>${formatGBPWhole(actualRlpCover)}</td>
+                    <td>${formatGBP(actualRlpGross)}</td>
+                    <td>${formatGBP(actualRlpNet)}</td>
+                `;
+                tbody.appendChild(row);
+            }
+
+            // Key Man row
+            if (actualKeyManCover > 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>Key Man (50% IHT)</td>
+                    <td>${formatGBPWhole(actualKeyManCover)}</td>
+                    <td>${formatGBP(actualKeyManGross)}</td>
+                    <td>${formatGBP(actualKeyManNet)}</td>
+                `;
+                tbody.appendChild(row);
+            }
+
+            // P11D row
+            if (actualP11dCover > 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>IHT Cover (P11D/WOL)</td>
+                    <td>${formatGBPWhole(actualP11dCover)}</td>
+                    <td>-</td>
+                    <td>${formatGBP(actualP11dNet)}</td>
+                `;
+                tbody.appendChild(row);
+            }
+
+            // Total row
+            const totalCover = actualRlpCover + actualKeyManCover + actualP11dCover;
+            const totalRow = document.createElement('tr');
+            totalRow.className = 'total-row';
+            totalRow.innerHTML = `
+                <td><strong>Total</strong></td>
+                <td><strong>${formatGBPWhole(totalCover)}</strong></td>
+                <td></td>
+                <td><strong>${formatGBP(businessNetCost)}</strong></td>
+            `;
+            tbody.appendChild(totalRow);
+
+            document.getElementById('summaryBusiness').textContent = formatGBP(businessNetCost) + '/month';
+        }
+
+        // Total premium
+        const totalPremium = personalPremium + businessNetCost;
+        document.getElementById('totalPremium').textContent = formatGBP(totalPremium);
+        document.getElementById('summaryTotal').textContent = formatGBP(totalPremium) + '/month';
+    </script>
+</body>
+</html>
