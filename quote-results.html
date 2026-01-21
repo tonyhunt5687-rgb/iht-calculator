@@ -523,6 +523,7 @@
         const storedData = sessionStorage.getItem('quoteData');
         if (!storedData) {
             window.location.href = 'quote-input.html';
+            return;
         }
 
         const data = JSON.parse(storedData);
@@ -530,6 +531,20 @@
         const personalCover = data.personalCover || 0;
         const businessCover = data.businessCover || 0;
         const monthlyBudget = data.monthlyBudget || 0;
+
+        // Validate we have the required data
+        if (!age || (personalCover === 0 && businessCover === 0)) {
+            alert('Missing quote data. Please start from the IHT calculator.');
+            window.location.href = 'index.html';
+            return;
+        }
+
+        // Validate age is in our rate tables
+        if (!WOL_RATES[age]) {
+            alert('Invalid age for quote calculation. Please re-enter your details.');
+            window.location.href = 'quote-input.html';
+            return;
+        }
 
         // Display age
         document.getElementById('ageDisplay').textContent = age;
