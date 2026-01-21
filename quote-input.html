@@ -310,14 +310,14 @@
 
         <div class="age-message" id="tooYoungMessage">
             <h3>You're Under 40</h3>
-            <p>Our online quote calculator is designed for ages 40-74. However, there are still excellent protection options available for younger clients.</p>
+            <p>Our online quote calculator is designed for ages 40-79. However, there are still excellent protection options available for younger clients.</p>
             <p>Please speak to one of our advisors who can provide a personalised quote based on your circumstances.</p>
             <a href="enquiry.html">Speak to an Expert</a>
         </div>
 
         <div class="age-message" id="tooOldMessage">
             <h3>Specialist Advice Recommended</h3>
-            <p>For clients over 74, we recommend speaking directly with one of our specialist advisors who can explore the full range of options available to you.</p>
+            <p>For clients over 79, we recommend speaking directly with one of our specialist advisors who can explore the full range of options available to you.</p>
             <p>There are often creative solutions available that aren't captured in standard online calculators.</p>
             <a href="enquiry.html">Speak to an Expert</a>
         </div>
@@ -362,11 +362,9 @@
                 <button type="submit">Calculate Premiums</button>
 
                 <div class="disclaimer">
-                    <strong>Important Information:</strong><br><br>
-                    <strong>Indicative Quotes Only:</strong> The premiums shown are for illustration purposes only and are not guaranteed. They are based on standard rates for a male non-smoker and are subject to change based on market conditions, insurer pricing updates, and individual underwriting.<br><br>
-                    <strong>Not Financial Advice:</strong> This calculator provides general information only and does not constitute financial advice. We recommend you seek professional advice before making any decisions about insurance or inheritance tax planning.<br><br>
-                    <strong>Accurate Quote:</strong> A personalised and accurate quote will be provided following your enquiry, based on full underwriting which considers your health, lifestyle, occupation, and other relevant factors.<br><br>
-                    <em>IHT Solutions is an Appointed Representative of [FCA AUTHORISED FIRM NAME] which is authorised and regulated by the Financial Conduct Authority. FCA Reference Number: [NUMBER TO BE INSERTED]</em>
+                    <p>Indicative premiums for illustration only. Final terms depend on underwriting, product basis, and insurer pricing at the time of application.</p>
+                    <p>Tax treatment depends on individual and business circumstances and may change.</p>
+                    <p style="margin-top: 15px;"><em>IHT Solutions is an Appointed Representative of [FCA AUTHORISED FIRM NAME] which is authorised and regulated by the Financial Conduct Authority. FCA Reference Number: [NUMBER TO BE INSERTED]</em></p>
                 </div>
             </form>
         </div>
@@ -458,7 +456,7 @@
             if (age < 40) {
                 tooYoungMessage.classList.add('show');
                 submitButton.disabled = true;
-            } else if (age > 74) {
+            } else if (age > 79) {
                 tooOldMessage.classList.add('show');
                 submitButton.disabled = true;
             }
@@ -475,7 +473,7 @@
             }
 
             const age = calculateAge(dob);
-            if (age < 40 || age > 74) {
+            if (age < 40 || age > 79) {
                 return; // Messages already shown
             }
 
