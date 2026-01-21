@@ -549,9 +549,17 @@
         // Display age
         document.getElementById('ageDisplay').textContent = age;
 
+        // DEBUG: Show values in console and alert
+        console.log('DEBUG - age:', age, 'personalCover:', personalCover, 'businessCover:', businessCover);
+        console.log('DEBUG - WOL_RATES[age]:', WOL_RATES[age]);
+
         // Calculate Personal WOL Premium
         const wolRate = WOL_RATES[age];
         const personalPremium = (personalCover / 1000000) * wolRate;
+
+        // DEBUG: Show calculation
+        console.log('DEBUG - wolRate:', wolRate, 'personalPremium:', personalPremium);
+        alert('DEBUG:\\nAge: ' + age + '\\nPersonal Cover: ' + personalCover + '\\nWOL Rate: ' + wolRate + '\\nCalculated Premium: ' + personalPremium);
 
         // Display personal cover
         if (personalCover > 0) {
