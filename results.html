@@ -162,7 +162,11 @@
             border-top: 1px solid rgba(26,85,102,0.2);
             border-bottom: none;
         }
-        
+
+        .breakdown-item.result {
+            font-weight: 600;
+        }
+
         .breakdown-item.total {
             font-weight: 700;
             font-size: 1.1em;
@@ -465,12 +469,12 @@
                         <span>Taxable Amount</span>
                         <span id="taxableAmount">£0</span>
                     </div>
-                    <div class="breakdown-item">
+                    <div class="breakdown-item result">
                         <span>IHT on Personal Assets (40%)</span>
                         <span id="personalIHT">£0</span>
                     </div>
                 </div>
-                
+
                 <div class="breakdown-section" id="businessIHTSection" style="display: none;">
                     <div class="breakdown-section-title">IHT on Business Assets (with BPR)</div>
                     <div class="breakdown-item">
@@ -485,12 +489,12 @@
                         <span>Business Value Exceeding BPR</span>
                         <span id="businessTaxable">£0</span>
                     </div>
-                    <div class="breakdown-item">
+                    <div class="breakdown-item result">
                         <span>IHT on Excess Business Value (20%)</span>
                         <span id="businessIHT">£0</span>
                     </div>
                 </div>
-                
+
                 <div class="breakdown-section">
                     <div class="breakdown-section-title">Total IHT Liability</div>
                     <div class="breakdown-item total">
@@ -696,6 +700,8 @@
             resultsData.totalAllowance = results.personalAllowance;
             resultsData.personalIHT = results.personalIHT;
             resultsData.businessIHT = results.businessIHT;
+            resultsData.personalProtection = Math.ceil(results.personalIHT * 1.1);
+            resultsData.businessProtection = Math.ceil(results.businessIHT * 1.1);
             sessionStorage.setItem('ihtData', JSON.stringify(resultsData));
         }
 

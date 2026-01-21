@@ -410,30 +410,30 @@
 
         // Get data from session storage
         const storedData = sessionStorage.getItem('ihtData');
-        let personalIHT = 0;
-        let businessIHT = 0;
+        let personalProtection = 0;
+        let businessProtection = 0;
 
         if (storedData) {
             const data = JSON.parse(storedData);
-            personalIHT = data.personalIHT || 0;
-            businessIHT = data.businessIHT || 0;
+            personalProtection = data.personalProtection || 0;
+            businessProtection = data.businessProtection || 0;
         }
 
-        // If no IHT data, redirect back to calculator
-        if (personalIHT === 0 && businessIHT === 0) {
+        // If no protection data, redirect back to calculator
+        if (personalProtection === 0 && businessProtection === 0) {
             window.location.href = 'results.html';
         }
 
-        // Display the IHT values
-        document.getElementById('personalIHTDisplay').textContent = formatGBP(personalIHT);
-        document.getElementById('personalCover').value = formatGBP(personalIHT);
-        document.getElementById('totalIHTDisplay').textContent = formatGBP(personalIHT + businessIHT);
+        // Display the protection values (includes +10% allowance)
+        document.getElementById('personalIHTDisplay').textContent = formatGBP(personalProtection);
+        document.getElementById('personalCover').value = formatGBP(personalProtection);
+        document.getElementById('totalIHTDisplay').textContent = formatGBP(personalProtection + businessProtection);
 
-        // Show business section if there's business IHT
-        if (businessIHT > 0) {
+        // Show business section if there's business protection needed
+        if (businessProtection > 0) {
             document.getElementById('businessIHTRow').style.display = 'block';
-            document.getElementById('businessIHTDisplay').textContent = formatGBP(businessIHT);
-            document.getElementById('businessCover').value = formatGBP(businessIHT);
+            document.getElementById('businessIHTDisplay').textContent = formatGBP(businessProtection);
+            document.getElementById('businessCover').value = formatGBP(businessProtection);
             document.getElementById('businessSection').classList.add('show');
         }
 
@@ -554,7 +554,7 @@
 
             // Validate budget if business section is shown
             let monthlyBudget = 0;
-            if (businessIHT > 0) {
+            if (businessProtection > 0) {
                 monthlyBudget = parseCurrency(budgetInput.value);
                 if (monthlyBudget <= 0) {
                     alert('Please enter a monthly budget for business cover');
@@ -565,8 +565,8 @@
             // Save to session storage for results page
             const quoteData = {
                 age: age,
-                personalCover: personalIHT,
-                businessCover: businessIHT,
+                personalCover: personalProtection,
+                businessCover: businessProtection,
                 monthlyBudget: monthlyBudget
             };
             sessionStorage.setItem('quoteData', JSON.stringify(quoteData));
