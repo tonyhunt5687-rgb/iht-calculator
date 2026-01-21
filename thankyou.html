@@ -248,28 +248,34 @@
         </div>
     </div>
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        const name = urlParams.get('name') || 'Not provided';
-        const email = urlParams.get('email') || 'Not provided';
-        const phone = urlParams.get('phone') || 'Not provided';
-        const ihtLiability = parseFloat(urlParams.get('iht')) || 0;
-        
+        // Get enquiry data from sessionStorage (saved by enquiry.html)
+        const enquiryData = JSON.parse(sessionStorage.getItem('enquiryData') || '{}');
+        const ihtData = JSON.parse(sessionStorage.getItem('ihtData') || '{}');
+        const quoteData = JSON.parse(sessionStorage.getItem('quoteData') || '{}');
+
+        const name = enquiryData.name || 'Not provided';
+        const email = enquiryData.email || 'Not provided';
+        const phone = enquiryData.phone || 'Not provided';
+        const ihtLiability = enquiryData.ihtLiability || ihtData.calculatedIHT || 0;
+
         document.getElementById('userName').textContent = name;
         document.getElementById('userEmail').textContent = email;
         document.getElementById('userPhone').textContent = phone;
-        document.getElementById('userIHT').textContent = 
+        document.getElementById('userIHT').textContent =
             '£' + ihtLiability.toLocaleString('en-GB', {maximumFractionDigits: 0});
-        
+
         const refNumber = 'ENQ-' + Date.now().toString(36).toUpperCase();
         document.getElementById('referenceNumber').textContent = refNumber;
-        
+
         console.log('Enquiry completed:', {
             reference: refNumber,
             name,
             email,
             phone,
-            ihtLiability
+            ihtLiability,
+            enquiryData,
+            ihtData,
+            quoteData
         });
     </script>
 </body>

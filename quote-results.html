@@ -522,27 +522,20 @@
 
         // Get data from session storage
         const storedData = sessionStorage.getItem('quoteData');
-        alert('DEBUG 1: storedData = ' + storedData);
 
         if (!storedData) {
-            alert('DEBUG: No stored data found, redirecting...');
             window.location.href = 'quote-input.html';
             return;
         }
 
         const data = JSON.parse(storedData);
-        alert('DEBUG 2: Parsed data = ' + JSON.stringify(data));
-
         const age = data.age;
         const personalCover = data.personalCover || 0;
         const businessCover = data.businessCover || 0;
         const monthlyBudget = data.monthlyBudget || 0;
 
-        alert('DEBUG 3: age=' + age + ', personalCover=' + personalCover + ', businessCover=' + businessCover);
-
         // Validate we have the required data
         if (!age || (personalCover === 0 && businessCover === 0)) {
-            alert('Missing quote data. Please start from the IHT calculator.');
             window.location.href = 'index.html';
             return;
         }
@@ -557,17 +550,9 @@
         // Display age
         document.getElementById('ageDisplay').textContent = age;
 
-        // DEBUG: Show values in console and alert
-        console.log('DEBUG - age:', age, 'personalCover:', personalCover, 'businessCover:', businessCover);
-        console.log('DEBUG - WOL_RATES[age]:', WOL_RATES[age]);
-
         // Calculate Personal WOL Premium
         const wolRate = WOL_RATES[age];
         const personalPremium = (personalCover / 1000000) * wolRate;
-
-        // DEBUG: Show calculation
-        console.log('DEBUG - wolRate:', wolRate, 'personalPremium:', personalPremium);
-        alert('DEBUG:\\nAge: ' + age + '\\nPersonal Cover: ' + personalCover + '\\nWOL Rate: ' + wolRate + '\\nCalculated Premium: ' + personalPremium);
 
         // Display personal cover
         if (personalCover > 0) {
