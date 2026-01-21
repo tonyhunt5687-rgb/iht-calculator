@@ -487,6 +487,7 @@
     </div>
 
     <script>
+        (function() {
         // Rate tables (per £1,000,000 cover) - Interpolated from Zurich rates, male, Jan 2026
         const RLP_RATES = {
             40: 82.93, 41: 89.76, 42: 96.59, 43: 103.41, 44: 110.24,
@@ -736,6 +737,7 @@
         const totalPremium = personalPremium + businessNetCost;
         document.getElementById('totalPremium').textContent = formatGBP(totalPremium);
         document.getElementById('summaryTotal').textContent = formatGBP(totalPremium) + '/month';
+        })();
     </script>
 </body>
 </html>
