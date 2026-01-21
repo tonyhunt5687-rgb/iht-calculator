@@ -335,6 +335,7 @@
                     <label for="dob">Date of Birth <span class="required">*</span></label>
                     <input type="date" id="dob" required>
                     <p class="help-text">We need this to calculate age-based premiums</p>
+                    <div class="error" id="dobError" style="color: #e74c3c; font-size: 0.9em; margin-top: 5px; display: none;"></div>
                 </div>
 
                 <div class="form-group">
@@ -439,13 +440,68 @@
 
         // DOB change handler - validate age
         const dobInput = document.getElementById('dob');
+        const dobError = document.getElementById('dobError');
         const tooYoungMessage = document.getElementById('tooYoungMessage');
         const tooOldMessage = document.getElementById('tooOldMessage');
         const quoteForm = document.getElementById('quoteForm');
         const submitButton = document.querySelector('button[type="submit"]');
 
+        // Set min/max date constraints (ages 18-100 to allow for edge cases in date picker)
+        const today = new Date();
+        const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+        const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate());
+        dobInput.setAttribute('max', maxDate.toISOString().split('T')[0]);
+        dobInput.setAttribute('min', minDate.toISOString().split('T')[0]);
+
+        // Validate DOB function
+        function validateDOB(dateString) {
+            dobError.style.display = 'none';
+            dobInput.style.borderColor = '#c5e5ea';
+
+            if (!dateString) {
+                return { valid: false, age: null, error: null };
+            }
+
+            // Check if it's a valid date
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) {
+                dobError.textContent = 'Please enter a valid date';
+                dobError.style.display = 'block';
+                dobInput.style.borderColor = '#e74c3c';
+                return { valid: false, age: null, error: 'invalid' };
+            }
+
+            // Check date is not in the future
+            if (date > today) {
+                dobError.textContent = 'Date of birth cannot be in the future';
+                dobError.style.display = 'block';
+                dobInput.style.borderColor = '#e74c3c';
+                return { valid: false, age: null, error: 'future' };
+            }
+
+            // Check reasonable date range (not before 1900)
+            if (date.getFullYear() < 1900) {
+                dobError.textContent = 'Please enter a valid year';
+                dobError.style.display = 'block';
+                dobInput.style.borderColor = '#e74c3c';
+                return { valid: false, age: null, error: 'too_old' };
+            }
+
+            const age = calculateAge(dateString);
+
+            // Check if age is reasonable (at least 18)
+            if (age < 18) {
+                dobError.textContent = 'You must be at least 18 years old';
+                dobError.style.display = 'block';
+                dobInput.style.borderColor = '#e74c3c';
+                return { valid: false, age: age, error: 'under_18' };
+            }
+
+            return { valid: true, age: age, error: null };
+        }
+
         dobInput.addEventListener('change', function() {
-            const age = calculateAge(this.value);
+            const validation = validateDOB(this.value);
 
             // Reset states
             tooYoungMessage.classList.remove('show');
@@ -453,10 +509,15 @@
             quoteForm.style.display = 'block';
             submitButton.disabled = false;
 
-            if (age < 40) {
+            if (!validation.valid) {
+                submitButton.disabled = true;
+                return;
+            }
+
+            if (validation.age < 40) {
                 tooYoungMessage.classList.add('show');
                 submitButton.disabled = true;
-            } else if (age > 79) {
+            } else if (validation.age > 79) {
                 tooOldMessage.classList.add('show');
                 submitButton.disabled = true;
             }
@@ -467,12 +528,22 @@
             e.preventDefault();
 
             const dob = dobInput.value;
+            const validation = validateDOB(dob);
+
             if (!dob) {
-                alert('Please enter your date of birth');
+                dobError.textContent = 'Please enter your date of birth';
+                dobError.style.display = 'block';
+                dobInput.style.borderColor = '#e74c3c';
+                dobInput.focus();
                 return;
             }
 
-            const age = calculateAge(dob);
+            if (!validation.valid) {
+                dobInput.focus();
+                return;
+            }
+
+            const age = validation.age;
             if (age < 40 || age > 79) {
                 return; // Messages already shown
             }
