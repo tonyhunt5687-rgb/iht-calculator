@@ -333,37 +333,42 @@
                 <span class="highlight">Recommended Protection Amount: <span id="protectionSummary">£0</span></span>
             </div>
             
-            <form id="enquiryForm">
+            <form id="enquiryForm" name="enquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                <!-- Hidden fields for Netlify -->
+                <input type="hidden" name="form-name" value="enquiry">
+                <input type="hidden" name="totalEstate" id="hiddenEstate">
+                <input type="hidden" name="ihtLiability" id="hiddenIHT">
+                <input type="hidden" name="protectionAmount" id="hiddenProtection">
+
                 <div class="form-group">
                     <label for="name">Full Name <span class="required">*</span></label>
-                    <input type="text" id="name" required>
+                    <input type="text" id="name" name="name" required>
                     <div class="error" id="nameError">Please enter your name</div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="email">Email Address <span class="required">*</span></label>
-                    <input type="email" id="email" required>
+                    <input type="email" id="email" name="email" required>
                     <div class="error" id="emailError">Please enter a valid email address</div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="phone">Phone Number <span class="required">*</span></label>
-                    <input type="tel" id="phone" required>
+                    <input type="tel" id="phone" name="phone" required>
                     <p class="help-text">We'll use this to arrange your consultation</p>
                     <div class="error" id="phoneError">Please enter your phone number</div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="message">Additional Information (Optional)</label>
-                    <textarea id="message" placeholder="Is there anything specific you'd like to discuss?"></textarea>
+                    <textarea id="message" name="message" placeholder="Is there anything specific you'd like to discuss?"></textarea>
                     <p class="help-text">Tell us about your priorities or any questions you have</p>
                 </div>
 
-                <!-- Honeypot field - hidden from humans, bots will fill it -->
-                <div class="hp-field" aria-hidden="true">
-                    <label for="website">Website</label>
-                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-                </div>
+                <!-- Honeypot field for Netlify spam protection -->
+                <p class="hp-field" aria-hidden="true">
+                    <label>Don't fill this out: <input name="bot-field"></label>
+                </p>
 
                 <!-- Consent checkboxes -->
                 <div class="consent-section">
@@ -415,11 +420,16 @@
             // Hide summary box if no data
             document.getElementById('summaryBox').style.display = 'none';
         }
-        
+
         // Format currency helper
         function formatGBP(value) {
             return '£' + Number(value).toLocaleString('en-GB', { maximumFractionDigits: 0 });
         }
+
+        // Populate hidden fields for Netlify form submission
+        document.getElementById('hiddenEstate').value = formatGBP(totalEstate);
+        document.getElementById('hiddenIHT').value = formatGBP(ihtLiability);
+        document.getElementById('hiddenProtection').value = formatGBP(protectionAmount);
 
         // Real-time validation - clear errors as user types
         document.getElementById('name').addEventListener('input', function() {
@@ -456,8 +466,9 @@
             e.preventDefault();
 
             // Honeypot check - if filled, silently reject (it's a bot)
-            const honeypot = document.getElementById('website').value;
-            if (honeypot) {
+            // Netlify also handles this server-side with data-netlify-honeypot
+            const honeypot = document.querySelector('input[name="bot-field"]');
+            if (honeypot && honeypot.value) {
                 // Pretend success but do nothing
                 window.location.href = 'thankyou.html';
                 return;
@@ -541,10 +552,22 @@
             };
             sessionStorage.setItem('enquiryData', JSON.stringify(enquiryData));
 
-            // Redirect to thank you page
-            setTimeout(() => {
+            // Submit to Netlify Forms
+            const formData = new FormData(document.getElementById('enquiryForm'));
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                // Redirect to thank you page after successful submission
                 window.location.href = 'thankyou.html';
-            }, 500);
+            })
+            .catch((error) => {
+                console.error('Form submission error:', error);
+                // Still redirect - PDF was generated and data saved
+                window.location.href = 'thankyou.html';
+            });
         });
 
         function generatePDF(name, email, phone, message, marketingConsent) {
@@ -708,13 +731,13 @@
             doc.setFont('helvetica', 'normal');
 
             const disclaimerLines = [
-                'Indicative premiums for illustration only. Final terms depend on underwriting, product basis,',
-                'and insurer pricing at the time of application.',
+                'These figures are for illustrative purposes only and do not constitute financial advice.',
+                'Actual premiums will depend on underwriting, product basis, and insurer pricing.',
                 '',
                 'Tax treatment depends on individual and business circumstances and may change.',
                 '',
-                'IHT Solutions is an Appointed Representative of [FCA AUTHORISED FIRM NAME], which is authorised',
-                'and regulated by the Financial Conduct Authority (FCA Register Number: [NUMBER]).'
+                'You should seek independent financial advice before making any decisions',
+                'about life insurance or tax planning.'
             ];
 
             let disclaimerY = y + 8;
