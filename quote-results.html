@@ -283,6 +283,63 @@
             padding-top: 15px;
         }
 
+        .sum-assured-box {
+            background: linear-gradient(135deg, #e8f4f8 0%, #f0f8fa 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #1a5566;
+        }
+
+        .sum-assured-box h3 {
+            font-family: 'Gloock', serif;
+            letter-spacing: 0.02em;
+            font-size: 1.3em;
+            color: #1a5566;
+            margin-bottom: 15px;
+        }
+
+        .sum-assured-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(26,85,102,0.1);
+        }
+
+        .sum-assured-row:last-child {
+            border-bottom: none;
+        }
+
+        .sum-assured-row .label {
+            color: #555;
+        }
+
+        .sum-assured-row .label small {
+            display: block;
+            font-size: 0.85em;
+            color: #777;
+            margin-top: 2px;
+        }
+
+        .sum-assured-row .value {
+            font-weight: 600;
+            color: #1a5566;
+            font-size: 1.1em;
+        }
+
+        .sum-assured-row.total {
+            font-size: 1.2em;
+            font-weight: 700;
+            border-top: 2px solid rgba(26,85,102,0.3);
+            margin-top: 10px;
+            padding-top: 15px;
+        }
+
+        .sum-assured-row.total .value {
+            color: #0b7a8f;
+            font-size: 1.2em;
+        }
+
         .disclaimer {
             background: #f8f9fa;
             padding: 20px;
@@ -465,9 +522,26 @@
                 </table>
             </div>
 
-            <!-- Summary -->
+            <!-- Sum Assured Summary -->
+            <div class="sum-assured-box">
+                <h3>What You're Getting</h3>
+                <div class="sum-assured-row">
+                    <span class="label">Whole of Life Cover<small>Guaranteed payout whenever you pass away</small></span>
+                    <span class="value" id="totalWolCover">£0</span>
+                </div>
+                <div class="sum-assured-row" id="termCoverRow" style="display: none;">
+                    <span class="label">Term Cover (RLP & Key Man)<small>Business protection until age 90</small></span>
+                    <span class="value" id="totalTermCover">£0</span>
+                </div>
+                <div class="sum-assured-row total">
+                    <span class="label">Total Sum Assured</span>
+                    <span class="value" id="totalSumAssured">£0</span>
+                </div>
+            </div>
+
+            <!-- Cost Summary -->
             <div class="summary-box">
-                <h3>Summary</h3>
+                <h3>What It Costs</h3>
                 <div class="summary-row" id="personalSummaryRow">
                     <span>Personal Cover (WOL)</span>
                     <span id="summaryPersonal">£0/month</span>
@@ -580,6 +654,11 @@
         let showAffordabilityWarning = false;
         const rlpAvailable = age <= 74; // RLP/Key Man only available up to age 74
 
+        // Initialize cover tracking variables at function scope for sum assured calculation
+        let actualRlpCover = 0;
+        let actualKeyManCover = 0;
+        let actualP11dCover = 0;
+
         if (businessCover > 0) {
             document.getElementById('businessSection').classList.add('show');
             document.getElementById('businessSummaryRow').style.display = 'flex';
@@ -601,6 +680,10 @@
                 const totalPremium = personalPremium;
                 document.getElementById('totalPremium').textContent = formatGBP(totalPremium);
                 document.getElementById('summaryTotal').textContent = formatGBP(totalPremium) + '/month';
+
+                // Update Sum Assured Summary (only personal WOL available)
+                document.getElementById('totalWolCover').textContent = formatGBPWhole(personalCover);
+                document.getElementById('totalSumAssured').textContent = formatGBPWhole(personalCover);
                 return; // Exit early, don't process RLP calculations
             }
 
@@ -616,14 +699,11 @@
             const keyManGrossPremium = (keyManCoverAmount / 1000000) * rlpRate;
             const keyManNetCost = keyManGrossPremium * 0.75;
 
-            // Affordability check
-            let actualRlpCover = 0;
+            // Affordability check - reset values
             let actualRlpGross = 0;
             let actualRlpNet = 0;
-            let actualKeyManCover = 0;
             let actualKeyManGross = 0;
             let actualKeyManNet = 0;
-            let actualP11dCover = 0;
             let actualP11dNet = 0;
 
             if (monthlyBudget < rlpNetCost) {
@@ -733,6 +813,20 @@
         const totalPremium = personalPremium + businessNetCost;
         document.getElementById('totalPremium').textContent = formatGBP(totalPremium);
         document.getElementById('summaryTotal').textContent = formatGBP(totalPremium) + '/month';
+
+        // Calculate and display Sum Assured Summary
+        const totalWolCover = personalCover + actualP11dCover;
+        const totalTermCover = actualRlpCover + actualKeyManCover;
+        const totalSumAssured = totalWolCover + totalTermCover;
+
+        document.getElementById('totalWolCover').textContent = formatGBPWhole(totalWolCover);
+        document.getElementById('totalSumAssured').textContent = formatGBPWhole(totalSumAssured);
+
+        // Show term cover row only if there's term cover
+        if (totalTermCover > 0) {
+            document.getElementById('termCoverRow').style.display = 'flex';
+            document.getElementById('totalTermCover').textContent = formatGBPWhole(totalTermCover);
+        }
         })();
     </script>
 </body>
