@@ -207,9 +207,47 @@
                 text-align: center;
             }
         }
+
+        /* Hamburger Menu Styles */
+        .hamburger-menu { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+        .hamburger-btn { background: rgba(26, 85, 102, 0.9); border: none; padding: 12px; border-radius: 8px; cursor: pointer; display: flex; flex-direction: column; gap: 5px; transition: background 0.3s ease; }
+        .hamburger-btn:hover { background: rgba(26, 85, 102, 1); }
+        .hamburger-btn span { display: block; width: 24px; height: 2px; background: rgba(255, 255, 255, 0.8); border-radius: 2px; transition: all 0.3s ease; }
+        .hamburger-btn:hover span { background: white; }
+        .hamburger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger-btn.active span:nth-child(2) { opacity: 0; }
+        .hamburger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .menu-panel { position: fixed; top: 0; right: -320px; width: 320px; height: 100vh; background: linear-gradient(135deg, #1a5566 0%, #0d3d4d 100%); box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3); transition: right 0.3s ease; padding: 80px 30px 30px; overflow-y: auto; z-index: 1001; }
+        .menu-panel.open { right: 0; }
+        .menu-panel h3 { font-family: 'Gloock', serif; color: white; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+        .menu-panel ul { list-style: none; padding: 0; margin: 0; }
+        .menu-panel li { margin-bottom: 8px; }
+        .menu-panel a { display: block; color: rgba(255, 255, 255, 0.85); text-decoration: none; padding: 12px 15px; border-radius: 6px; font-size: 0.95em; line-height: 1.4; transition: all 0.2s ease; }
+        .menu-panel a:hover { background: rgba(255, 255, 255, 0.1); color: white; }
+        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 999; }
+        .menu-overlay.open { opacity: 1; visibility: visible; }
     </style>
 </head>
 <body>
+    <!-- Hamburger Menu -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <nav class="hamburger-menu" aria-label="Technical resources menu">
+        <button class="hamburger-btn" id="hamburgerBtn" aria-expanded="false" aria-controls="menuPanel" title="Technical Resources">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="menu-panel" id="menuPanel" role="menu">
+            <h3>Technical Resources</h3>
+            <ul>
+                <li><a href="/technical/" role="menuitem">Technical Overview</a></li>
+                <li><a href="/technical/post-2026-2027-planning-landscape/" role="menuitem">Post-2026 and Post-2027 Planning Landscape</a></li>
+                <li><a href="/technical/bpr-apr-changes-family-businesses-farms/" role="menuitem">BPR and APR Changes for Family Businesses</a></li>
+                <li><a href="/technical/pension-death-benefits-iht-2027/" role="menuitem">Pension Death Benefits and IHT from 2027</a></li>
+                <li><a href="/technical/whole-of-life-vs-relevant-life/" role="menuitem">Whole of Life vs Relevant Life Insurance</a></li>
+                <li><a href="/technical/coordinating-iht-planning-professionals/" role="menuitem">Coordinating IHT Planning with Professionals</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="thank-you-card">
             <div class="success-icon">
@@ -280,6 +318,20 @@
             ihtData,
             quoteData
         });
+    </script>
+
+    <!-- Hamburger Menu Script -->
+    <script>
+        (function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const menuPanel = document.getElementById('menuPanel');
+            const menuOverlay = document.getElementById('menuOverlay');
+            function toggleMenu() { const isOpen = menuPanel.classList.contains('open'); menuPanel.classList.toggle('open'); menuOverlay.classList.toggle('open'); hamburgerBtn.classList.toggle('active'); hamburgerBtn.setAttribute('aria-expanded', !isOpen); }
+            function closeMenu() { menuPanel.classList.remove('open'); menuOverlay.classList.remove('open'); hamburgerBtn.classList.remove('active'); hamburgerBtn.setAttribute('aria-expanded', 'false'); }
+            hamburgerBtn.addEventListener('click', toggleMenu);
+            menuOverlay.addEventListener('click', closeMenu);
+            document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && menuPanel.classList.contains('open')) { closeMenu(); } });
+        })();
     </script>
 </body>
 </html>

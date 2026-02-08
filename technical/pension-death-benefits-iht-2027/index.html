@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pension Death Benefits and IHT from April 2027 | IHT Solutions</title>
+    <meta name="description" content="Technical analysis of how defined contribution pension funds and death benefits will be brought within the inheritance tax calculation from April 2027.">
+    <link rel="canonical" href="https://ihtsolutions.co.uk/technical/pension-death-benefits-iht-2027/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: #333; min-height: 100vh; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); }
+
+        .hamburger-menu { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+        .hamburger-btn { background: rgba(31, 78, 120, 0.9); border: none; padding: 12px; border-radius: 8px; cursor: pointer; display: flex; flex-direction: column; gap: 5px; transition: background 0.3s ease; }
+        .hamburger-btn:hover { background: rgba(31, 78, 120, 1); }
+        .hamburger-btn span { display: block; width: 24px; height: 2px; background: rgba(255, 255, 255, 0.8); border-radius: 2px; transition: all 0.3s ease; }
+        .hamburger-btn:hover span { background: white; }
+        .hamburger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger-btn.active span:nth-child(2) { opacity: 0; }
+        .hamburger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .menu-panel { position: fixed; top: 0; right: -320px; width: 320px; height: 100vh; background: linear-gradient(135deg, #1a5566 0%, #0d3d4d 100%); box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3); transition: right 0.3s ease; padding: 80px 30px 30px; overflow-y: auto; }
+        .menu-panel.open { right: 0; }
+        .menu-panel h3 { font-family: 'Gloock', serif; color: white; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+        .menu-panel ul { list-style: none; padding: 0; margin: 0; }
+        .menu-panel li { margin-bottom: 8px; }
+        .menu-panel a { display: block; color: rgba(255, 255, 255, 0.85); text-decoration: none; padding: 12px 15px; border-radius: 6px; font-size: 0.95em; line-height: 1.4; transition: all 0.2s ease; }
+        .menu-panel a:hover { background: rgba(255, 255, 255, 0.1); color: white; }
+        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 999; }
+        .menu-overlay.open { opacity: 1; visibility: visible; }
+
+        .page-header { background: linear-gradient(135deg, #1F4E78 0%, #0d3d4d 100%); color: white; padding: 60px 20px 50px; text-align: center; }
+        .page-header .logo { width: 200px; height: auto; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2)); margin-bottom: 20px; }
+        .page-header h1 { font-family: 'Gloock', serif; font-size: 2em; letter-spacing: 1px; margin-bottom: 15px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.3; }
+        .breadcrumbs { font-size: 0.9em; color: rgba(255, 255, 255, 0.8); margin-bottom: 20px; }
+        .breadcrumbs a { color: rgba(255, 255, 255, 0.9); text-decoration: none; }
+        .breadcrumbs a:hover { text-decoration: underline; }
+        .breadcrumbs span { margin: 0 8px; }
+
+        .content-wrapper { max-width: 800px; margin: 0 auto; padding: 50px 20px 60px; }
+
+        .coming-soon-box { background: white; border-radius: 16px; padding: 50px 40px; text-align: center; border: 1px solid #e9ecef; }
+        .coming-soon-box h2 { font-family: 'Gloock', serif; color: #1F4E78; font-size: 1.8em; margin-bottom: 20px; }
+        .coming-soon-box p { color: #666; font-size: 1.1em; margin-bottom: 15px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .coming-soon-box .badge { display: inline-block; background: #f0f7ff; color: #1F4E78; font-size: 0.85em; font-weight: 600; padding: 8px 20px; border-radius: 20px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .related-link { display: inline-block; background: linear-gradient(135deg, #2fcae9 0%, #2baccf 100%); color: white; text-decoration: none; padding: 14px 30px; border-radius: 10px; font-weight: 600; margin-top: 20px; transition: all 0.3s ease; }
+        .related-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(47, 202, 233, 0.4); }
+
+        .page-footer { background: #1F4E78; color: white; padding: 40px 20px; text-align: center; }
+        .page-footer p { color: rgba(255, 255, 255, 0.8); font-size: 0.9em; margin-bottom: 10px; }
+        .page-footer a { color: #2fcae9; text-decoration: none; }
+        .page-footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 1.6em; }
+            .coming-soon-box { padding: 35px 25px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <nav class="hamburger-menu" aria-label="Technical resources menu">
+        <button class="hamburger-btn" id="hamburgerBtn" aria-expanded="false" aria-controls="menuPanel" title="Technical Resources">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="menu-panel" id="menuPanel" role="menu">
+            <h3>Technical Resources</h3>
+            <ul>
+                <li><a href="/technical/" role="menuitem">Technical Overview</a></li>
+                <li><a href="/technical/post-2026-2027-planning-landscape/" role="menuitem">Post-2026 and Post-2027 Planning Landscape</a></li>
+                <li><a href="/technical/bpr-apr-changes-family-businesses-farms/" role="menuitem">BPR and APR Changes for Family Businesses</a></li>
+                <li><a href="/technical/pension-death-benefits-iht-2027/" role="menuitem" aria-current="page">Pension Death Benefits and IHT from 2027</a></li>
+                <li><a href="/technical/whole-of-life-vs-relevant-life/" role="menuitem">Whole of Life vs Relevant Life Insurance</a></li>
+                <li><a href="/technical/coordinating-iht-planning-professionals/" role="menuitem">Coordinating IHT Planning with Professionals</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a><span>&rsaquo;</span><a href="/technical/">Technical</a><span>&rsaquo;</span><span>Pension Death Benefits</span>
+        </nav>
+        <a href="/">
+            <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1190.6 841.9">
+                <style>.st0{fill:#fff;}</style>
+                <path class="st0" d="M444.3,555.3v-2.7h.3c6.4,0,11.6-2,15.5-5.9,3.9-3.9,5.9-9.1,5.9-15.5v-93.1c0-6.8-1.4-12-4.1-15.8-2.8-3.7-8.6-5.6-17.5-5.6v-2.7h27.3c9.1,0,16-1,20.9-2.9,4.5-2,7.6-4.4,9.4-7.2h2.7v127.4c0,6.4,2,11.6,5.9,15.5,3.9,3.9,9.1,5.9,15.5,5.9h.3v2.7h-81.8Z"/>
+                <path class="st0" d="M521.8,555.3v-2.7c6.2,0,10.9-1.3,14-3.9,3.1-2.6,5.2-5.9,6.2-10,1-4.1,1.5-8.6,1.5-13.4v-146.6c0-6.4-2-11.6-6-15.5-4-3.9-9.2-5.9-15.6-5.9v-2.7h27.3c9.1,0,16-1,20.9-2.9,4.5-2,7.6-4.4,9.4-7.2h2.7v101.6c4.8-9.4,11.9-16.9,21.1-22.3,9.3-5.4,19.2-8.2,29.7-8.2s15.5,1.9,21.4,5.8c5.9,3.8,10.4,9,13.5,15.4,3.1,6.4,4.7,13.6,4.7,21.7v72.7c0,6.6,2,11.8,6,15.6,4,3.8,9.2,5.7,15.6,5.7v2.7h-81.6v-2.7c6.4,0,11.6-1.9,15.6-5.7,4-3.8,6-9,6-15.6v-75.4c0-3.9-.5-8.2-1.6-12.7-1.1-4.5-3-8.5-5.8-11.8-2.8-3.3-6.6-4.9-11.6-4.9s-9.1,1.4-13.2,4.1c-4.2,2.8-8,6.2-11.4,10.3-3.4,4.1-6.2,8.2-8.6,12.3v72.2c0,4.8.5,9.3,1.5,13.4,1,4.1,3,7.4,6.2,10,3.1,2.6,7.8,3.9,14,3.9v2.7h-81.8Z"/>
+                <path class="st0" d="M736.6,559.1c-9.3,0-16.8-2.9-22.7-8.8-5.9-5.9-8.8-13.5-8.8-23v-103h-22.7v-3.5c12.3-.9,23.3-4.8,33-11.8,9.7-7,17.7-16.3,23.9-28.1h4.3v38.5h35.6l-2.7,4.8h-32.9v97.1c0,14.3,4.8,21.4,14.4,21.4s6.9-1,11.1-2.9c4.2-2,8.2-4.5,11.9-7.8v2.7c-5.9,7.5-12.8,13.4-20.9,17.8-8,4.4-15.9,6.6-23.5,6.6Z"/>
+                <g><path class="st0" d="M423.1,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9,2.1.8,4.2,1.2,6.5,1.2s3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9c-.8-.7-1.8-1.3-3.1-1.8s-2.6-.8-4.1-1.2c-1.5-.3-3-.7-4.5-1.2-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8-.8-1.2-1.2-2.7-1.2-4.6s.5-3.5,1.4-5c1-1.5,2.4-2.7,4.4-3.7,2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7s2.3,1.6,3,2.8c.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/><path class="st0" d="M469.3,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7s-1.4-4.6-1.4-7.1.5-5,1.4-7.1,2.2-4.1,3.9-5.7c1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7.9,2.2,1.4,4.6,1.4,7.2s-.5,5-1.4,7.2c-.9,2.2-2.2,4.1-3.9,5.7-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM469.3,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8,1.2-1.2,2.2-2.7,2.9-4.3.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9-1.2,1.2-2.2,2.7-2.9,4.3-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.7,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/><path class="st0" d="M504.9,619.5v-35.2h5v30.8h19.1v4.4h-24.1Z"/><path class="st0" d="M557.2,619.9c-4.6,0-8.3-1.3-10.9-4-2.6-2.6-4-6.5-4-11.6v-20h5v19.8c0,3.9.9,6.8,2.6,8.6s4.2,2.7,7.3,2.7,5.6-.9,7.4-2.7c1.7-1.8,2.6-4.7,2.6-8.6v-19.8h4.9v20c0,5.1-1.3,9-3.9,11.6-2.6,2.6-6.3,4-10.9,4Z"/><path class="st0" d="M598.9,619.5v-30.8h-12.1v-4.4h29.1v4.4h-12.1v30.8h-5Z"/><path class="st0" d="M630.7,619.5v-35.2h5v35.2h-5Z"/><path class="st0" d="M671.5,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7-.9-2.2-1.4-4.6-1.4-7.1s.5-5,1.4-7.1c.9-2.2,2.2-4.1,3.9-5.7,1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7s1.4,4.6,1.4,7.2-.5,5-1.4,7.2-2.2,4.1-3.9,5.7c-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM671.4,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8s2.2-2.7,2.9-4.3c.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9s-2.2,2.7-2.9,4.3c-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.6,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/><path class="st0" d="M707,619.5v-35.2h4.1l23.3,28.9h-2.2v-28.9h5v35.2h-4.1l-23.3-28.9h2.2v28.9h-5Z"/><path class="st0" d="M767.3,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9s4.2,1.2,6.5,1.2,3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9-1.8-1.3-3.1-1.8c-1.3-.5-2.6-.8-4.1-1.2s-3-.7-4.5-1.2c-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8s-1.2-2.7-1.2-4.6.5-3.5,1.4-5,2.4-2.7,4.4-3.7c2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7,1.3.7,2.3,1.6,3,2.8.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/></g>
+            </svg>
+        </a>
+        <h1>Pension death benefits and inheritance tax from April 2027</h1>
+    </header>
+
+    <main class="content-wrapper">
+        <div class="coming-soon-box">
+            <span class="badge">Coming Soon</span>
+            <h2>This article is being prepared</h2>
+            <p>We are currently developing detailed technical guidance on how defined contribution pension funds and death benefits will be brought within the inheritance tax calculation from April 2027.</p>
+            <p>Topics will include administration challenges for personal representatives, timing considerations, and planning strategies for those with significant pension wealth.</p>
+            <a href="/technical/post-2026-2027-planning-landscape/" class="related-link">Read the Overview</a>
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <p>&copy; 2026 IHT Solutions. All rights reserved.</p>
+        <p><a href="/">Home</a> | <a href="/technical/">Technical Resources</a> | <a href="/privacy-policy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        (function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const menuPanel = document.getElementById('menuPanel');
+            const menuOverlay = document.getElementById('menuOverlay');
+            function toggleMenu() { const isOpen = menuPanel.classList.contains('open'); menuPanel.classList.toggle('open'); menuOverlay.classList.toggle('open'); hamburgerBtn.classList.toggle('active'); hamburgerBtn.setAttribute('aria-expanded', !isOpen); }
+            function closeMenu() { menuPanel.classList.remove('open'); menuOverlay.classList.remove('open'); hamburgerBtn.classList.remove('active'); hamburgerBtn.setAttribute('aria-expanded', 'false'); }
+            hamburgerBtn.addEventListener('click', toggleMenu);
+            menuOverlay.addEventListener('click', closeMenu);
+            document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && menuPanel.classList.contains('open')) { closeMenu(); } });
+        })();
+    </script>
+</body>
+</html>
