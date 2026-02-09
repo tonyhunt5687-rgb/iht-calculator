@@ -601,7 +601,19 @@
                         <span id="personalAssetsValue">£0</span>
                     </div>
                     <div class="breakdown-item">
-                        <span>IHT-Free Allowance</span>
+                        <span>Nil Rate Band</span>
+                        <span id="nrbDisplay">£0</span>
+                    </div>
+                    <div class="breakdown-item" id="rnrbRow">
+                        <span>Residence Nil Rate Band</span>
+                        <span id="rnrbDisplay">£0</span>
+                    </div>
+                    <div class="breakdown-item" id="rnrbTaperRow" style="display: none;">
+                        <span style="color: #c0392b; font-size: 0.9em;">↳ RNRB reduced (estate over £2m)</span>
+                        <span id="rnrbReductionDisplay" style="color: #c0392b; font-size: 0.9em;">-£0</span>
+                    </div>
+                    <div class="breakdown-item subtotal">
+                        <span>Total IHT-Free Allowance</span>
                         <span id="allowance">£0</span>
                     </div>
                     <div class="breakdown-item">
@@ -743,15 +755,45 @@
             document.getElementById('companyDisplay').textContent = formatGBP(companyValue);
         }
         
+        // RNRB Taper function - reduces RNRB by £1 for every £2 over £2m
+        function calculateRNRBAfterTaper(estateValue, baseRNRB) {
+            const TAPER_THRESHOLD = 2000000;
+
+            // If estate is at or below threshold, no taper applies
+            if (estateValue <= TAPER_THRESHOLD) {
+                return { finalRNRB: baseRNRB, reduction: 0, taperApplied: false };
+            }
+
+            // Calculate excess over threshold
+            const excess = estateValue - TAPER_THRESHOLD;
+
+            // Taper is £1 reduction for every £2 over threshold
+            const rnrbReduction = excess / 2;
+
+            // Apply reduction (cannot go below zero)
+            const finalRNRB = Math.max(0, Math.round(baseRNRB - rnrbReduction));
+
+            return {
+                finalRNRB: finalRNRB,
+                reduction: Math.min(baseRNRB, Math.round(rnrbReduction)),
+                taperApplied: rnrbReduction > 0
+            };
+        }
+
         function calculateIHT() {
             // Personal allowances
             const nilRateBand = married ? 650000 : 325000;
-            const residenceNilRateBand = married ? 350000 : 175000;
-            
+            const baseRNRB = married ? 350000 : 175000;
+
             // BPR allowances (new rules)
             const bprAllowance = married ? 5000000 : 2500000;
-            
+
             const hasProperty = propertyValue > 0;
+
+            // Apply RNRB taper for estates over £2m
+            const rnrbResult = hasProperty ? calculateRNRBAfterTaper(totalEstate, baseRNRB) : { finalRNRB: 0, reduction: 0, taperApplied: false };
+            const residenceNilRateBand = rnrbResult.finalRNRB;
+
             const personalAllowance = hasProperty ? nilRateBand + residenceNilRateBand : nilRateBand;
             
             // Calculate personal assets (excluding company)
@@ -776,6 +818,11 @@
             return {
                 totalEstate,
                 personalAssets,
+                nilRateBand,
+                baseRNRB: hasProperty ? baseRNRB : 0,
+                rnrbAfterTaper: residenceNilRateBand,
+                rnrbReduction: rnrbResult.reduction,
+                rnrbTaperApplied: rnrbResult.taperApplied,
                 personalAllowance,
                 personalTaxable,
                 personalIHT,
@@ -795,6 +842,22 @@
         
         // Personal assets section
         document.getElementById('personalAssetsValue').textContent = formatGBP(results.personalAssets);
+        document.getElementById('nrbDisplay').textContent = formatGBP(results.nilRateBand);
+        document.getElementById('rnrbDisplay').textContent = formatGBP(results.rnrbAfterTaper);
+
+        // Show/hide RNRB row based on whether property exists
+        if (results.baseRNRB === 0) {
+            document.getElementById('rnrbRow').style.display = 'none';
+        }
+
+        // Show taper row if RNRB was reduced
+        if (results.rnrbTaperApplied && results.rnrbReduction > 0) {
+            document.getElementById('rnrbTaperRow').style.display = 'flex';
+            document.getElementById('rnrbReductionDisplay').textContent = '-' + formatGBP(results.rnrbReduction);
+            // Update RNRB display to show base amount with a note
+            document.getElementById('rnrbDisplay').textContent = formatGBP(results.rnrbAfterTaper);
+        }
+
         document.getElementById('allowance').textContent = formatGBP(results.personalAllowance);
         document.getElementById('taxableAmount').textContent = formatGBP(results.personalTaxable);
         document.getElementById('personalIHT').textContent = formatGBP(results.personalIHT);
