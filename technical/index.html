@@ -66,6 +66,40 @@
     }
     </script>
 
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do online IHT calculators correctly apply the RNRB taper?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Many online IHT calculators, including some from well-known providers, do not correctly apply the Residence Nil Rate Band taper for estates over £2 million. The IHT Solutions calculator has been specifically designed to account for this complexity. For example, an estate valued at £2.5 million would see its RNRB reduced from £350,000 to £100,000 - a difference that could understate the IHT liability by £100,000 if not calculated correctly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What inheritance tax changes take effect in 2026 and 2027?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From April 2026, Business Property Relief and Agricultural Property Relief will be capped at £2.5 million with 100% relief, with reduced relief above that level. From April 2027, most unused pension funds and death benefits will be included in estate values for inheritance tax purposes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I get inheritance tax insurance costs online without speaking to an adviser?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. IHT Solutions provides instant indicative cost estimates for Whole of Life and Relevant Life insurance online, without requiring you to speak with an adviser first. This allows you to understand whether life insurance is a viable option for your estate planning before committing time to formal underwriting."
+          }
+        }
+      ]
+    }
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -264,6 +298,33 @@
             color: #555;
             margin-bottom: 40px;
             line-height: 1.8;
+        }
+
+        /* Accuracy Callout */
+        .accuracy-callout {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4eef3 100%);
+            border: 2px solid #0b7a8f;
+            border-radius: 16px;
+            padding: 30px 35px;
+            margin-bottom: 40px;
+        }
+
+        .accuracy-callout h3 {
+            font-family: 'Gloock', serif;
+            color: #1a5566;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .accuracy-callout p {
+            color: #333;
+            font-size: 0.95em;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .accuracy-callout p:last-child {
+            margin-bottom: 0;
         }
 
         /* Resource Cards */
@@ -505,7 +566,13 @@
     </header>
 
     <main class="content-wrapper">
-        <p class="intro-text">These technical resources provide detailed background on the UK Government's announced inheritance tax changes affecting estates from April 2026 and April 2027. Written by Stephen Hunt ACII, a Chartered Insurance Risk Manager with over 45 years' experience, these pages are designed as professional reference material for advisers, business owners, and families navigating complex estate planning decisions.</p>
+        <p class="intro-text">These technical resources provide detailed background on the UK Government's announced inheritance tax changes affecting estates from April 2026 and April 2027. Written by Stephen Hunt ACII, a Chartered Insurance Risk Manager with over 45 years' experience, these pages are designed as professional reference material for advisers, business owners, and families navigating complex estate planning decisions. For official guidance, see <a href="https://www.gov.uk/inheritance-tax" target="_blank" rel="noopener">GOV.UK Inheritance Tax</a>.</p>
+
+        <section class="accuracy-callout">
+            <h3>Why Accurate Calculation Matters</h3>
+            <p>Many online IHT calculators, including some from well-known providers, do not correctly apply the Residence Nil Rate Band taper for estates over £2 million. Our calculator has been specifically designed to account for this complexity, providing accurate results for high-value estates where the taper significantly affects the IHT liability.</p>
+            <p>For example, an estate valued at £2.5 million would see its RNRB reduced from £350,000 to £100,000 - a difference that could understate the IHT liability by £100,000 if not calculated correctly.</p>
+        </section>
 
         <div class="resource-grid">
             <a href="/technical/post-2026-2027-planning-landscape/" class="resource-card">
