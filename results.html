@@ -612,6 +612,9 @@
                         <span style="color: #c0392b; font-size: 0.9em;">↳ RNRB reduced (estate over £2m)</span>
                         <span id="rnrbReductionDisplay" style="color: #c0392b; font-size: 0.9em;">-£0</span>
                     </div>
+                    <p id="rnrbDoubleTaperNote" style="display: none; font-size: 14px; color: #666; margin: 8px 0 12px 0; font-style: italic; padding-left: 20px;">
+                        Note: £350k over £2m can eliminate the entire couple's RNRB due to the double-impact taper on sequential deaths. <a href="/technical/post-2026-2027-planning-landscape/#rnrb-double-taper" style="color: #0b7a8f;">Learn more</a>
+                    </p>
                     <div class="breakdown-item subtotal">
                         <span>Total IHT-Free Allowance</span>
                         <span id="allowance">£0</span>
@@ -857,6 +860,11 @@
             document.getElementById('rnrbReductionDisplay').textContent = '-' + formatGBP(results.rnrbReduction);
             // Update RNRB display to show base amount with a note
             document.getElementById('rnrbDisplay').textContent = formatGBP(results.rnrbAfterTaper);
+
+            // Show double-impact taper note for couples only
+            if (married) {
+                document.getElementById('rnrbDoubleTaperNote').style.display = 'block';
+            }
         }
 
         document.getElementById('allowance').textContent = formatGBP(results.personalAllowance);
