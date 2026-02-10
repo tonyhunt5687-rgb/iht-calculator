@@ -4,71 +4,684 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BPR and APR Changes for Family Businesses and Farms | IHT Solutions</title>
-    <meta name="description" content="Analysis of how the April 2026 Business Property Relief and Agricultural Property Relief changes affect family businesses and farming estates.">
+    <title>BPR and APR Changes for Family Businesses and Farms from April 2026 | IHT Solutions</title>
+    <meta name="description" content="From April 2026, BPR and APR are capped at £2.5m with 100% relief. Excess qualifying assets get 50% relief, creating a 20% effective IHT rate. Understand the impact on family businesses and farms.">
     <link rel="canonical" href="https://ihtsolutions.co.uk/technical/bpr-apr-changes-family-businesses-farms/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="BPR and APR Changes for Family Businesses and Farms from April 2026">
+    <meta property="og:description" content="From April 2026, BPR and APR are capped at £2.5m. Understand the impact on family businesses and farms.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ihtsolutions.co.uk/technical/bpr-apr-changes-family-businesses-farms/">
+    <meta property="og:site_name" content="IHT Solutions">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How the April 2026 BPR and APR Changes Affect Family Businesses and Farms",
+      "description": "From 6 April 2026, Business Property Relief and Agricultural Property Relief will be capped at £2.5 million per person with 100% relief. Any excess receives only 50% relief, creating a 20% effective IHT rate on the excess.",
+      "author": {
+        "@type": "Person",
+        "name": "Stephen Hunt",
+        "jobTitle": "Chartered Insurance Risk Manager",
+        "honorificSuffix": "ACII",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Society of Trust and Estate Practitioners",
+          "url": "https://www.step.org"
+        },
+        "alumniOf": {
+          "@type": "Organization",
+          "name": "Chartered Insurance Institute"
+        },
+        "url": "https://www.linkedin.com/in/steve-hunt-chartered-iht"
+      },
+      "datePublished": "2026-02-10",
+      "dateModified": "2026-02-10",
+      "publisher": {
+        "@type": "Organization",
+        "name": "IHT Solutions",
+        "url": "https://ihtsolutions.co.uk",
+        "description": "Instant indicative inheritance tax insurance cost estimates"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Business Property Relief",
+          "sameAs": "https://www.gov.uk/business-relief-inheritance-tax"
+        },
+        {
+          "@type": "Thing",
+          "name": "Agricultural Property Relief",
+          "sameAs": "https://www.gov.uk/agricultural-relief-inheritance-tax"
+        }
+      ],
+      "keywords": "BPR, APR, Business Property Relief, Agricultural Property Relief, inheritance tax 2026, family business IHT, farm inheritance tax, £2.5 million cap"
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What changes to Business Property Relief and Agricultural Property Relief from April 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From 6 April 2026, Business Property Relief (BPR) and Agricultural Property Relief (APR) will be capped at £2.5 million per person with 100% relief. Any qualifying value above £2.5 million receives only 50% relief, creating an effective 20% inheritance tax rate on the excess. For couples, the unused allowance transfers to a surviving spouse, giving a potential £5 million combined 100% relief."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much inheritance tax will a £4 million family business pay after April 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A £4 million family business qualifying for BPR would pay £300,000 in inheritance tax after April 2026. The first £2.5 million receives 100% relief (£0 tax). The remaining £1.5 million receives 50% relief, leaving £750,000 taxable at 40%, resulting in £300,000 tax. Before April 2026, the same business would have paid £0."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can married couples combine their BPR and APR allowances?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The unused £2.5 million BPR/APR allowance transfers to a surviving spouse or civil partner, giving couples a potential £5 million combined 100% relief. For a jointly owned business or farm worth £6 million, the excess above the £5 million combined allowance would be £1 million, with 50% relief leaving £500,000 taxable at 40%, resulting in £200,000 inheritance tax."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do the BPR and APR changes matter for family farms?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most family farms are asset rich but cash poor. The new rules mean inheritance tax may be due even where reliefs still apply, tax is triggered without a sale or break up of the farm, borrowing or forced asset sales may be required, and successors inherit a tax problem, not just an asset. Rising land values mean more farming families will be caught over time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the effective inheritance tax rate on business assets over £2.5 million?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The effective inheritance tax rate on qualifying business or agricultural assets above the £2.5 million threshold is 20%. This is because the excess receives 50% Business Property Relief or Agricultural Property Relief, leaving half the value taxable at the standard 40% rate (50% x 40% = 20%)."
+          }
+        }
+      ]
+    }
+    </script>
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: #333; min-height: 100vh; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        .hamburger-menu { position: fixed; top: 20px; right: 20px; z-index: 1000; }
-        .hamburger-btn { background: rgba(31, 78, 120, 0.9); border: none; padding: 12px; border-radius: 8px; cursor: pointer; display: flex; flex-direction: column; gap: 5px; transition: background 0.3s ease; }
-        .hamburger-btn:hover { background: rgba(31, 78, 120, 1); }
-        .hamburger-btn span { display: block; width: 24px; height: 2px; background: rgba(255, 255, 255, 0.8); border-radius: 2px; transition: all 0.3s ease; }
-        .hamburger-btn:hover span { background: white; }
-        .hamburger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger-btn.active span:nth-child(2) { opacity: 0; }
-        .hamburger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-        .menu-panel { position: fixed; top: 0; right: -320px; width: 320px; height: 100vh; background: linear-gradient(135deg, #1a5566 0%, #0d3d4d 100%); box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3); transition: right 0.3s ease; padding: 80px 30px 30px; overflow-y: auto; }
-        .menu-panel.open { right: 0; }
-        .menu-panel h3 { font-family: 'Gloock', serif; color: white; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
-        .menu-panel ul { list-style: none; padding: 0; margin: 0; }
-        .menu-panel li { margin-bottom: 8px; }
-        .menu-panel a { display: block; color: rgba(255, 255, 255, 0.85); text-decoration: none; padding: 12px 15px; border-radius: 6px; font-size: 0.95em; line-height: 1.4; transition: all 0.2s ease; }
-        .menu-panel a:hover { background: rgba(255, 255, 255, 0.1); color: white; }
-        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 999; }
-        .menu-overlay.open { opacity: 1; visibility: visible; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
 
-        .page-header { background: linear-gradient(135deg, #1F4E78 0%, #0d3d4d 100%); color: white; padding: 60px 20px 50px; text-align: center; }
-        .page-header .logo { width: 200px; height: auto; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2)); margin-bottom: 20px; }
-        .page-header h1 { font-family: 'Gloock', serif; font-size: 2em; letter-spacing: 1px; margin-bottom: 15px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.3; }
-        .breadcrumbs { font-size: 0.9em; color: rgba(255, 255, 255, 0.8); margin-bottom: 20px; }
-        .breadcrumbs a { color: rgba(255, 255, 255, 0.9); text-decoration: none; }
-        .breadcrumbs a:hover { text-decoration: underline; }
-        .breadcrumbs span { margin: 0 8px; }
+        /* Hamburger Menu Styles */
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
 
-        .content-wrapper { max-width: 800px; margin: 0 auto; padding: 50px 20px 60px; }
+        .hamburger-btn {
+            background: rgba(31, 78, 120, 0.9);
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            transition: background 0.3s ease;
+        }
 
-        .coming-soon-box { background: white; border-radius: 16px; padding: 50px 40px; text-align: center; border: 1px solid #e9ecef; }
-        .coming-soon-box h2 { font-family: 'Gloock', serif; color: #1F4E78; font-size: 1.8em; margin-bottom: 20px; }
-        .coming-soon-box p { color: #666; font-size: 1.1em; margin-bottom: 15px; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .coming-soon-box .badge { display: inline-block; background: #f0f7ff; color: #1F4E78; font-size: 0.85em; font-weight: 600; padding: 8px 20px; border-radius: 20px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; }
+        .hamburger-btn:hover {
+            background: rgba(31, 78, 120, 1);
+        }
 
-        .related-link { display: inline-block; background: linear-gradient(135deg, #2fcae9 0%, #2baccf 100%); color: white; text-decoration: none; padding: 14px 30px; border-radius: 10px; font-weight: 600; margin-top: 20px; transition: all 0.3s ease; }
-        .related-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(47, 202, 233, 0.4); }
+        .hamburger-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
 
-        .page-footer { background: #1F4E78; color: white; padding: 40px 20px; text-align: center; }
-        .page-footer p { color: rgba(255, 255, 255, 0.8); font-size: 0.9em; margin-bottom: 10px; }
-        .page-footer a { color: #2fcae9; text-decoration: none; }
-        .page-footer a:hover { text-decoration: underline; }
+        .hamburger-btn:hover span {
+            background: white;
+        }
 
+        .hamburger-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 320px;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a5566 0%, #0d3d4d 100%);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+            transition: right 0.3s ease;
+            padding: 80px 30px 30px;
+            overflow-y: auto;
+        }
+
+        .menu-panel.open {
+            right: 0;
+        }
+
+        .menu-panel h3 {
+            font-family: 'Gloock', serif;
+            color: white;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .menu-panel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-panel li {
+            margin-bottom: 8px;
+        }
+
+        .menu-panel a {
+            display: block;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            line-height: 1.4;
+            transition: all 0.2s ease;
+        }
+
+        .menu-panel a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #1F4E78 0%, #0d3d4d 100%);
+            color: white;
+            padding: 60px 20px 50px;
+            text-align: center;
+        }
+
+        .page-header .logo-link {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .page-header .logo {
+            width: 200px;
+            height: auto;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+        }
+
+        .page-header h1 {
+            font-family: 'Gloock', serif;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.3;
+        }
+
+        .breadcrumbs {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+
+        .breadcrumbs a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+        }
+
+        /* Author Header */
+        .author-header {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 700px;
+            margin: 20px auto 0;
+            text-align: left;
+        }
+
+        .author-header h4 {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 8px;
+        }
+
+        .author-header .author-name {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 4px;
+        }
+
+        .author-header .author-credentials {
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
+        }
+
+        .author-header a {
+            color: #2fcae9;
+            text-decoration: none;
+        }
+
+        .author-header a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px 60px;
+        }
+
+        article h2 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.6em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        article h3 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.3em;
+            margin: 30px 0 15px;
+        }
+
+        article p {
+            margin-bottom: 18px;
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        article a {
+            color: #1F4E78;
+            text-decoration: underline;
+        }
+
+        article a:hover {
+            color: #0d3d4d;
+        }
+
+        article ul, article ol {
+            margin: 15px 0 20px 25px;
+        }
+
+        article li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0fa 100%);
+            border-left: 4px solid #1F4E78;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .important-note {
+            background: #fff9e6;
+            border: 1px solid #f0d968;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+
+        .important-note h4 {
+            color: #856404;
+            font-size: 1em;
+            margin-bottom: 12px;
+        }
+
+        .important-note p {
+            color: #856404;
+            margin-bottom: 0;
+        }
+
+        .warning-box {
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+
+        .warning-box h4 {
+            color: #991b1b;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+        }
+
+        .warning-box p, .warning-box li {
+            color: #991b1b;
+        }
+
+        /* Key Facts Table */
+        .key-facts {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .key-facts h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .key-facts ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .key-facts li {
+            margin-bottom: 12px;
+        }
+
+        .key-facts strong {
+            color: #1F4E78;
+        }
+
+        /* Worked Example Box */
+        .worked-example {
+            background: white;
+            border: 2px solid #1F4E78;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .worked-example h4 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.15em;
+            margin-bottom: 15px;
+        }
+
+        .worked-example .result {
+            background: #fef2f2;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #991b1b;
+        }
+
+        .worked-example .result.neutral {
+            background: #f0f7ff;
+            color: #1F4E78;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1F4E78 0%, #0d3d4d 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            color: white;
+        }
+
+        .cta-section h3 {
+            font-family: 'Gloock', serif;
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            font-size: 1.05em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #2fcae9 0%, #2baccf 100%);
+            color: white;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(47, 202, 233, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(47, 202, 233, 0.5);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Author Bio Footer */
+        .author-bio {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 16px;
+            padding: 35px;
+            margin: 50px 0 30px;
+        }
+
+        .author-bio h3 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        .author-bio p {
+            font-size: 1em;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* Related Resources */
+        .related-resources {
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border: 1px solid #e9ecef;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .related-resources h3 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .related-resources ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .related-resources li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .related-resources li::before {
+            content: "\2192";
+            position: absolute;
+            left: 0;
+            color: #1F4E78;
+        }
+
+        .related-resources a {
+            color: #1F4E78;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .related-resources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .page-footer {
+            background: #1F4E78;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .page-footer p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .page-footer a {
+            color: #2fcae9;
+            text-decoration: none;
+        }
+
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .page-header h1 { font-size: 1.6em; }
-            .coming-soon-box { padding: 35px 25px; }
+            .page-header h1 {
+                font-size: 1.7em;
+            }
+
+            .content-wrapper {
+                padding: 30px 15px 40px;
+            }
+
+            article h2 {
+                font-size: 1.4em;
+            }
+
+            .cta-section {
+                padding: 30px 20px;
+            }
+
+            .author-header {
+                padding: 15px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .hamburger-menu,
+            .menu-overlay,
+            .cta-section,
+            .page-footer {
+                display: none;
+            }
+
+            .page-header {
+                background: #1F4E78;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            body {
+                background: white;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Hamburger Menu -->
     <div class="menu-overlay" id="menuOverlay"></div>
     <nav class="hamburger-menu" aria-label="Technical resources menu">
         <button class="hamburger-btn" id="hamburgerBtn" aria-expanded="false" aria-controls="menuPanel" title="Technical Resources">
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
         <div class="menu-panel" id="menuPanel" role="menu">
             <h3>Technical Resources</h3>
@@ -85,28 +698,192 @@
 
     <header class="page-header">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a><span>&rsaquo;</span><a href="/technical/">Technical</a><span>&rsaquo;</span><span>BPR and APR Changes</span>
+            <a href="/">Home</a>
+            <span>&rsaquo;</span>
+            <a href="/technical/">Technical</a>
+            <span>&rsaquo;</span>
+            <span>BPR and APR Changes</span>
         </nav>
-        <a href="/">
+
+        <a href="/" class="logo-link">
             <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1190.6 841.9">
                 <style>.st0{fill:#fff;}</style>
                 <path class="st0" d="M444.3,555.3v-2.7h.3c6.4,0,11.6-2,15.5-5.9,3.9-3.9,5.9-9.1,5.9-15.5v-93.1c0-6.8-1.4-12-4.1-15.8-2.8-3.7-8.6-5.6-17.5-5.6v-2.7h27.3c9.1,0,16-1,20.9-2.9,4.5-2,7.6-4.4,9.4-7.2h2.7v127.4c0,6.4,2,11.6,5.9,15.5,3.9,3.9,9.1,5.9,15.5,5.9h.3v2.7h-81.8Z"/>
                 <path class="st0" d="M521.8,555.3v-2.7c6.2,0,10.9-1.3,14-3.9,3.1-2.6,5.2-5.9,6.2-10,1-4.1,1.5-8.6,1.5-13.4v-146.6c0-6.4-2-11.6-6-15.5-4-3.9-9.2-5.9-15.6-5.9v-2.7h27.3c9.1,0,16-1,20.9-2.9,4.5-2,7.6-4.4,9.4-7.2h2.7v101.6c4.8-9.4,11.9-16.9,21.1-22.3,9.3-5.4,19.2-8.2,29.7-8.2s15.5,1.9,21.4,5.8c5.9,3.8,10.4,9,13.5,15.4,3.1,6.4,4.7,13.6,4.7,21.7v72.7c0,6.6,2,11.8,6,15.6,4,3.8,9.2,5.7,15.6,5.7v2.7h-81.6v-2.7c6.4,0,11.6-1.9,15.6-5.7,4-3.8,6-9,6-15.6v-75.4c0-3.9-.5-8.2-1.6-12.7-1.1-4.5-3-8.5-5.8-11.8-2.8-3.3-6.6-4.9-11.6-4.9s-9.1,1.4-13.2,4.1c-4.2,2.8-8,6.2-11.4,10.3-3.4,4.1-6.2,8.2-8.6,12.3v72.2c0,4.8.5,9.3,1.5,13.4,1,4.1,3,7.4,6.2,10,3.1,2.6,7.8,3.9,14,3.9v2.7h-81.8Z"/>
                 <path class="st0" d="M736.6,559.1c-9.3,0-16.8-2.9-22.7-8.8-5.9-5.9-8.8-13.5-8.8-23v-103h-22.7v-3.5c12.3-.9,23.3-4.8,33-11.8,9.7-7,17.7-16.3,23.9-28.1h4.3v38.5h35.6l-2.7,4.8h-32.9v97.1c0,14.3,4.8,21.4,14.4,21.4s6.9-1,11.1-2.9c4.2-2,8.2-4.5,11.9-7.8v2.7c-5.9,7.5-12.8,13.4-20.9,17.8-8,4.4-15.9,6.6-23.5,6.6Z"/>
-                <g><path class="st0" d="M423.1,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9,2.1.8,4.2,1.2,6.5,1.2s3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9c-.8-.7-1.8-1.3-3.1-1.8s-2.6-.8-4.1-1.2c-1.5-.3-3-.7-4.5-1.2-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8-.8-1.2-1.2-2.7-1.2-4.6s.5-3.5,1.4-5c1-1.5,2.4-2.7,4.4-3.7,2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7s2.3,1.6,3,2.8c.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/><path class="st0" d="M469.3,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7s-1.4-4.6-1.4-7.1.5-5,1.4-7.1,2.2-4.1,3.9-5.7c1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7.9,2.2,1.4,4.6,1.4,7.2s-.5,5-1.4,7.2c-.9,2.2-2.2,4.1-3.9,5.7-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM469.3,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8,1.2-1.2,2.2-2.7,2.9-4.3.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9-1.2,1.2-2.2,2.7-2.9,4.3-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.7,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/><path class="st0" d="M504.9,619.5v-35.2h5v30.8h19.1v4.4h-24.1Z"/><path class="st0" d="M557.2,619.9c-4.6,0-8.3-1.3-10.9-4-2.6-2.6-4-6.5-4-11.6v-20h5v19.8c0,3.9.9,6.8,2.6,8.6s4.2,2.7,7.3,2.7,5.6-.9,7.4-2.7c1.7-1.8,2.6-4.7,2.6-8.6v-19.8h4.9v20c0,5.1-1.3,9-3.9,11.6-2.6,2.6-6.3,4-10.9,4Z"/><path class="st0" d="M598.9,619.5v-30.8h-12.1v-4.4h29.1v4.4h-12.1v30.8h-5Z"/><path class="st0" d="M630.7,619.5v-35.2h5v35.2h-5Z"/><path class="st0" d="M671.5,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7-.9-2.2-1.4-4.6-1.4-7.1s.5-5,1.4-7.1c.9-2.2,2.2-4.1,3.9-5.7,1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7s1.4,4.6,1.4,7.2-.5,5-1.4,7.2-2.2,4.1-3.9,5.7c-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM671.4,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8s2.2-2.7,2.9-4.3c.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9s-2.2,2.7-2.9,4.3c-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.6,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/><path class="st0" d="M707,619.5v-35.2h4.1l23.3,28.9h-2.2v-28.9h5v35.2h-4.1l-23.3-28.9h2.2v28.9h-5Z"/><path class="st0" d="M767.3,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9s4.2,1.2,6.5,1.2,3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9-1.8-1.3-3.1-1.8c-1.3-.5-2.6-.8-4.1-1.2s-3-.7-4.5-1.2c-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8s-1.2-2.7-1.2-4.6.5-3.5,1.4-5,2.4-2.7,4.4-3.7c2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7,1.3.7,2.3,1.6,3,2.8.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/></g>
+                <g>
+                    <path class="st0" d="M514.5,332.1c35.6,13.3,74.6-12.8,74.5-51.1.2-37.6-38.6-63.7-73.3-49.3-21.6,8.5-35.9,32.5-32.4,55.5,1.4,8.4,5.1,16.7,10,23.8,3.5,5,7.6,9.5,11.1,14.6,5.7,8,8.2,18,7.9,27.7-2,44.8-58.4,62.1-85,26-25.6-36,8.4-84.2,50.7-70.4.3.1.5.5.4.8-.1.3-.4.5-.7.4-11.7-2.9-24.3-.8-34.1,5.5-20.4,12.7-26.4,41.2-11.9,60.6,23.6,31.7,73.4,16.4,74.9-23.1.2-8.6-1.9-17.2-7-24.1-3.4-5-7.6-9.5-11.1-14.5-5.5-7.9-9.5-16.8-11-26.4-3.9-25.9,12.1-52.4,36.3-61.9,38.6-15.7,81.3,13.1,81,54.7.2,33.1-29.5,60.5-62.5,57-6.2-.6-12.3-2.2-17.9-4.8-.7-.3-.2-1.4.5-1.1h0Z"/>
+                    <path class="st0" d="M498.4,352.6c.9,26.2-27.3,43.1-50.2,30.9-23.2-12.3-24.8-45.3-2.6-59.5,5.7-3.5,12.4-5.4,19.1-5.1.8,0,.8,1.1,0,1.2-1.6.2-3.2.2-4.8.6-25.1,4.6-35.3,35.6-17.2,53.8,13.8,13.9,37.2,11.7,48.4-4.3,3.7-5.1,5.7-11.3,6-17.7,0-.8,1.2-.8,1.2,0h0Z"/>
+                    <path class="st0" d="M465.1,376.6c-25.5.8-33.6-32.8-11.6-44.8,15.9-8.5,35.8,3.4,34.8,21.7,0,.8-1.2.8-1.2,0-.5-8.7-6.3-16.4-14-19.3-9.7-3.9-21.3.4-26.1,9.6-6.3,11.3-.3,26.2,11.9,30.4,2,.7,4.1,1.1,6.3,1.3.8,0,.7,1.2,0,1.2h0Z"/>
+                    <path class="st0" d="M494.8,280.8c-.9-38.8,45.4-57.8,72.8-30.8,22.9,23.1,13,62.7-18.5,71.4-4,1.1-8.2,1.5-12.3,1.4-.8,0-.8-1.2,0-1.2,3.9-.2,7.9-1,11.7-2.2,27.9-9.5,36.8-45,15.9-66.1-17.4-17.4-46.6-14.6-60.7,5.4-3.4,4.8-5.8,10.4-6.8,16.2-.5,2-.5,4-.8,6,0,.7-1.2.7-1.2,0h0Z"/>
+                    <path class="st0" d="M514.9,261.2c10-11.5,28.5-12.7,40.2-3.1,12.3,9.5,15.1,28.2,6.1,41-10.5,15.6-33.8,17.8-46.4,3.6-.5-.6.3-1.4.9-.9,12.5,11.2,32.7,9.1,41.8-5.1,12.7-19.9-4.2-45-27.3-41.4-5.4.8-10.4,3.3-14.5,6.8-.6.5-1.4-.3-.9-.9h0Z"/>
+                </g>
+                <g>
+                    <path class="st0" d="M423.1,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9,2.1.8,4.2,1.2,6.5,1.2s3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9c-.8-.7-1.8-1.3-3.1-1.8s-2.6-.8-4.1-1.2c-1.5-.3-3-.7-4.5-1.2-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8-.8-1.2-1.2-2.7-1.2-4.6s.5-3.5,1.4-5c1-1.5,2.4-2.7,4.4-3.7,2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7s2.3,1.6,3,2.8c.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/>
+                    <path class="st0" d="M469.3,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7s-1.4-4.6-1.4-7.1.5-5,1.4-7.1,2.2-4.1,3.9-5.7c1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7.9,2.2,1.4,4.6,1.4,7.2s-.5,5-1.4,7.2c-.9,2.2-2.2,4.1-3.9,5.7-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM469.3,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8,1.2-1.2,2.2-2.7,2.9-4.3.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9-1.2,1.2-2.2,2.7-2.9,4.3-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.7,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/>
+                    <path class="st0" d="M504.9,619.5v-35.2h5v30.8h19.1v4.4h-24.1Z"/>
+                    <path class="st0" d="M557.2,619.9c-4.6,0-8.3-1.3-10.9-4-2.6-2.6-4-6.5-4-11.6v-20h5v19.8c0,3.9.9,6.8,2.6,8.6s4.2,2.7,7.3,2.7,5.6-.9,7.4-2.7c1.7-1.8,2.6-4.7,2.6-8.6v-19.8h4.9v20c0,5.1-1.3,9-3.9,11.6-2.6,2.6-6.3,4-10.9,4Z"/>
+                    <path class="st0" d="M598.9,619.5v-30.8h-12.1v-4.4h29.1v4.4h-12.1v30.8h-5Z"/>
+                    <path class="st0" d="M630.7,619.5v-35.2h5v35.2h-5Z"/>
+                    <path class="st0" d="M671.5,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7-.9-2.2-1.4-4.6-1.4-7.1s.5-5,1.4-7.1c.9-2.2,2.2-4.1,3.9-5.7,1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7s1.4,4.6,1.4,7.2-.5,5-1.4,7.2-2.2,4.1-3.9,5.7c-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM671.4,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8s2.2-2.7,2.9-4.3c.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9s-2.2,2.7-2.9,4.3c-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.6,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/>
+                    <path class="st0" d="M707,619.5v-35.2h4.1l23.3,28.9h-2.2v-28.9h5v35.2h-4.1l-23.3-28.9h2.2v28.9h-5Z"/>
+                    <path class="st0" d="M767.3,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9s4.2,1.2,6.5,1.2,3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9-1.8-1.3-3.1-1.8c-1.3-.5-2.6-.8-4.1-1.2s-3-.7-4.5-1.2c-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8s-1.2-2.7-1.2-4.6.5-3.5,1.4-5,2.4-2.7,4.4-3.7c2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7,1.3.7,2.3,1.6,3,2.8.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/>
+                </g>
             </svg>
         </a>
+
         <h1>How the April 2026 BPR and APR changes affect family businesses and farms</h1>
+
+        <div class="author-header">
+            <h4>Written By</h4>
+            <p class="author-name">Stephen Hunt ACII</p>
+            <p class="author-credentials">
+                Chartered Insurance Risk Manager<br>
+                Affiliate Member of STEP (Society of Trust and Estate Practitioners)<br>
+                45+ years' experience in pensions, life assurance and estate planning
+            </p>
+            <p style="margin-top: 10px;">
+                <a href="https://www.linkedin.com/in/steve-hunt-chartered-iht" target="_blank" rel="noopener">LinkedIn Profile</a> |
+                <a href="https://www.vouchedfor.co.uk/financial-advisor-ifa/grantham/stephen-hunt" target="_blank" rel="noopener">VouchedFor Reviews</a>
+            </p>
+        </div>
     </header>
 
     <main class="content-wrapper">
-        <div class="coming-soon-box">
-            <span class="badge">Coming Soon</span>
-            <h2>This article is being prepared</h2>
-            <p>We are currently developing detailed technical guidance on how the new &pound;2.5 million relief cap for Business Property Relief and Agricultural Property Relief will affect succession planning for trading businesses and agricultural estates.</p>
-            <p>In the meantime, you can read our overview of the post-2026 and post-2027 planning landscape for context on these changes.</p>
-            <a href="/technical/post-2026-2027-planning-landscape/" class="related-link">Read the Overview</a>
-        </div>
+        <article>
+            <div class="highlight-box">
+                <p><strong>Direct answer:</strong> From 6 April 2026, Business Property Relief (BPR) and Agricultural Property Relief (APR) will no longer provide unlimited 100 percent inheritance tax relief. Full relief will be capped at £2.5 million per person, with any excess qualifying assets receiving only 50 percent relief, creating an effective 20 percent inheritance tax charge on the excess.</p>
+                <p>For couples, the allowance is transferable, giving a potential £5 million combined 100 percent relief, but estates above this level will face inheritance tax for the first time, often without sufficient cash to pay it.</p>
+            </div>
+
+            <div class="key-facts">
+                <h3>Key Facts at a Glance</h3>
+                <ul>
+                    <li><strong>Effective date:</strong> 6 April 2026</li>
+                    <li><strong>Reliefs affected:</strong> Business Property Relief (BPR) and Agricultural Property Relief (APR)</li>
+                    <li><strong>Full relief limit:</strong> £2.5 million per person</li>
+                    <li><strong>Relief above limit:</strong> 50 percent</li>
+                    <li><strong>Effective tax rate on excess:</strong> 20 percent</li>
+                    <li><strong>Transferable between spouses or civil partners:</strong> Yes</li>
+                    <li><strong>Instalments available:</strong> Up to 10 years for qualifying business and agricultural assets</li>
+                    <li><strong>Applies alongside:</strong> Nil Rate Band and Residence Nil Rate Band</li>
+                </ul>
+            </div>
+
+            <h2>What Are BPR and APR?</h2>
+            <p>Business Property Relief (BPR) and Agricultural Property Relief (APR) are inheritance tax reliefs designed to allow trading businesses and farms to pass between generations without being broken up to pay tax.</p>
+            <p><strong>APR</strong> applies to qualifying agricultural land, buildings, and in some cases farmhouses. <strong>BPR</strong> applies to qualifying trading businesses, including unlisted shares and interests in partnerships.</p>
+            <p>Until now, both reliefs could apply at 100 percent with no upper limit.</p>
+
+            <h2>What Changes from 6 April 2026</h2>
+            <p>From 6 April 2026:</p>
+            <ul>
+                <li>The first £2.5 million of combined qualifying BPR and APR assets per individual continues to receive <strong>100 percent relief</strong></li>
+                <li>Any qualifying value above £2.5 million receives <strong>50 percent relief</strong></li>
+                <li>The unused allowance transfers to a surviving spouse or civil partner</li>
+                <li>This creates a maximum <strong>£5 million combined 100 percent relief for couples</strong></li>
+                <li>The excess above this level is exposed to inheritance tax at an effective 20 percent</li>
+            </ul>
+            <p>This is a structural change. It introduces a permanent inheritance tax exposure for larger family businesses and farms, even where assets remain fully trading.</p>
+
+            <div class="worked-example">
+                <h4>Worked Example: Single Business Owner</h4>
+                <p>A family business is valued at £4 million and qualifies fully for BPR.</p>
+                <ul>
+                    <li>£2.5 million at 100% relief = £0 tax</li>
+                    <li>£1.5 million at 50% relief leaves £750,000 taxable</li>
+                    <li>Inheritance tax at 40% on £750,000 = <strong>£300,000</strong></li>
+                </ul>
+                <div class="result">
+                    Before April 2026: £0 tax | After April 2026: <strong>£300,000 tax</strong>
+                </div>
+            </div>
+
+            <div class="worked-example">
+                <h4>Worked Example: Married Couple or Civil Partners</h4>
+                <p>A jointly owned trading business and farm is valued at £6 million, fully qualifying for BPR and APR.</p>
+                <ul>
+                    <li>Combined 100% relief available: £5 million</li>
+                    <li>Excess above allowance: £1 million</li>
+                    <li>50% relief applied to excess leaves £500,000 taxable</li>
+                    <li>Inheritance tax at 40% = <strong>£200,000</strong></li>
+                </ul>
+                <div class="result neutral">
+                    The assets remain in the family, but <strong>liquidity is required</strong> to pay the tax.
+                </div>
+            </div>
+
+            <h2>Why This Matters for Family Businesses and Farms</h2>
+            <p>Most family businesses and farms are asset rich but cash poor. The new rules mean:</p>
+            <ul>
+                <li>Inheritance tax may be due even where reliefs still apply</li>
+                <li>Tax is triggered without a sale or break up of the business</li>
+                <li>Borrowing or forced asset sales may be required</li>
+                <li>Successors inherit a tax problem, not just an asset</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>Rising Values Mean More Families Affected Over Time</h4>
+                <p>Rising land and business values mean more families will be caught over time, even if they are below the thresholds today. The £2.5 million cap is not index-linked.</p>
+            </div>
+
+            <h2>Interaction with Other Inheritance Tax Rules</h2>
+            <p>The BPR and APR caps sit alongside existing inheritance tax rules, including:</p>
+            <ul>
+                <li>Nil Rate Band of £325,000 per person</li>
+                <li>Residence Nil Rate Band, subject to taper above £2 million estates</li>
+                <li>Instalment payment rules for qualifying assets (up to 10 years)</li>
+                <li>Anti-forestalling provisions for certain lifetime transfers</li>
+            </ul>
+            <p>For many estates, the combined effect is a larger and earlier inheritance tax exposure than expected.</p>
+
+            <div class="cta-section">
+                <h3>Model Your Business or Farm IHT Exposure</h3>
+                <p>See how the BPR and APR caps affect your inheritance tax liability. Get instant indicative insurance cost estimates.</p>
+                <a href="/" class="cta-button">Use the IHT Calculator</a>
+            </div>
+
+            <h2>Planning Implications</h2>
+            <p>The change shifts planning away from pure relief reliance and toward liquidity planning.</p>
+            <p>Common responses include:</p>
+            <ul>
+                <li>Reviewing ownership structures and qualifying status</li>
+                <li>Lifetime gifting strategies, where appropriate</li>
+                <li>Trust planning in specialist cases</li>
+                <li>Creating guaranteed liquidity to meet inheritance tax without asset sales</li>
+            </ul>
+            <p>For many families, insurance-based liquidity planning becomes the most practical solution because it provides certainty without disrupting ownership or control.</p>
+
+            <h2>Why Accurate Modelling Matters</h2>
+            <p>Many online calculators and commentary still assume unlimited BPR and APR. That assumption will be wrong from April 2026.</p>
+            <p>Accurate modelling allows families to:</p>
+            <ul>
+                <li>Quantify the real exposure</li>
+                <li>Decide whether planning is proportionate</li>
+                <li>Assess whether liquidity solutions are affordable before underwriting</li>
+            </ul>
+
+            <div class="important-note">
+                <h4>Important Disclaimer</h4>
+                <p>This page provides technical background and general information only. It does not constitute personal tax, legal, or financial advice. Inheritance tax outcomes depend on individual circumstances, asset structure, relief qualification, and future legislation. Always consult a specialist tax accountant or solicitor for personalised advice — we focus solely on the protection element, working alongside your trusted advisers.</p>
+            </div>
+
+            <aside class="author-bio">
+                <h3>About the Author</h3>
+                <p>Stephen Hunt is a Chartered Insurance Risk Manager (ACII) and Affiliate Member of the Society of Trust and Estate Practitioners (STEP). With over 45 years' experience spanning defined benefit schemes, retail and corporate pensions, life assurance and estate planning, Stephen specializes in helping families, business owners and high net worth individuals understand and plan for the practical consequences of inheritance tax exposure.</p>
+                <p>His current work focuses on coordinating life insurance solutions with accountants and solicitors to create practical liquidity strategies for complex estates, particularly in light of the post-2026 and post-2027 UK Budget reforms.</p>
+            </aside>
+
+            <nav class="related-resources">
+                <h3>Related Technical Resources</h3>
+                <ul>
+                    <li><a href="/technical/post-2026-2027-planning-landscape/">Technical background on the post-2026 and post-2027 planning landscape</a></li>
+                    <li><a href="/technical/pension-death-benefits-iht-2027/">Pension death benefits and inheritance tax from April 2027</a></li>
+                    <li><a href="/technical/whole-of-life-vs-relevant-life/">Creating liquidity for IHT: Whole of Life vs Relevant Life insurance</a></li>
+                    <li><a href="/technical/coordinating-iht-planning-professionals/">Coordinating inheritance tax planning with accountants and solicitors</a></li>
+                </ul>
+            </nav>
+        </article>
     </main>
 
     <footer class="page-footer">
@@ -114,17 +891,48 @@
         <p><a href="/">Home</a> | <a href="/technical/">Technical Resources</a> | <a href="/privacy-policy.html">Privacy Policy</a></p>
     </footer>
 
+    <!-- Hamburger Menu Script -->
     <script>
         (function() {
             const hamburgerBtn = document.getElementById('hamburgerBtn');
             const menuPanel = document.getElementById('menuPanel');
             const menuOverlay = document.getElementById('menuOverlay');
-            function toggleMenu() { const isOpen = menuPanel.classList.contains('open'); menuPanel.classList.toggle('open'); menuOverlay.classList.toggle('open'); hamburgerBtn.classList.toggle('active'); hamburgerBtn.setAttribute('aria-expanded', !isOpen); }
-            function closeMenu() { menuPanel.classList.remove('open'); menuOverlay.classList.remove('open'); hamburgerBtn.classList.remove('active'); hamburgerBtn.setAttribute('aria-expanded', 'false'); }
+
+            function toggleMenu() {
+                const isOpen = menuPanel.classList.contains('open');
+                menuPanel.classList.toggle('open');
+                menuOverlay.classList.toggle('open');
+                hamburgerBtn.classList.toggle('active');
+                hamburgerBtn.setAttribute('aria-expanded', !isOpen);
+            }
+
+            function closeMenu() {
+                menuPanel.classList.remove('open');
+                menuOverlay.classList.remove('open');
+                hamburgerBtn.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+            }
+
             hamburgerBtn.addEventListener('click', toggleMenu);
             menuOverlay.addEventListener('click', closeMenu);
-            document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && menuPanel.classList.contains('open')) { closeMenu(); } });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && menuPanel.classList.contains('open')) {
+                    closeMenu();
+                }
+            });
+
+            menuPanel.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab' && !e.shiftKey) {
+                    const links = menuPanel.querySelectorAll('a');
+                    if (document.activeElement === links[links.length - 1]) {
+                        e.preventDefault();
+                        hamburgerBtn.focus();
+                    }
+                }
+            });
         })();
     </script>
 </body>
+
 </html>
