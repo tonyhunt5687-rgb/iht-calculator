@@ -5,70 +5,747 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coordinating IHT Planning with Accountants and Solicitors | IHT Solutions</title>
-    <meta name="description" content="Practical guidance on professional coordination in complex estates, covering responsibilities, information sharing, and arrangements when multiple advisers are involved.">
+    <meta name="description" content="Effective inheritance tax planning requires coordination between accountants, solicitors, and financial advisers. Learn why isolated advice fails and how to structure joined-up planning.">
     <link rel="canonical" href="https://ihtsolutions.co.uk/technical/coordinating-iht-planning-professionals/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Coordinating IHT Planning with Accountants and Solicitors">
+    <meta property="og:description" content="Why inheritance tax planning fails without professional coordination, and a practical framework for joined-up advice.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ihtsolutions.co.uk/technical/coordinating-iht-planning-professionals/">
+    <meta property="og:site_name" content="IHT Solutions">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Coordinating Inheritance Tax Planning with Accountants and Solicitors",
+      "description": "Practical guidance on professional coordination in complex estates, covering the distinct roles of accountants, solicitors, and financial advisers, common coordination failures, and a framework for joined-up planning",
+      "author": {
+        "@type": "Person",
+        "name": "Stephen Hunt",
+        "jobTitle": "Chartered Insurance Risk Manager",
+        "honorificSuffix": "ACII",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Society of Trust and Estate Practitioners",
+          "url": "https://www.step.org"
+        },
+        "alumniOf": {
+          "@type": "Organization",
+          "name": "Chartered Insurance Institute"
+        },
+        "url": "https://www.linkedin.com/in/steve-hunt-chartered-iht"
+      },
+      "datePublished": "2026-02-10",
+      "dateModified": "2026-02-10",
+      "publisher": {
+        "@type": "Organization",
+        "name": "IHT Solutions",
+        "url": "https://ihtsolutions.co.uk",
+        "description": "Instant indicative inheritance tax insurance cost estimates"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Inheritance Tax Planning",
+          "sameAs": "https://www.gov.uk/inheritance-tax"
+        },
+        {
+          "@type": "Thing",
+          "name": "Estate Planning",
+          "sameAs": "https://www.step.org"
+        }
+      ],
+      "keywords": "inheritance tax planning, coordinated advice, accountant solicitor adviser, estate planning professionals, IHT coordination, professional coordination"
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does inheritance tax planning require coordination between professionals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inheritance tax planning spans business valuations, legal structuring, pension planning, and liquidity provision. Accountants understand asset values and tax exposure but don't draft wills. Solicitors draft wills but rely on valuations. Financial advisers arrange insurance but cannot give legal or tax advice. Without coordination, families often pay more inheritance tax than necessary due to wills based on outdated valuations, insurance set at wrong levels, or reliefs assumed but not available."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What role does an accountant play in inheritance tax planning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Accountants are responsible for valuing businesses, farms, and other assets; assessing eligibility for Business Property Relief and Agricultural Property Relief; modelling inheritance tax exposure under current legislation; advising on lifetime gifting and business restructuring; and monitoring changes that affect tax exposure. Their valuations drive almost every inheritance tax decision."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What role does a solicitor play in inheritance tax planning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Solicitors are responsible for drafting and updating wills; creating trusts and powers of attorney; structuring asset flows on death; advising on probate and estate administration; and ensuring legal enforceability and clarity. Without accurate financial input from accountants, legal documents can become ineffective."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do financial advisers support inheritance tax planning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Financial advisers specialising in protection and estate planning quantify liquidity needs for inheritance tax, arrange Whole of Life and Relevant Life policies, write policies into appropriate trust structures, integrate pension strategy with estate planning, and review cover as values and legislation change. Insurance does not reduce inheritance tax - it ensures it can be paid without destroying the estate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are common inheritance tax planning coordination failures?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Common failures include: wills drafted using outdated business valuations that miss IHT exposure; life insurance set at levels that don't reflect business growth or legislative changes; pension inheritance tax being ignored (critical from April 2027); multiple trust structures created at different times that conflict; and business succession planned without liquidity for the non-relievable estate. These failures result in unexpected IHT liabilities."
+          }
+        }
+      ]
+    }
+    </script>
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: #333; min-height: 100vh; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        .hamburger-menu { position: fixed; top: 20px; right: 20px; z-index: 1000; }
-        .hamburger-btn { background: rgba(31, 78, 120, 0.9); border: none; padding: 12px; border-radius: 8px; cursor: pointer; display: flex; flex-direction: column; gap: 5px; transition: background 0.3s ease; }
-        .hamburger-btn:hover { background: rgba(31, 78, 120, 1); }
-        .hamburger-btn span { display: block; width: 24px; height: 2px; background: rgba(255, 255, 255, 0.8); border-radius: 2px; transition: all 0.3s ease; }
-        .hamburger-btn:hover span { background: white; }
-        .hamburger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger-btn.active span:nth-child(2) { opacity: 0; }
-        .hamburger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-        .menu-panel { position: fixed; top: 0; right: -320px; width: 320px; height: 100vh; background: linear-gradient(135deg, #1a5566 0%, #0d3d4d 100%); box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3); transition: right 0.3s ease; padding: 80px 30px 30px; overflow-y: auto; }
-        .menu-panel.open { right: 0; }
-        .menu-panel h3 { font-family: 'Gloock', serif; color: white; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
-        .menu-panel ul { list-style: none; padding: 0; margin: 0; }
-        .menu-panel li { margin-bottom: 8px; }
-        .menu-panel a { display: block; color: rgba(255, 255, 255, 0.85); text-decoration: none; padding: 12px 15px; border-radius: 6px; font-size: 0.95em; line-height: 1.4; transition: all 0.2s ease; }
-        .menu-panel a:hover { background: rgba(255, 255, 255, 0.1); color: white; }
-        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 999; }
-        .menu-overlay.open { opacity: 1; visibility: visible; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
 
-        .page-header { background: linear-gradient(135deg, #1F4E78 0%, #0d3d4d 100%); color: white; padding: 60px 20px 50px; text-align: center; }
-        .page-header .logo { width: 200px; height: auto; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2)); margin-bottom: 20px; }
-        .page-header h1 { font-family: 'Gloock', serif; font-size: 2em; letter-spacing: 1px; margin-bottom: 15px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.3; }
-        .breadcrumbs { font-size: 0.9em; color: rgba(255, 255, 255, 0.8); margin-bottom: 20px; }
-        .breadcrumbs a { color: rgba(255, 255, 255, 0.9); text-decoration: none; }
-        .breadcrumbs a:hover { text-decoration: underline; }
-        .breadcrumbs span { margin: 0 8px; }
+        /* Hamburger Menu Styles */
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
 
-        .content-wrapper { max-width: 800px; margin: 0 auto; padding: 50px 20px 60px; }
+        .hamburger-btn {
+            background: rgba(31, 78, 120, 0.9);
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            transition: background 0.3s ease;
+        }
 
-        .coming-soon-box { background: white; border-radius: 16px; padding: 50px 40px; text-align: center; border: 1px solid #e9ecef; }
-        .coming-soon-box h2 { font-family: 'Gloock', serif; color: #1F4E78; font-size: 1.8em; margin-bottom: 20px; }
-        .coming-soon-box p { color: #666; font-size: 1.1em; margin-bottom: 15px; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .coming-soon-box .badge { display: inline-block; background: #f0f7ff; color: #1F4E78; font-size: 0.85em; font-weight: 600; padding: 8px 20px; border-radius: 20px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; }
+        .hamburger-btn:hover {
+            background: rgba(31, 78, 120, 1);
+        }
 
-        .related-link { display: inline-block; background: linear-gradient(135deg, #2fcae9 0%, #2baccf 100%); color: white; text-decoration: none; padding: 14px 30px; border-radius: 10px; font-weight: 600; margin-top: 20px; transition: all 0.3s ease; }
-        .related-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(47, 202, 233, 0.4); }
+        .hamburger-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
 
-        .page-footer { background: #1F4E78; color: white; padding: 40px 20px; text-align: center; }
-        .page-footer p { color: rgba(255, 255, 255, 0.8); font-size: 0.9em; margin-bottom: 10px; }
-        .page-footer a { color: #2fcae9; text-decoration: none; }
-        .page-footer a:hover { text-decoration: underline; }
+        .hamburger-btn:hover span {
+            background: white;
+        }
 
+        .hamburger-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 320px;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a5566 0%, #0d3d4d 100%);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+            transition: right 0.3s ease;
+            padding: 80px 30px 30px;
+            overflow-y: auto;
+        }
+
+        .menu-panel.open {
+            right: 0;
+        }
+
+        .menu-panel h3 {
+            font-family: 'Gloock', serif;
+            color: white;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .menu-panel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-panel li {
+            margin-bottom: 8px;
+        }
+
+        .menu-panel a {
+            display: block;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            line-height: 1.4;
+            transition: all 0.2s ease;
+        }
+
+        .menu-panel a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #1F4E78 0%, #0d3d4d 100%);
+            color: white;
+            padding: 60px 20px 50px;
+            text-align: center;
+        }
+
+        .page-header .logo-link {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .page-header .logo {
+            width: 200px;
+            height: auto;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+        }
+
+        .page-header h1 {
+            font-family: 'Gloock', serif;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.3;
+        }
+
+        .breadcrumbs {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+
+        .breadcrumbs a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+        }
+
+        /* Author Header */
+        .author-header {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 700px;
+            margin: 20px auto 0;
+            text-align: left;
+        }
+
+        .author-header h4 {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 8px;
+        }
+
+        .author-header .author-name {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 4px;
+        }
+
+        .author-header .author-credentials {
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
+        }
+
+        .author-header a {
+            color: #2fcae9;
+            text-decoration: none;
+        }
+
+        .author-header a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px 60px;
+        }
+
+        article h2 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.6em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        article h3 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.3em;
+            margin: 30px 0 15px;
+        }
+
+        article p {
+            margin-bottom: 18px;
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        article a {
+            color: #1F4E78;
+            text-decoration: underline;
+        }
+
+        article a:hover {
+            color: #0d3d4d;
+        }
+
+        article ul, article ol {
+            margin: 15px 0 20px 25px;
+        }
+
+        article li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0fa 100%);
+            border-left: 4px solid #1F4E78;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .important-note {
+            background: #fff9e6;
+            border: 1px solid #f0d968;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+
+        .important-note h4 {
+            color: #856404;
+            font-size: 1em;
+            margin-bottom: 12px;
+        }
+
+        .important-note p {
+            color: #856404;
+            margin-bottom: 0;
+        }
+
+        .warning-box {
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+
+        .warning-box h4 {
+            color: #991b1b;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+        }
+
+        .warning-box p, .warning-box li {
+            color: #991b1b;
+        }
+
+        /* Role Cards */
+        .role-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .role-card h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #1F4E78;
+            font-size: 1.2em;
+        }
+
+        .role-card ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .role-card li {
+            margin-bottom: 8px;
+        }
+
+        .role-card .role-summary {
+            font-style: italic;
+            color: #666;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
+            margin-bottom: 0;
+        }
+
+        /* Failure Example */
+        .failure-example {
+            background: #fff;
+            border-left: 4px solid #dc2626;
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .failure-example h4 {
+            color: #991b1b;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .failure-example p {
+            margin-bottom: 10px;
+        }
+
+        .failure-example .solution {
+            background: #f0fdf4;
+            border-radius: 6px;
+            padding: 12px 15px;
+            margin-top: 15px;
+        }
+
+        .failure-example .solution strong {
+            color: #166534;
+        }
+
+        .failure-example .solution p {
+            color: #166534;
+            margin-bottom: 0;
+        }
+
+        /* Framework Stages */
+        .framework-stage {
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            position: relative;
+            padding-left: 70px;
+        }
+
+        .framework-stage .stage-number {
+            position: absolute;
+            left: 20px;
+            top: 25px;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #1F4E78 0%, #0d3d4d 100%);
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .framework-stage h4 {
+            color: #1F4E78;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+        }
+
+        .framework-stage p {
+            margin-bottom: 0;
+        }
+
+        .framework-stage ul {
+            margin: 10px 0 0;
+            padding-left: 20px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1F4E78 0%, #0d3d4d 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            color: white;
+        }
+
+        .cta-section h3 {
+            font-family: 'Gloock', serif;
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            font-size: 1.05em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #2fcae9 0%, #2baccf 100%);
+            color: white;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(47, 202, 233, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(47, 202, 233, 0.5);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Author Bio Footer */
+        .author-bio {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 16px;
+            padding: 35px;
+            margin: 50px 0 30px;
+        }
+
+        .author-bio h3 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        .author-bio p {
+            font-size: 1em;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* Related Resources */
+        .related-resources {
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border: 1px solid #e9ecef;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .related-resources h3 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .related-resources ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .related-resources li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .related-resources li::before {
+            content: "\2192";
+            position: absolute;
+            left: 0;
+            color: #1F4E78;
+        }
+
+        .related-resources a {
+            color: #1F4E78;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .related-resources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .page-footer {
+            background: #1F4E78;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .page-footer p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .page-footer a {
+            color: #2fcae9;
+            text-decoration: none;
+        }
+
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .page-header h1 { font-size: 1.6em; }
-            .coming-soon-box { padding: 35px 25px; }
+            .page-header h1 {
+                font-size: 1.7em;
+            }
+
+            .content-wrapper {
+                padding: 30px 15px 40px;
+            }
+
+            article h2 {
+                font-size: 1.4em;
+            }
+
+            .cta-section {
+                padding: 30px 20px;
+            }
+
+            .author-header {
+                padding: 15px;
+            }
+
+            .framework-stage {
+                padding-left: 25px;
+                padding-top: 60px;
+            }
+
+            .framework-stage .stage-number {
+                left: 25px;
+                top: 15px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .hamburger-menu,
+            .menu-overlay,
+            .cta-section,
+            .page-footer {
+                display: none;
+            }
+
+            .page-header {
+                background: #1F4E78;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            body {
+                background: white;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Hamburger Menu -->
     <div class="menu-overlay" id="menuOverlay"></div>
     <nav class="hamburger-menu" aria-label="Technical resources menu">
         <button class="hamburger-btn" id="hamburgerBtn" aria-expanded="false" aria-controls="menuPanel" title="Technical Resources">
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
         <div class="menu-panel" id="menuPanel" role="menu">
             <h3>Technical Resources</h3>
@@ -85,28 +762,255 @@
 
     <header class="page-header">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a><span>&rsaquo;</span><a href="/technical/">Technical</a><span>&rsaquo;</span><span>Professional Coordination</span>
+            <a href="/">Home</a>
+            <span>&rsaquo;</span>
+            <a href="/technical/">Technical</a>
+            <span>&rsaquo;</span>
+            <span>Professional Coordination</span>
         </nav>
-        <a href="/">
+
+        <a href="/" class="logo-link">
             <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1190.6 841.9">
                 <style>.st0{fill:#fff;}</style>
                 <path class="st0" d="M444.3,555.3v-2.7h.3c6.4,0,11.6-2,15.5-5.9,3.9-3.9,5.9-9.1,5.9-15.5v-93.1c0-6.8-1.4-12-4.1-15.8-2.8-3.7-8.6-5.6-17.5-5.6v-2.7h27.3c9.1,0,16-1,20.9-2.9,4.5-2,7.6-4.4,9.4-7.2h2.7v127.4c0,6.4,2,11.6,5.9,15.5,3.9,3.9,9.1,5.9,15.5,5.9h.3v2.7h-81.8Z"/>
                 <path class="st0" d="M521.8,555.3v-2.7c6.2,0,10.9-1.3,14-3.9,3.1-2.6,5.2-5.9,6.2-10,1-4.1,1.5-8.6,1.5-13.4v-146.6c0-6.4-2-11.6-6-15.5-4-3.9-9.2-5.9-15.6-5.9v-2.7h27.3c9.1,0,16-1,20.9-2.9,4.5-2,7.6-4.4,9.4-7.2h2.7v101.6c4.8-9.4,11.9-16.9,21.1-22.3,9.3-5.4,19.2-8.2,29.7-8.2s15.5,1.9,21.4,5.8c5.9,3.8,10.4,9,13.5,15.4,3.1,6.4,4.7,13.6,4.7,21.7v72.7c0,6.6,2,11.8,6,15.6,4,3.8,9.2,5.7,15.6,5.7v2.7h-81.6v-2.7c6.4,0,11.6-1.9,15.6-5.7,4-3.8,6-9,6-15.6v-75.4c0-3.9-.5-8.2-1.6-12.7-1.1-4.5-3-8.5-5.8-11.8-2.8-3.3-6.6-4.9-11.6-4.9s-9.1,1.4-13.2,4.1c-4.2,2.8-8,6.2-11.4,10.3-3.4,4.1-6.2,8.2-8.6,12.3v72.2c0,4.8.5,9.3,1.5,13.4,1,4.1,3,7.4,6.2,10,3.1,2.6,7.8,3.9,14,3.9v2.7h-81.8Z"/>
                 <path class="st0" d="M736.6,559.1c-9.3,0-16.8-2.9-22.7-8.8-5.9-5.9-8.8-13.5-8.8-23v-103h-22.7v-3.5c12.3-.9,23.3-4.8,33-11.8,9.7-7,17.7-16.3,23.9-28.1h4.3v38.5h35.6l-2.7,4.8h-32.9v97.1c0,14.3,4.8,21.4,14.4,21.4s6.9-1,11.1-2.9c4.2-2,8.2-4.5,11.9-7.8v2.7c-5.9,7.5-12.8,13.4-20.9,17.8-8,4.4-15.9,6.6-23.5,6.6Z"/>
-                <g><path class="st0" d="M423.1,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9,2.1.8,4.2,1.2,6.5,1.2s3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9c-.8-.7-1.8-1.3-3.1-1.8s-2.6-.8-4.1-1.2c-1.5-.3-3-.7-4.5-1.2-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8-.8-1.2-1.2-2.7-1.2-4.6s.5-3.5,1.4-5c1-1.5,2.4-2.7,4.4-3.7,2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7s2.3,1.6,3,2.8c.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/><path class="st0" d="M469.3,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7s-1.4-4.6-1.4-7.1.5-5,1.4-7.1,2.2-4.1,3.9-5.7c1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7.9,2.2,1.4,4.6,1.4,7.2s-.5,5-1.4,7.2c-.9,2.2-2.2,4.1-3.9,5.7-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM469.3,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8,1.2-1.2,2.2-2.7,2.9-4.3.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9-1.2,1.2-2.2,2.7-2.9,4.3-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.7,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/><path class="st0" d="M504.9,619.5v-35.2h5v30.8h19.1v4.4h-24.1Z"/><path class="st0" d="M557.2,619.9c-4.6,0-8.3-1.3-10.9-4-2.6-2.6-4-6.5-4-11.6v-20h5v19.8c0,3.9.9,6.8,2.6,8.6s4.2,2.7,7.3,2.7,5.6-.9,7.4-2.7c1.7-1.8,2.6-4.7,2.6-8.6v-19.8h4.9v20c0,5.1-1.3,9-3.9,11.6-2.6,2.6-6.3,4-10.9,4Z"/><path class="st0" d="M598.9,619.5v-30.8h-12.1v-4.4h29.1v4.4h-12.1v30.8h-5Z"/><path class="st0" d="M630.7,619.5v-35.2h5v35.2h-5Z"/><path class="st0" d="M671.5,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7-.9-2.2-1.4-4.6-1.4-7.1s.5-5,1.4-7.1c.9-2.2,2.2-4.1,3.9-5.7,1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7s1.4,4.6,1.4,7.2-.5,5-1.4,7.2-2.2,4.1-3.9,5.7c-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM671.4,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8s2.2-2.7,2.9-4.3c.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9s-2.2,2.7-2.9,4.3c-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.6,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/><path class="st0" d="M707,619.5v-35.2h4.1l23.3,28.9h-2.2v-28.9h5v35.2h-4.1l-23.3-28.9h2.2v28.9h-5Z"/><path class="st0" d="M767.3,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9s4.2,1.2,6.5,1.2,3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9-1.8-1.3-3.1-1.8c-1.3-.5-2.6-.8-4.1-1.2s-3-.7-4.5-1.2c-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8s-1.2-2.7-1.2-4.6.5-3.5,1.4-5,2.4-2.7,4.4-3.7c2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7,1.3.7,2.3,1.6,3,2.8.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/></g>
+                <g>
+                    <path class="st0" d="M514.5,332.1c35.6,13.3,74.6-12.8,74.5-51.1.2-37.6-38.6-63.7-73.3-49.3-21.6,8.5-35.9,32.5-32.4,55.5,1.4,8.4,5.1,16.7,10,23.8,3.5,5,7.6,9.5,11.1,14.6,5.7,8,8.2,18,7.9,27.7-2,44.8-58.4,62.1-85,26-25.6-36,8.4-84.2,50.7-70.4.3.1.5.5.4.8-.1.3-.4.5-.7.4-11.7-2.9-24.3-.8-34.1,5.5-20.4,12.7-26.4,41.2-11.9,60.6,23.6,31.7,73.4,16.4,74.9-23.1.2-8.6-1.9-17.2-7-24.1-3.4-5-7.6-9.5-11.1-14.5-5.5-7.9-9.5-16.8-11-26.4-3.9-25.9,12.1-52.4,36.3-61.9,38.6-15.7,81.3,13.1,81,54.7.2,33.1-29.5,60.5-62.5,57-6.2-.6-12.3-2.2-17.9-4.8-.7-.3-.2-1.4.5-1.1h0Z"/>
+                    <path class="st0" d="M498.4,352.6c.9,26.2-27.3,43.1-50.2,30.9-23.2-12.3-24.8-45.3-2.6-59.5,5.7-3.5,12.4-5.4,19.1-5.1.8,0,.8,1.1,0,1.2-1.6.2-3.2.2-4.8.6-25.1,4.6-35.3,35.6-17.2,53.8,13.8,13.9,37.2,11.7,48.4-4.3,3.7-5.1,5.7-11.3,6-17.7,0-.8,1.2-.8,1.2,0h0Z"/>
+                    <path class="st0" d="M465.1,376.6c-25.5.8-33.6-32.8-11.6-44.8,15.9-8.5,35.8,3.4,34.8,21.7,0,.8-1.2.8-1.2,0-.5-8.7-6.3-16.4-14-19.3-9.7-3.9-21.3.4-26.1,9.6-6.3,11.3-.3,26.2,11.9,30.4,2,.7,4.1,1.1,6.3,1.3.8,0,.7,1.2,0,1.2h0Z"/>
+                    <path class="st0" d="M494.8,280.8c-.9-38.8,45.4-57.8,72.8-30.8,22.9,23.1,13,62.7-18.5,71.4-4,1.1-8.2,1.5-12.3,1.4-.8,0-.8-1.2,0-1.2,3.9-.2,7.9-1,11.7-2.2,27.9-9.5,36.8-45,15.9-66.1-17.4-17.4-46.6-14.6-60.7,5.4-3.4,4.8-5.8,10.4-6.8,16.2-.5,2-.5,4-.8,6,0,.7-1.2.7-1.2,0h0Z"/>
+                    <path class="st0" d="M514.9,261.2c10-11.5,28.5-12.7,40.2-3.1,12.3,9.5,15.1,28.2,6.1,41-10.5,15.6-33.8,17.8-46.4,3.6-.5-.6.3-1.4.9-.9,12.5,11.2,32.7,9.1,41.8-5.1,12.7-19.9-4.2-45-27.3-41.4-5.4.8-10.4,3.3-14.5,6.8-.6.5-1.4-.3-.9-.9h0Z"/>
+                </g>
+                <g>
+                    <path class="st0" d="M423.1,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9,2.1.8,4.2,1.2,6.5,1.2s3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9c-.8-.7-1.8-1.3-3.1-1.8s-2.6-.8-4.1-1.2c-1.5-.3-3-.7-4.5-1.2-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8-.8-1.2-1.2-2.7-1.2-4.6s.5-3.5,1.4-5c1-1.5,2.4-2.7,4.4-3.7,2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7s2.3,1.6,3,2.8c.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/>
+                    <path class="st0" d="M469.3,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7s-1.4-4.6-1.4-7.1.5-5,1.4-7.1,2.2-4.1,3.9-5.7c1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7.9,2.2,1.4,4.6,1.4,7.2s-.5,5-1.4,7.2c-.9,2.2-2.2,4.1-3.9,5.7-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM469.3,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8,1.2-1.2,2.2-2.7,2.9-4.3.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9-1.2,1.2-2.2,2.7-2.9,4.3-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.7,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/>
+                    <path class="st0" d="M504.9,619.5v-35.2h5v30.8h19.1v4.4h-24.1Z"/>
+                    <path class="st0" d="M557.2,619.9c-4.6,0-8.3-1.3-10.9-4-2.6-2.6-4-6.5-4-11.6v-20h5v19.8c0,3.9.9,6.8,2.6,8.6s4.2,2.7,7.3,2.7,5.6-.9,7.4-2.7c1.7-1.8,2.6-4.7,2.6-8.6v-19.8h4.9v20c0,5.1-1.3,9-3.9,11.6-2.6,2.6-6.3,4-10.9,4Z"/>
+                    <path class="st0" d="M598.9,619.5v-30.8h-12.1v-4.4h29.1v4.4h-12.1v30.8h-5Z"/>
+                    <path class="st0" d="M630.7,619.5v-35.2h5v35.2h-5Z"/>
+                    <path class="st0" d="M671.5,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7-.9-2.2-1.4-4.6-1.4-7.1s.5-5,1.4-7.1c.9-2.2,2.2-4.1,3.9-5.7,1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7s1.4,4.6,1.4,7.2-.5,5-1.4,7.2-2.2,4.1-3.9,5.7c-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM671.4,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8s2.2-2.7,2.9-4.3c.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9s-2.2,2.7-2.9,4.3c-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.6,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/>
+                    <path class="st0" d="M707,619.5v-35.2h4.1l23.3,28.9h-2.2v-28.9h5v35.2h-4.1l-23.3-28.9h2.2v28.9h-5Z"/>
+                    <path class="st0" d="M767.3,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9s4.2,1.2,6.5,1.2,3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9-1.8-1.3-3.1-1.8c-1.3-.5-2.6-.8-4.1-1.2s-3-.7-4.5-1.2c-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8s-1.2-2.7-1.2-4.6.5-3.5,1.4-5,2.4-2.7,4.4-3.7c2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7,1.3.7,2.3,1.6,3,2.8.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/>
+                </g>
             </svg>
         </a>
+
         <h1>Coordinating inheritance tax planning with accountants and solicitors</h1>
+
+        <div class="author-header">
+            <h4>Written By</h4>
+            <p class="author-name">Stephen Hunt ACII</p>
+            <p class="author-credentials">
+                Chartered Insurance Risk Manager<br>
+                Affiliate Member of STEP (Society of Trust and Estate Practitioners)<br>
+                45+ years' experience in pensions, life assurance and estate planning
+            </p>
+            <p style="margin-top: 10px;">
+                <a href="https://www.linkedin.com/in/steve-hunt-chartered-iht" target="_blank" rel="noopener">LinkedIn Profile</a> |
+                <a href="https://www.vouchedfor.co.uk/financial-advisor-ifa/grantham/stephen-hunt" target="_blank" rel="noopener">VouchedFor Reviews</a>
+            </p>
+        </div>
     </header>
 
     <main class="content-wrapper">
-        <div class="coming-soon-box">
-            <span class="badge">Coming Soon</span>
-            <h2>This article is being prepared</h2>
-            <p>We are currently developing practical guidance on professional coordination in complex estates where multiple advisers are involved in inheritance tax planning.</p>
-            <p>Topics will include clarity of responsibilities, information sharing protocols, and transparent commercial arrangements when introducing specialist work.</p>
-            <a href="/technical/post-2026-2027-planning-landscape/" class="related-link">Read the Overview</a>
-        </div>
+        <article>
+            <div class="highlight-box">
+                <p><strong>Direct answer:</strong> Effective inheritance tax planning requires structured coordination between accountants, solicitors, and financial advisers. When advice is delivered in isolation, estates frequently suffer higher inheritance tax liabilities, implementation gaps, or conflicting outcomes.</p>
+                <p>With major reforms taking effect from April 2026 and April 2027, coordinated professional planning is now essential rather than optional.</p>
+            </div>
+
+            <h2>Why Professional Coordination Matters Now</h2>
+            <p>Two legislative changes fundamentally alter the inheritance tax landscape:</p>
+            <ul>
+                <li><strong>April 2026</strong> introduces caps on Business Property Relief and Agricultural Property Relief</li>
+                <li><strong>April 2027</strong> brings most pension death benefits within the inheritance tax calculation</li>
+            </ul>
+            <p>These reforms affect business owners, farming families, and anyone with significant pension wealth. In many cases, existing wills, trusts, insurance arrangements, and pension nominations were designed for a world that no longer exists.</p>
+            <p>Inheritance tax now sits across business valuations, legal structuring, pension planning, and liquidity provision. No single professional covers all of these areas.</p>
+
+            <div class="warning-box">
+                <h4>The Cost of Isolated Advice</h4>
+                <p>Without coordination, families routinely pay more inheritance tax than necessary or face avoidable disruption at death. Coordination failure is not theoretical — it is one of the most common causes of unexpected inheritance tax liabilities.</p>
+            </div>
+
+            <h2>Why Inheritance Tax Planning Fails Without Coordination</h2>
+            <p>Inheritance tax planning intersects three separate disciplines, each critical but incomplete on its own.</p>
+            <ul>
+                <li><strong>Accountants</strong> understand asset values, business structures, and tax exposure — but do not draft wills, trusts, or insurance arrangements</li>
+                <li><strong>Solicitors</strong> draft wills and trusts — but often rely on outdated valuations or incomplete information about pensions, insurance, or future tax exposure</li>
+                <li><strong>Financial advisers</strong> arrange insurance and pension strategies — but cannot provide legal advice or determine tax relief eligibility</li>
+            </ul>
+            <p>When these professionals work in isolation, the result is often:</p>
+            <ul>
+                <li>Wills drafted using outdated valuations</li>
+                <li>Insurance cover based on incomplete tax exposure</li>
+                <li>Pension planning that ignores inheritance tax risk</li>
+                <li>Reliefs assumed but not available in practice</li>
+                <li>Executors discovering problems only after death</li>
+            </ul>
+
+            <h2>The Distinct Roles in Coordinated Planning</h2>
+
+            <div class="role-card">
+                <h3>Accountants</h3>
+                <ul>
+                    <li>Valuing businesses, farms, and other assets</li>
+                    <li>Assessing eligibility for Business Property Relief and Agricultural Property Relief</li>
+                    <li>Modelling inheritance tax exposure under current legislation</li>
+                    <li>Advising on lifetime gifting and business restructuring</li>
+                    <li>Monitoring changes that affect tax exposure</li>
+                </ul>
+                <p class="role-summary">Their valuations drive almost every inheritance tax decision.</p>
+            </div>
+
+            <div class="role-card">
+                <h3>Solicitors</h3>
+                <ul>
+                    <li>Drafting and updating wills</li>
+                    <li>Creating trusts and powers of attorney</li>
+                    <li>Structuring asset flows on death</li>
+                    <li>Advising on probate and estate administration</li>
+                    <li>Ensuring legal enforceability and clarity</li>
+                </ul>
+                <p class="role-summary">Without accurate financial input, legal documents can become ineffective.</p>
+            </div>
+
+            <div class="role-card">
+                <h3>Financial Advisers (Protection Specialists)</h3>
+                <ul>
+                    <li>Quantifying liquidity needs for inheritance tax</li>
+                    <li>Arranging Whole of Life and Relevant Life policies</li>
+                    <li>Writing policies into appropriate trust structures</li>
+                    <li>Integrating pension strategy with estate planning</li>
+                    <li>Reviewing cover as values and legislation change</li>
+                </ul>
+                <p class="role-summary">Insurance does not reduce inheritance tax — it ensures it can be paid without destroying the estate.</p>
+            </div>
+
+            <h2>Common Coordination Failures and How to Avoid Them</h2>
+
+            <div class="failure-example">
+                <h4>Outdated Wills Based on Incorrect Values</h4>
+                <p>A will drafted when a business was worth £1.5 million may be wholly inappropriate once the value exceeds the £2.5 million relief cap. Without updated valuations being shared, inheritance tax exposure is missed.</p>
+                <div class="solution">
+                    <p><strong>Solution:</strong> Annual valuation summaries shared between accountant and solicitor.</p>
+                </div>
+            </div>
+
+            <div class="failure-example">
+                <h4>Insurance Cover Set at the Wrong Level</h4>
+                <p>Life insurance arranged years earlier often fails to reflect business growth, pension accumulation, or legislative change.</p>
+                <div class="solution">
+                    <p><strong>Solution:</strong> Adviser recalculates cover using current figures supplied by the accountant and aligned with the will structure confirmed by the solicitor.</p>
+                </div>
+            </div>
+
+            <div class="failure-example">
+                <h4>Pension Inheritance Tax Ignored</h4>
+                <p>Many plans still assume pensions sit outside the estate. From April 2027 this assumption is wrong.</p>
+                <div class="solution">
+                    <p><strong>Solution:</strong> Pension values and nominations reviewed alongside the wider estate plan, not in isolation.</p>
+                </div>
+            </div>
+
+            <div class="failure-example">
+                <h4>Trust Structures Working Against Each Other</h4>
+                <p>Multiple trusts created at different times with different trustees can cause administration problems and disputes.</p>
+                <div class="solution">
+                    <p><strong>Solution:</strong> Solicitor reviews all existing trust arrangements before new ones are created. Adviser aligns insurance trusts with legal structures.</p>
+                </div>
+            </div>
+
+            <div class="failure-example">
+                <h4>Business Succession Without Liquidity Planning</h4>
+                <p>A business may pass tax efficiently, but the rest of the estate still faces inheritance tax with no cash available.</p>
+                <div class="solution">
+                    <p><strong>Solution:</strong> Accountant quantifies total estate exposure. Adviser arranges insurance to fund the non-relievable element.</p>
+                </div>
+            </div>
+
+            <h2>A Practical Framework for Coordinated Planning</h2>
+
+            <div class="framework-stage">
+                <span class="stage-number">1</span>
+                <h4>Shared Fact-Finding</h4>
+                <p>Each professional contributes their core data:</p>
+                <ul>
+                    <li>Accountant provides asset values, relief eligibility, and tax modelling</li>
+                    <li>Solicitor summarises wills, trusts, and family intentions</li>
+                    <li>Adviser confirms pensions, insurance, and liquidity position</li>
+                </ul>
+                <p>The objective is a complete, agreed picture of the estate.</p>
+            </div>
+
+            <div class="framework-stage">
+                <span class="stage-number">2</span>
+                <h4>Coordinated Recommendations</h4>
+                <p>Each professional prepares recommendations within their discipline but shares them before final presentation to the client. This avoids conflicts and duplication.</p>
+            </div>
+
+            <div class="framework-stage">
+                <span class="stage-number">3</span>
+                <h4>Implementation with Clear Responsibility</h4>
+                <p>Each action has a lead professional and defined dependencies. Progress is tracked and confirmed.</p>
+            </div>
+
+            <div class="framework-stage">
+                <span class="stage-number">4</span>
+                <h4>Regular Review</h4>
+                <p>Plans are reviewed at least annually or when circumstances change, including:</p>
+                <ul>
+                    <li>Asset value movements</li>
+                    <li>Legislative changes</li>
+                    <li>Family or health changes</li>
+                    <li>Business restructuring</li>
+                </ul>
+                <p>Inheritance tax planning is not static.</p>
+            </div>
+
+            <div class="cta-section">
+                <h3>Model Your Inheritance Tax Exposure</h3>
+                <p>See how your estate would be affected by the 2026 and 2027 changes. Get instant indicative insurance cost estimates.</p>
+                <a href="/" class="cta-button">Use the IHT Calculator</a>
+            </div>
+
+            <h2>Why Coordination Is Critical After April 2026 and April 2027</h2>
+            <p>The combination of capped business reliefs and pension inheritance tax creates new exposure for many estates that previously faced little or no inheritance tax.</p>
+            <p>Existing plans based on unlimited reliefs and pensions outside the estate are now incomplete.</p>
+            <p>The risk is not just higher tax, but poor outcomes at death when there is no time to correct mistakes.</p>
+
+            <h2>The Role of the Protection Specialist</h2>
+            <p>Insurance does not replace tax or legal advice. It supports it.</p>
+            <p>Whole of Life and Relevant Life policies, when correctly structured and written in trust, provide predictable liquidity at the exact moment inheritance tax is due. This allows executors to settle liabilities without forced asset sales or borrowing.</p>
+            <p>When advisers work collaboratively, insurance becomes a precise funding tool rather than a blunt instrument.</p>
+
+            <h2>Final Observations</h2>
+            <p>Inheritance tax planning fails most often because professionals do not talk to each other. The cost of that failure is paid by families.</p>
+            <p>With significant legislative change now in force or imminent, coordinated professional advice is no longer a refinement. It is essential.</p>
+            <p>Clients benefit most when accountants, solicitors, and financial advisers work as a team — each staying within their professional remit while sharing information openly and regularly.</p>
+
+            <div class="important-note">
+                <h4>Important Disclaimer</h4>
+                <p>This page provides technical background only. It does not constitute financial, legal, or tax advice. Professional advice should always be taken based on individual circumstances. Always consult a specialist tax accountant or solicitor for personalised advice — we focus solely on the protection element, working alongside your trusted advisers.</p>
+            </div>
+
+            <aside class="author-bio">
+                <h3>About the Author</h3>
+                <p>Stephen Hunt is a Chartered Insurance Risk Manager (ACII) and Affiliate Member of the Society of Trust and Estate Practitioners (STEP). With over 45 years' experience spanning defined benefit schemes, retail and corporate pensions, life assurance and estate planning, Stephen specializes in working alongside accountants and solicitors on complex estate planning cases.</p>
+                <p>His focus is on providing certainty and liquidity through correctly structured life assurance as part of a coordinated inheritance tax strategy.</p>
+            </aside>
+
+            <nav class="related-resources">
+                <h3>Related Technical Resources</h3>
+                <ul>
+                    <li><a href="/technical/post-2026-2027-planning-landscape/">Technical background on the post-2026 and post-2027 planning landscape</a></li>
+                    <li><a href="/technical/bpr-apr-changes-family-businesses-farms/">How the April 2026 BPR and APR changes affect family businesses and farms</a></li>
+                    <li><a href="/technical/pension-death-benefits-iht-2027/">Pension death benefits and inheritance tax from April 2027</a></li>
+                    <li><a href="/technical/whole-of-life-vs-relevant-life/">Whole of Life vs Relevant Life insurance for IHT planning</a></li>
+                </ul>
+            </nav>
+        </article>
     </main>
 
     <footer class="page-footer">
@@ -114,17 +1018,48 @@
         <p><a href="/">Home</a> | <a href="/technical/">Technical Resources</a> | <a href="/privacy-policy.html">Privacy Policy</a></p>
     </footer>
 
+    <!-- Hamburger Menu Script -->
     <script>
         (function() {
             const hamburgerBtn = document.getElementById('hamburgerBtn');
             const menuPanel = document.getElementById('menuPanel');
             const menuOverlay = document.getElementById('menuOverlay');
-            function toggleMenu() { const isOpen = menuPanel.classList.contains('open'); menuPanel.classList.toggle('open'); menuOverlay.classList.toggle('open'); hamburgerBtn.classList.toggle('active'); hamburgerBtn.setAttribute('aria-expanded', !isOpen); }
-            function closeMenu() { menuPanel.classList.remove('open'); menuOverlay.classList.remove('open'); hamburgerBtn.classList.remove('active'); hamburgerBtn.setAttribute('aria-expanded', 'false'); }
+
+            function toggleMenu() {
+                const isOpen = menuPanel.classList.contains('open');
+                menuPanel.classList.toggle('open');
+                menuOverlay.classList.toggle('open');
+                hamburgerBtn.classList.toggle('active');
+                hamburgerBtn.setAttribute('aria-expanded', !isOpen);
+            }
+
+            function closeMenu() {
+                menuPanel.classList.remove('open');
+                menuOverlay.classList.remove('open');
+                hamburgerBtn.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+            }
+
             hamburgerBtn.addEventListener('click', toggleMenu);
             menuOverlay.addEventListener('click', closeMenu);
-            document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && menuPanel.classList.contains('open')) { closeMenu(); } });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && menuPanel.classList.contains('open')) {
+                    closeMenu();
+                }
+            });
+
+            menuPanel.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab' && !e.shiftKey) {
+                    const links = menuPanel.querySelectorAll('a');
+                    if (document.activeElement === links[links.length - 1]) {
+                        e.preventDefault();
+                        hamburgerBtn.focus();
+                    }
+                }
+            });
         })();
     </script>
 </body>
+
 </html>

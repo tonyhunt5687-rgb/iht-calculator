@@ -4,71 +4,671 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pension Death Benefits and IHT from April 2027 | IHT Solutions</title>
-    <meta name="description" content="Technical analysis of how defined contribution pension funds and death benefits will be brought within the inheritance tax calculation from April 2027.">
+    <title>Pension Death Benefits and Inheritance Tax from April 2027 | IHT Solutions</title>
+    <meta name="description" content="From April 2027, unused pension funds will be included in estates for IHT. Understand the double tax risk, spousal exemption limitations, and planning strategies.">
     <link rel="canonical" href="https://ihtsolutions.co.uk/technical/pension-death-benefits-iht-2027/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Pension Death Benefits and Inheritance Tax from April 2027">
+    <meta property="og:description" content="From April 2027, unused pension funds will be included in estates for IHT. Understand the double tax risk and planning strategies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ihtsolutions.co.uk/technical/pension-death-benefits-iht-2027/">
+    <meta property="og:site_name" content="IHT Solutions">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Pension Death Benefits and Inheritance Tax from April 2027",
+      "description": "Technical analysis of how defined contribution pension funds and death benefits will be brought within the inheritance tax calculation from April 2027, including the double tax risk and planning strategies",
+      "author": {
+        "@type": "Person",
+        "name": "Stephen Hunt",
+        "jobTitle": "Chartered Insurance Risk Manager",
+        "honorificSuffix": "ACII",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Society of Trust and Estate Practitioners",
+          "url": "https://www.step.org"
+        },
+        "alumniOf": {
+          "@type": "Organization",
+          "name": "Chartered Insurance Institute"
+        },
+        "url": "https://www.linkedin.com/in/steve-hunt-chartered-iht"
+      },
+      "datePublished": "2026-02-10",
+      "dateModified": "2026-02-10",
+      "publisher": {
+        "@type": "Organization",
+        "name": "IHT Solutions",
+        "url": "https://ihtsolutions.co.uk",
+        "description": "Instant indicative inheritance tax insurance cost estimates"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Pension Death Benefits",
+          "sameAs": "https://www.gov.uk/tax-on-pension-death-benefits"
+        },
+        {
+          "@type": "Thing",
+          "name": "Inheritance Tax",
+          "sameAs": "https://www.gov.uk/inheritance-tax"
+        }
+      ],
+      "keywords": "pension death benefits, inheritance tax 2027, pension IHT, double taxation pensions, pension estate planning, defined contribution pensions IHT"
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Will pensions be subject to inheritance tax from April 2027?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. From 6 April 2027, most unused defined contribution pension funds and pension death benefits will be included in the estate for inheritance tax purposes. This ends the long-standing position where pensions typically sat outside the estate for IHT. Personal representatives will be responsible for reporting and paying any inheritance tax due."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can pensions be taxed twice after April 2027?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The most significant consequence is potential double taxation. First, inheritance tax is charged on the pension value at 40%. Then, when beneficiaries withdraw pension funds, they pay income tax at their marginal rate. For a higher rate taxpayer inheriting from someone who died after age 75, the effective combined tax rate can reach 64% or higher."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are pensions left to a spouse exempt from inheritance tax?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pensions left to a surviving spouse or civil partner remain exempt from inheritance tax on the first death due to the spousal exemption. However, the pension then forms part of the survivor's estate and may be subject to IHT on the second death. The tax is deferred, not eliminated."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the 64% pension tax rate explained?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When someone dies after age 75 with a pension that pushes their estate over IHT thresholds, the pension faces 40% IHT first. The remaining 60% then faces income tax when withdrawn by a higher rate taxpayer beneficiary at 40%, leaving just 36% of the original value. Total tax: 64%. For additional rate taxpayers, the effective rate is even higher."
+          }
+        }
+      ]
+    }
+    </script>
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: #333; min-height: 100vh; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        .hamburger-menu { position: fixed; top: 20px; right: 20px; z-index: 1000; }
-        .hamburger-btn { background: rgba(31, 78, 120, 0.9); border: none; padding: 12px; border-radius: 8px; cursor: pointer; display: flex; flex-direction: column; gap: 5px; transition: background 0.3s ease; }
-        .hamburger-btn:hover { background: rgba(31, 78, 120, 1); }
-        .hamburger-btn span { display: block; width: 24px; height: 2px; background: rgba(255, 255, 255, 0.8); border-radius: 2px; transition: all 0.3s ease; }
-        .hamburger-btn:hover span { background: white; }
-        .hamburger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger-btn.active span:nth-child(2) { opacity: 0; }
-        .hamburger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-        .menu-panel { position: fixed; top: 0; right: -320px; width: 320px; height: 100vh; background: linear-gradient(135deg, #1a5566 0%, #0d3d4d 100%); box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3); transition: right 0.3s ease; padding: 80px 30px 30px; overflow-y: auto; }
-        .menu-panel.open { right: 0; }
-        .menu-panel h3 { font-family: 'Gloock', serif; color: white; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
-        .menu-panel ul { list-style: none; padding: 0; margin: 0; }
-        .menu-panel li { margin-bottom: 8px; }
-        .menu-panel a { display: block; color: rgba(255, 255, 255, 0.85); text-decoration: none; padding: 12px 15px; border-radius: 6px; font-size: 0.95em; line-height: 1.4; transition: all 0.2s ease; }
-        .menu-panel a:hover { background: rgba(255, 255, 255, 0.1); color: white; }
-        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 999; }
-        .menu-overlay.open { opacity: 1; visibility: visible; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
 
-        .page-header { background: linear-gradient(135deg, #1F4E78 0%, #0d3d4d 100%); color: white; padding: 60px 20px 50px; text-align: center; }
-        .page-header .logo { width: 200px; height: auto; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2)); margin-bottom: 20px; }
-        .page-header h1 { font-family: 'Gloock', serif; font-size: 2em; letter-spacing: 1px; margin-bottom: 15px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.3; }
-        .breadcrumbs { font-size: 0.9em; color: rgba(255, 255, 255, 0.8); margin-bottom: 20px; }
-        .breadcrumbs a { color: rgba(255, 255, 255, 0.9); text-decoration: none; }
-        .breadcrumbs a:hover { text-decoration: underline; }
-        .breadcrumbs span { margin: 0 8px; }
+        /* Hamburger Menu Styles */
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
 
-        .content-wrapper { max-width: 800px; margin: 0 auto; padding: 50px 20px 60px; }
+        .hamburger-btn {
+            background: rgba(31, 78, 120, 0.9);
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            transition: background 0.3s ease;
+        }
 
-        .coming-soon-box { background: white; border-radius: 16px; padding: 50px 40px; text-align: center; border: 1px solid #e9ecef; }
-        .coming-soon-box h2 { font-family: 'Gloock', serif; color: #1F4E78; font-size: 1.8em; margin-bottom: 20px; }
-        .coming-soon-box p { color: #666; font-size: 1.1em; margin-bottom: 15px; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .coming-soon-box .badge { display: inline-block; background: #f0f7ff; color: #1F4E78; font-size: 0.85em; font-weight: 600; padding: 8px 20px; border-radius: 20px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; }
+        .hamburger-btn:hover {
+            background: rgba(31, 78, 120, 1);
+        }
 
-        .related-link { display: inline-block; background: linear-gradient(135deg, #2fcae9 0%, #2baccf 100%); color: white; text-decoration: none; padding: 14px 30px; border-radius: 10px; font-weight: 600; margin-top: 20px; transition: all 0.3s ease; }
-        .related-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(47, 202, 233, 0.4); }
+        .hamburger-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
 
-        .page-footer { background: #1F4E78; color: white; padding: 40px 20px; text-align: center; }
-        .page-footer p { color: rgba(255, 255, 255, 0.8); font-size: 0.9em; margin-bottom: 10px; }
-        .page-footer a { color: #2fcae9; text-decoration: none; }
-        .page-footer a:hover { text-decoration: underline; }
+        .hamburger-btn:hover span {
+            background: white;
+        }
 
+        .hamburger-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 320px;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a5566 0%, #0d3d4d 100%);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+            transition: right 0.3s ease;
+            padding: 80px 30px 30px;
+            overflow-y: auto;
+        }
+
+        .menu-panel.open {
+            right: 0;
+        }
+
+        .menu-panel h3 {
+            font-family: 'Gloock', serif;
+            color: white;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .menu-panel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-panel li {
+            margin-bottom: 8px;
+        }
+
+        .menu-panel a {
+            display: block;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            line-height: 1.4;
+            transition: all 0.2s ease;
+        }
+
+        .menu-panel a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #1F4E78 0%, #0d3d4d 100%);
+            color: white;
+            padding: 60px 20px 50px;
+            text-align: center;
+        }
+
+        .page-header .logo-link {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .page-header .logo {
+            width: 200px;
+            height: auto;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+        }
+
+        .page-header h1 {
+            font-family: 'Gloock', serif;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.3;
+        }
+
+        .breadcrumbs {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+
+        .breadcrumbs a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+        }
+
+        /* Author Header */
+        .author-header {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 700px;
+            margin: 20px auto 0;
+            text-align: left;
+        }
+
+        .author-header h4 {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 8px;
+        }
+
+        .author-header .author-name {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 4px;
+        }
+
+        .author-header .author-credentials {
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
+        }
+
+        .author-header a {
+            color: #2fcae9;
+            text-decoration: none;
+        }
+
+        .author-header a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px 60px;
+        }
+
+        article h2 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.6em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        article h3 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.3em;
+            margin: 30px 0 15px;
+        }
+
+        article p {
+            margin-bottom: 18px;
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        article a {
+            color: #1F4E78;
+            text-decoration: underline;
+        }
+
+        article a:hover {
+            color: #0d3d4d;
+        }
+
+        article ul, article ol {
+            margin: 15px 0 20px 25px;
+        }
+
+        article li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0fa 100%);
+            border-left: 4px solid #1F4E78;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .important-note {
+            background: #fff9e6;
+            border: 1px solid #f0d968;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+
+        .important-note h4 {
+            color: #856404;
+            font-size: 1em;
+            margin-bottom: 12px;
+        }
+
+        .important-note p {
+            color: #856404;
+            margin-bottom: 0;
+        }
+
+        .warning-box {
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+
+        .warning-box h4 {
+            color: #991b1b;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+        }
+
+        .warning-box p, .warning-box li {
+            color: #991b1b;
+        }
+
+        /* Key Facts Table */
+        .key-facts {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .key-facts h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .key-facts ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .key-facts li {
+            margin-bottom: 12px;
+        }
+
+        .key-facts strong {
+            color: #1F4E78;
+        }
+
+        /* Worked Example Box */
+        .worked-example {
+            background: white;
+            border: 2px solid #1F4E78;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .worked-example h4 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.15em;
+            margin-bottom: 15px;
+        }
+
+        .worked-example .result {
+            background: #fef2f2;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #991b1b;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1F4E78 0%, #0d3d4d 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            color: white;
+        }
+
+        .cta-section h3 {
+            font-family: 'Gloock', serif;
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            font-size: 1.05em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #2fcae9 0%, #2baccf 100%);
+            color: white;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(47, 202, 233, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(47, 202, 233, 0.5);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Author Bio Footer */
+        .author-bio {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 16px;
+            padding: 35px;
+            margin: 50px 0 30px;
+        }
+
+        .author-bio h3 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        .author-bio p {
+            font-size: 1em;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* Related Resources */
+        .related-resources {
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border: 1px solid #e9ecef;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .related-resources h3 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .related-resources ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .related-resources li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .related-resources li::before {
+            content: "\2192";
+            position: absolute;
+            left: 0;
+            color: #1F4E78;
+        }
+
+        .related-resources a {
+            color: #1F4E78;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .related-resources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .page-footer {
+            background: #1F4E78;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .page-footer p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .page-footer a {
+            color: #2fcae9;
+            text-decoration: none;
+        }
+
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .page-header h1 { font-size: 1.6em; }
-            .coming-soon-box { padding: 35px 25px; }
+            .page-header h1 {
+                font-size: 1.7em;
+            }
+
+            .content-wrapper {
+                padding: 30px 15px 40px;
+            }
+
+            article h2 {
+                font-size: 1.4em;
+            }
+
+            .cta-section {
+                padding: 30px 20px;
+            }
+
+            .author-header {
+                padding: 15px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .hamburger-menu,
+            .menu-overlay,
+            .cta-section,
+            .page-footer {
+                display: none;
+            }
+
+            .page-header {
+                background: #1F4E78;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            body {
+                background: white;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Hamburger Menu -->
     <div class="menu-overlay" id="menuOverlay"></div>
     <nav class="hamburger-menu" aria-label="Technical resources menu">
         <button class="hamburger-btn" id="hamburgerBtn" aria-expanded="false" aria-controls="menuPanel" title="Technical Resources">
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
         <div class="menu-panel" id="menuPanel" role="menu">
             <h3>Technical Resources</h3>
@@ -85,28 +685,212 @@
 
     <header class="page-header">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a><span>&rsaquo;</span><a href="/technical/">Technical</a><span>&rsaquo;</span><span>Pension Death Benefits</span>
+            <a href="/">Home</a>
+            <span>&rsaquo;</span>
+            <a href="/technical/">Technical</a>
+            <span>&rsaquo;</span>
+            <span>Pension Death Benefits 2027</span>
         </nav>
-        <a href="/">
+
+        <a href="/" class="logo-link">
             <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1190.6 841.9">
                 <style>.st0{fill:#fff;}</style>
                 <path class="st0" d="M444.3,555.3v-2.7h.3c6.4,0,11.6-2,15.5-5.9,3.9-3.9,5.9-9.1,5.9-15.5v-93.1c0-6.8-1.4-12-4.1-15.8-2.8-3.7-8.6-5.6-17.5-5.6v-2.7h27.3c9.1,0,16-1,20.9-2.9,4.5-2,7.6-4.4,9.4-7.2h2.7v127.4c0,6.4,2,11.6,5.9,15.5,3.9,3.9,9.1,5.9,15.5,5.9h.3v2.7h-81.8Z"/>
                 <path class="st0" d="M521.8,555.3v-2.7c6.2,0,10.9-1.3,14-3.9,3.1-2.6,5.2-5.9,6.2-10,1-4.1,1.5-8.6,1.5-13.4v-146.6c0-6.4-2-11.6-6-15.5-4-3.9-9.2-5.9-15.6-5.9v-2.7h27.3c9.1,0,16-1,20.9-2.9,4.5-2,7.6-4.4,9.4-7.2h2.7v101.6c4.8-9.4,11.9-16.9,21.1-22.3,9.3-5.4,19.2-8.2,29.7-8.2s15.5,1.9,21.4,5.8c5.9,3.8,10.4,9,13.5,15.4,3.1,6.4,4.7,13.6,4.7,21.7v72.7c0,6.6,2,11.8,6,15.6,4,3.8,9.2,5.7,15.6,5.7v2.7h-81.6v-2.7c6.4,0,11.6-1.9,15.6-5.7,4-3.8,6-9,6-15.6v-75.4c0-3.9-.5-8.2-1.6-12.7-1.1-4.5-3-8.5-5.8-11.8-2.8-3.3-6.6-4.9-11.6-4.9s-9.1,1.4-13.2,4.1c-4.2,2.8-8,6.2-11.4,10.3-3.4,4.1-6.2,8.2-8.6,12.3v72.2c0,4.8.5,9.3,1.5,13.4,1,4.1,3,7.4,6.2,10,3.1,2.6,7.8,3.9,14,3.9v2.7h-81.8Z"/>
                 <path class="st0" d="M736.6,559.1c-9.3,0-16.8-2.9-22.7-8.8-5.9-5.9-8.8-13.5-8.8-23v-103h-22.7v-3.5c12.3-.9,23.3-4.8,33-11.8,9.7-7,17.7-16.3,23.9-28.1h4.3v38.5h35.6l-2.7,4.8h-32.9v97.1c0,14.3,4.8,21.4,14.4,21.4s6.9-1,11.1-2.9c4.2-2,8.2-4.5,11.9-7.8v2.7c-5.9,7.5-12.8,13.4-20.9,17.8-8,4.4-15.9,6.6-23.5,6.6Z"/>
-                <g><path class="st0" d="M423.1,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9,2.1.8,4.2,1.2,6.5,1.2s3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9c-.8-.7-1.8-1.3-3.1-1.8s-2.6-.8-4.1-1.2c-1.5-.3-3-.7-4.5-1.2-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8-.8-1.2-1.2-2.7-1.2-4.6s.5-3.5,1.4-5c1-1.5,2.4-2.7,4.4-3.7,2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7s2.3,1.6,3,2.8c.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/><path class="st0" d="M469.3,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7s-1.4-4.6-1.4-7.1.5-5,1.4-7.1,2.2-4.1,3.9-5.7c1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7.9,2.2,1.4,4.6,1.4,7.2s-.5,5-1.4,7.2c-.9,2.2-2.2,4.1-3.9,5.7-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM469.3,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8,1.2-1.2,2.2-2.7,2.9-4.3.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9-1.2,1.2-2.2,2.7-2.9,4.3-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.7,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/><path class="st0" d="M504.9,619.5v-35.2h5v30.8h19.1v4.4h-24.1Z"/><path class="st0" d="M557.2,619.9c-4.6,0-8.3-1.3-10.9-4-2.6-2.6-4-6.5-4-11.6v-20h5v19.8c0,3.9.9,6.8,2.6,8.6s4.2,2.7,7.3,2.7,5.6-.9,7.4-2.7c1.7-1.8,2.6-4.7,2.6-8.6v-19.8h4.9v20c0,5.1-1.3,9-3.9,11.6-2.6,2.6-6.3,4-10.9,4Z"/><path class="st0" d="M598.9,619.5v-30.8h-12.1v-4.4h29.1v4.4h-12.1v30.8h-5Z"/><path class="st0" d="M630.7,619.5v-35.2h5v35.2h-5Z"/><path class="st0" d="M671.5,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7-.9-2.2-1.4-4.6-1.4-7.1s.5-5,1.4-7.1c.9-2.2,2.2-4.1,3.9-5.7,1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7s1.4,4.6,1.4,7.2-.5,5-1.4,7.2-2.2,4.1-3.9,5.7c-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM671.4,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8s2.2-2.7,2.9-4.3c.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9s-2.2,2.7-2.9,4.3c-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.6,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/><path class="st0" d="M707,619.5v-35.2h4.1l23.3,28.9h-2.2v-28.9h5v35.2h-4.1l-23.3-28.9h2.2v28.9h-5Z"/><path class="st0" d="M767.3,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9s4.2,1.2,6.5,1.2,3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9-1.8-1.3-3.1-1.8c-1.3-.5-2.6-.8-4.1-1.2s-3-.7-4.5-1.2c-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8s-1.2-2.7-1.2-4.6.5-3.5,1.4-5,2.4-2.7,4.4-3.7c2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7,1.3.7,2.3,1.6,3,2.8.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/></g>
+                <g>
+                    <path class="st0" d="M514.5,332.1c35.6,13.3,74.6-12.8,74.5-51.1.2-37.6-38.6-63.7-73.3-49.3-21.6,8.5-35.9,32.5-32.4,55.5,1.4,8.4,5.1,16.7,10,23.8,3.5,5,7.6,9.5,11.1,14.6,5.7,8,8.2,18,7.9,27.7-2,44.8-58.4,62.1-85,26-25.6-36,8.4-84.2,50.7-70.4.3.1.5.5.4.8-.1.3-.4.5-.7.4-11.7-2.9-24.3-.8-34.1,5.5-20.4,12.7-26.4,41.2-11.9,60.6,23.6,31.7,73.4,16.4,74.9-23.1.2-8.6-1.9-17.2-7-24.1-3.4-5-7.6-9.5-11.1-14.5-5.5-7.9-9.5-16.8-11-26.4-3.9-25.9,12.1-52.4,36.3-61.9,38.6-15.7,81.3,13.1,81,54.7.2,33.1-29.5,60.5-62.5,57-6.2-.6-12.3-2.2-17.9-4.8-.7-.3-.2-1.4.5-1.1h0Z"/>
+                    <path class="st0" d="M498.4,352.6c.9,26.2-27.3,43.1-50.2,30.9-23.2-12.3-24.8-45.3-2.6-59.5,5.7-3.5,12.4-5.4,19.1-5.1.8,0,.8,1.1,0,1.2-1.6.2-3.2.2-4.8.6-25.1,4.6-35.3,35.6-17.2,53.8,13.8,13.9,37.2,11.7,48.4-4.3,3.7-5.1,5.7-11.3,6-17.7,0-.8,1.2-.8,1.2,0h0Z"/>
+                    <path class="st0" d="M465.1,376.6c-25.5.8-33.6-32.8-11.6-44.8,15.9-8.5,35.8,3.4,34.8,21.7,0,.8-1.2.8-1.2,0-.5-8.7-6.3-16.4-14-19.3-9.7-3.9-21.3.4-26.1,9.6-6.3,11.3-.3,26.2,11.9,30.4,2,.7,4.1,1.1,6.3,1.3.8,0,.7,1.2,0,1.2h0Z"/>
+                    <path class="st0" d="M494.8,280.8c-.9-38.8,45.4-57.8,72.8-30.8,22.9,23.1,13,62.7-18.5,71.4-4,1.1-8.2,1.5-12.3,1.4-.8,0-.8-1.2,0-1.2,3.9-.2,7.9-1,11.7-2.2,27.9-9.5,36.8-45,15.9-66.1-17.4-17.4-46.6-14.6-60.7,5.4-3.4,4.8-5.8,10.4-6.8,16.2-.5,2-.5,4-.8,6,0,.7-1.2.7-1.2,0h0Z"/>
+                    <path class="st0" d="M514.9,261.2c10-11.5,28.5-12.7,40.2-3.1,12.3,9.5,15.1,28.2,6.1,41-10.5,15.6-33.8,17.8-46.4,3.6-.5-.6.3-1.4.9-.9,12.5,11.2,32.7,9.1,41.8-5.1,12.7-19.9-4.2-45-27.3-41.4-5.4.8-10.4,3.3-14.5,6.8-.6.5-1.4-.3-.9-.9h0Z"/>
+                </g>
+                <g>
+                    <path class="st0" d="M423.1,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9,2.1.8,4.2,1.2,6.5,1.2s3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9c-.8-.7-1.8-1.3-3.1-1.8s-2.6-.8-4.1-1.2c-1.5-.3-3-.7-4.5-1.2-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8-.8-1.2-1.2-2.7-1.2-4.6s.5-3.5,1.4-5c1-1.5,2.4-2.7,4.4-3.7,2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7s2.3,1.6,3,2.8c.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/>
+                    <path class="st0" d="M469.3,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7s-1.4-4.6-1.4-7.1.5-5,1.4-7.1,2.2-4.1,3.9-5.7c1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7.9,2.2,1.4,4.6,1.4,7.2s-.5,5-1.4,7.2c-.9,2.2-2.2,4.1-3.9,5.7-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM469.3,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8,1.2-1.2,2.2-2.7,2.9-4.3.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9-1.2,1.2-2.2,2.7-2.9,4.3-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.7,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/>
+                    <path class="st0" d="M504.9,619.5v-35.2h5v30.8h19.1v4.4h-24.1Z"/>
+                    <path class="st0" d="M557.2,619.9c-4.6,0-8.3-1.3-10.9-4-2.6-2.6-4-6.5-4-11.6v-20h5v19.8c0,3.9.9,6.8,2.6,8.6s4.2,2.7,7.3,2.7,5.6-.9,7.4-2.7c1.7-1.8,2.6-4.7,2.6-8.6v-19.8h4.9v20c0,5.1-1.3,9-3.9,11.6-2.6,2.6-6.3,4-10.9,4Z"/>
+                    <path class="st0" d="M598.9,619.5v-30.8h-12.1v-4.4h29.1v4.4h-12.1v30.8h-5Z"/>
+                    <path class="st0" d="M630.7,619.5v-35.2h5v35.2h-5Z"/>
+                    <path class="st0" d="M671.5,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7-.9-2.2-1.4-4.6-1.4-7.1s.5-5,1.4-7.1c.9-2.2,2.2-4.1,3.9-5.7,1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7s1.4,4.6,1.4,7.2-.5,5-1.4,7.2-2.2,4.1-3.9,5.7c-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM671.4,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8s2.2-2.7,2.9-4.3c.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9s-2.2,2.7-2.9,4.3c-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.6,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/>
+                    <path class="st0" d="M707,619.5v-35.2h4.1l23.3,28.9h-2.2v-28.9h5v35.2h-4.1l-23.3-28.9h2.2v28.9h-5Z"/>
+                    <path class="st0" d="M767.3,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9s4.2,1.2,6.5,1.2,3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9-1.8-1.3-3.1-1.8c-1.3-.5-2.6-.8-4.1-1.2s-3-.7-4.5-1.2c-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8s-1.2-2.7-1.2-4.6.5-3.5,1.4-5,2.4-2.7,4.4-3.7c2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7,1.3.7,2.3,1.6,3,2.8.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/>
+                </g>
             </svg>
         </a>
+
         <h1>Pension death benefits and inheritance tax from April 2027</h1>
+
+        <div class="author-header">
+            <h4>Written By</h4>
+            <p class="author-name">Stephen Hunt ACII</p>
+            <p class="author-credentials">
+                Chartered Insurance Risk Manager<br>
+                Affiliate Member of STEP (Society of Trust and Estate Practitioners)<br>
+                45+ years' experience in pensions, life assurance and estate planning
+            </p>
+            <p style="margin-top: 10px;">
+                <a href="https://www.linkedin.com/in/steve-hunt-chartered-iht" target="_blank" rel="noopener">LinkedIn Profile</a> |
+                <a href="https://www.vouchedfor.co.uk/financial-advisor-ifa/grantham/stephen-hunt" target="_blank" rel="noopener">VouchedFor Reviews</a>
+            </p>
+        </div>
     </header>
 
     <main class="content-wrapper">
-        <div class="coming-soon-box">
-            <span class="badge">Coming Soon</span>
-            <h2>This article is being prepared</h2>
-            <p>We are currently developing detailed technical guidance on how defined contribution pension funds and death benefits will be brought within the inheritance tax calculation from April 2027.</p>
-            <p>Topics will include administration challenges for personal representatives, timing considerations, and planning strategies for those with significant pension wealth.</p>
-            <a href="/technical/post-2026-2027-planning-landscape/" class="related-link">Read the Overview</a>
-        </div>
+        <article>
+            <div class="highlight-box">
+                <p><strong>Direct answer:</strong> From 6 April 2027, most unused defined contribution pension funds and pension death benefits will be included in the inheritance tax calculation. This ends the long-standing position where pensions typically sat outside the estate for IHT purposes.</p>
+                <p>Although income tax rules on pension death benefits remain unchanged, the inclusion of pensions in the estate means families may now face inheritance tax <strong>and</strong> income tax applying to the same pension fund, particularly where death occurs after age 75.</p>
+            </div>
+
+            <div class="key-facts">
+                <h3>Key Facts at a Glance</h3>
+                <ul>
+                    <li><strong>Effective date:</strong> Deaths on or after 6 April 2027</li>
+                    <li><strong>Applies to:</strong> Unused defined contribution pension funds and most pension death benefits</li>
+                    <li><strong>Inheritance tax treatment:</strong> Included in the estate</li>
+                    <li><strong>Income tax treatment:</strong> Unchanged</li>
+                    <li><strong>Spousal exemption:</strong> Still applies</li>
+                    <li><strong>Who reports and pays IHT:</strong> Personal representatives, not pension providers</li>
+                    <li><strong>Death in service benefits:</strong> Excluded</li>
+                    <li><strong>Primary risk created:</strong> Large tax liabilities with no built-in liquidity</li>
+                </ul>
+            </div>
+
+            <h2>The Position Before April 2027</h2>
+            <p>Under current rules, most defined contribution pension arrangements do not form part of the deceased's estate for inheritance tax purposes.</p>
+            <p>In broad terms:</p>
+            <ul>
+                <li>Death before age 75 allows beneficiaries to receive pension benefits free of income tax</li>
+                <li>Death after age 75 means beneficiaries pay income tax at their marginal rate</li>
+                <li>In both cases, pension funds are generally outside the scope of inheritance tax</li>
+            </ul>
+            <p>This treatment has led many families to preserve pensions while spending other assets first.</p>
+
+            <h2>What Changes from 6 April 2027</h2>
+            <p>From 6 April 2027:</p>
+            <ul>
+                <li>The value of unused pension funds and pension death benefits is added to the estate for inheritance tax</li>
+                <li>This applies regardless of discretionary trust structures within pension schemes</li>
+                <li>Income tax on pension withdrawals by beneficiaries continues to depend on age at death</li>
+                <li>Inheritance tax and income tax are calculated separately and <strong>can both apply</strong></li>
+            </ul>
+            <p>This represents a structural change in how pensions are treated on death.</p>
+
+            <h2>The Double Tax Risk Explained</h2>
+            <p>The most significant consequence of the April 2027 change is the potential for <strong>double taxation</strong>.</p>
+            <p><strong>First, inheritance tax:</strong></p>
+            <ul>
+                <li>The pension value is added to the estate</li>
+                <li>If the estate exceeds available nil rate bands, inheritance tax is charged at 40 percent</li>
+            </ul>
+            <p><strong>Second, income tax:</strong></p>
+            <ul>
+                <li>After inheritance tax is paid, beneficiaries still pay income tax when they withdraw pension funds</li>
+                <li>The rate depends on the beneficiary's marginal income tax band</li>
+            </ul>
+            <p>This risk is greatest where death occurs at age 75 or over.</p>
+
+            <div class="worked-example">
+                <h4>Worked Example: The 64% Outcome</h4>
+                <p>An individual dies after age 75 on or after 6 April 2027 with a £100,000 pension fund. The estate already exceeds the inheritance tax thresholds. The beneficiary is a higher rate taxpayer.</p>
+                <ul>
+                    <li>Pension added to estate: £100,000</li>
+                    <li>Inheritance tax at 40%: £40,000</li>
+                    <li>Pension remaining: £60,000</li>
+                    <li>Income tax at 40% on withdrawal: £24,000</li>
+                    <li>Net amount received: £36,000</li>
+                </ul>
+                <div class="result">
+                    Total tax paid: £64,000 | Effective tax rate: <strong>64%</strong><br>
+                    For additional rate taxpayers, the effective rate can exceed 87%.
+                </div>
+            </div>
+
+            <h2>The Spousal Exemption and Why It Can Mislead</h2>
+            <p>Pensions left to a surviving spouse or civil partner remain exempt from inheritance tax on the first death.</p>
+            <p>However:</p>
+            <ul>
+                <li>The pension then forms part of the survivor's estate</li>
+                <li>On the second death, inheritance tax may apply to the pension value</li>
+                <li>The tax is <strong>deferred, not eliminated</strong></li>
+            </ul>
+            <p>For estates already above inheritance tax thresholds, this can result in a substantial tax bill later, often without further planning having taken place.</p>
+
+            <div class="warning-box">
+                <h4>The "Tax Free" Pension Inheritance That Isn't</h4>
+                <p>Many families assume leaving a pension to a spouse is "tax free". While it avoids IHT on the first death, the combined estate on the second death may face significant IHT exposure on the pension value — at a time when the surviving spouse has less opportunity or inclination to plan.</p>
+            </div>
+
+            <h2>Nomination Strategy Becomes Critical</h2>
+            <p>After April 2027, pension nomination decisions carry much greater weight.</p>
+            <p>Key considerations include:</p>
+            <ul>
+                <li>Whether to nominate a spouse, children, or a combination</li>
+                <li>The age and tax position of intended beneficiaries</li>
+                <li>The size of the survivor's own estate</li>
+                <li>The interaction with residence nil rate band taper</li>
+            </ul>
+            <p>There is no universal answer. The correct approach depends on the wider estate structure.</p>
+
+            <h2>Executor and Administration Risk</h2>
+            <p>Including pensions in the inheritance tax calculation increases the burden on personal representatives.</p>
+            <p>Executors may need to:</p>
+            <ul>
+                <li>Identify and value multiple pension schemes</li>
+                <li>Obtain information from providers under time pressure</li>
+                <li>Fund inheritance tax before assets are accessible</li>
+                <li>Manage increased personal liability for reporting accuracy</li>
+            </ul>
+            <p>This is a material shift from the current position.</p>
+
+            <div class="cta-section">
+                <h3>Model Your Pension IHT Exposure</h3>
+                <p>See how pension inclusion from April 2027 could affect your inheritance tax liability. Get instant indicative estimates including insurance costs.</p>
+                <a href="/" class="cta-button">Use the IHT Calculator</a>
+            </div>
+
+            <h2>Planning Implications</h2>
+            <p>The April 2027 changes turn pensions into a <strong>liquidity problem</strong>, not just a tax problem.</p>
+            <p>Common planning responses include:</p>
+            <ul>
+                <li>Reviewing pension nominations well in advance</li>
+                <li>Reconsidering the traditional "spend everything else first" strategy</li>
+                <li>Ensuring inheritance tax can be paid without forced pension withdrawals</li>
+                <li>Providing certainty for executors and beneficiaries</li>
+            </ul>
+            <p>For many families, this leads to consideration of insurance-based liquidity planning, structured outside the estate.</p>
+
+            <h2>Why Accurate Modelling Matters</h2>
+            <p>Many inheritance tax calculators and commentary still reflect the pre-2027 pension position.</p>
+            <p>Accurate modelling allows families to:</p>
+            <ul>
+                <li>See how pensions alter total estate exposure</li>
+                <li>Understand interaction with residence nil rate band taper</li>
+                <li>Assess whether planning action is proportionate and affordable</li>
+            </ul>
+
+            <div class="important-note">
+                <h4>Important Disclaimer</h4>
+                <p>This page provides technical background only. It does not constitute tax, legal, or financial advice. The final treatment of pension death benefits depends on legislation, HMRC guidance, and individual circumstances at the time of death. Always consult a specialist tax accountant or solicitor for personalised advice — we focus solely on the protection element, working alongside your trusted advisers.</p>
+            </div>
+
+            <aside class="author-bio">
+                <h3>About the Author</h3>
+                <p>Stephen Hunt is a Chartered Insurance Risk Manager (ACII) and Affiliate Member of the Society of Trust and Estate Practitioners (STEP). With over 45 years' experience spanning defined benefit schemes, retail and corporate pensions, life assurance and estate planning, Stephen specializes in helping families, business owners and high net worth individuals understand and plan for the practical consequences of inheritance tax exposure.</p>
+                <p>His current work focuses on coordinating life insurance solutions with accountants and solicitors to create practical liquidity strategies for complex estates, particularly in light of the post-2026 and post-2027 UK Budget reforms.</p>
+            </aside>
+
+            <nav class="related-resources">
+                <h3>Related Technical Resources</h3>
+                <ul>
+                    <li><a href="/technical/post-2026-2027-planning-landscape/">Technical background on the post-2026 and post-2027 planning landscape</a></li>
+                    <li><a href="/technical/bpr-apr-changes-family-businesses-farms/">How the April 2026 BPR and APR changes affect family businesses and farms</a></li>
+                    <li><a href="/technical/whole-of-life-vs-relevant-life/">Creating liquidity for IHT: Whole of Life vs Relevant Life insurance</a></li>
+                    <li><a href="/technical/coordinating-iht-planning-professionals/">Coordinating inheritance tax planning with accountants and solicitors</a></li>
+                </ul>
+            </nav>
+        </article>
     </main>
 
     <footer class="page-footer">
@@ -114,17 +898,48 @@
         <p><a href="/">Home</a> | <a href="/technical/">Technical Resources</a> | <a href="/privacy-policy.html">Privacy Policy</a></p>
     </footer>
 
+    <!-- Hamburger Menu Script -->
     <script>
         (function() {
             const hamburgerBtn = document.getElementById('hamburgerBtn');
             const menuPanel = document.getElementById('menuPanel');
             const menuOverlay = document.getElementById('menuOverlay');
-            function toggleMenu() { const isOpen = menuPanel.classList.contains('open'); menuPanel.classList.toggle('open'); menuOverlay.classList.toggle('open'); hamburgerBtn.classList.toggle('active'); hamburgerBtn.setAttribute('aria-expanded', !isOpen); }
-            function closeMenu() { menuPanel.classList.remove('open'); menuOverlay.classList.remove('open'); hamburgerBtn.classList.remove('active'); hamburgerBtn.setAttribute('aria-expanded', 'false'); }
+
+            function toggleMenu() {
+                const isOpen = menuPanel.classList.contains('open');
+                menuPanel.classList.toggle('open');
+                menuOverlay.classList.toggle('open');
+                hamburgerBtn.classList.toggle('active');
+                hamburgerBtn.setAttribute('aria-expanded', !isOpen);
+            }
+
+            function closeMenu() {
+                menuPanel.classList.remove('open');
+                menuOverlay.classList.remove('open');
+                hamburgerBtn.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+            }
+
             hamburgerBtn.addEventListener('click', toggleMenu);
             menuOverlay.addEventListener('click', closeMenu);
-            document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && menuPanel.classList.contains('open')) { closeMenu(); } });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && menuPanel.classList.contains('open')) {
+                    closeMenu();
+                }
+            });
+
+            menuPanel.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab' && !e.shiftKey) {
+                    const links = menuPanel.querySelectorAll('a');
+                    if (document.activeElement === links[links.length - 1]) {
+                        e.preventDefault();
+                        hamburgerBtn.focus();
+                    }
+                }
+            });
         })();
     </script>
 </body>
+
 </html>
