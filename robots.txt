@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://ihtsolutions.co.uk/sitemap.xml
+
+# Allow all search engines to crawl everything
+# No restrictions - we want maximum visibility
