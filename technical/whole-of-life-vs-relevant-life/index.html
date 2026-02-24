@@ -14,6 +14,19 @@
       gtag('config', 'G-9W3T81ZBV1');
     </script>
 
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ihtsolutions.co.uk/" },
+        { "@type": "ListItem", "position": 2, "name": "Technical Resources", "item": "https://ihtsolutions.co.uk/technical/" },
+        { "@type": "ListItem", "position": 3, "name": "Whole of Life vs Relevant Life Insurance", "item": "https://ihtsolutions.co.uk/technical/whole-of-life-vs-relevant-life/" }
+      ]
+    }
+    </script>
+
     <title>Whole of Life vs Relevant Life Insurance for IHT | IHT Solutions</title>
     <meta name="description" content="Compare Whole of Life vs Relevant Life insurance for IHT planning. Tax efficiency, trust structures, and cost examples. Expert guide for business owners and families.">
     <link rel="canonical" href="https://ihtsolutions.co.uk/technical/whole-of-life-vs-relevant-life/">
@@ -271,6 +284,7 @@
             opacity: 1;
             visibility: visible;
         }
+        .menu-section-title { font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); padding: 15px 15px 5px; margin-top: 10px; }
 
         /* Header */
         .page-header {
@@ -743,20 +757,25 @@
 <body>
     <!-- Hamburger Menu -->
     <div class="menu-overlay" id="menuOverlay"></div>
-    <nav class="hamburger-menu" aria-label="Technical resources menu">
-        <button class="hamburger-btn" id="hamburgerBtn" aria-expanded="false" aria-controls="menuPanel" title="Technical Resources">
+    <nav class="hamburger-menu" aria-label="Site navigation menu">
+        <button class="hamburger-btn" id="hamburgerBtn" aria-expanded="false" aria-controls="menuPanel" title="Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
         <div class="menu-panel" id="menuPanel" role="menu">
-            <h3>Technical Resources</h3>
+            <h3>Menu</h3>
             <ul>
+                <li><a href="/" role="menuitem">IHT Calculator</a></li>
+                <li class="menu-section-title">Quote Tools</li>
+                <li><a href="/whole-of-life-insurance-quote/" role="menuitem">Whole of Life Quote</a></li>
+                <li><a href="/relevant-life-insurance-quote/" role="menuitem">Relevant Life Quote</a></li>
+                <li class="menu-section-title">Technical Resources</li>
                 <li><a href="/technical/" role="menuitem">Technical Overview</a></li>
                 <li><a href="/technical/post-2026-2027-planning-landscape/" role="menuitem">Post-2026 and Post-2027 Planning Landscape</a></li>
                 <li><a href="/technical/bpr-apr-changes-family-businesses-farms/" role="menuitem">BPR and APR Changes for Family Businesses</a></li>
                 <li><a href="/technical/pension-death-benefits-iht-2027/" role="menuitem">Pension Death Benefits and IHT from 2027</a></li>
-                <li><a href="/technical/whole-of-life-vs-relevant-life/" role="menuitem" aria-current="page">Whole of Life vs Relevant Life Insurance</a></li>
+                <li><a href="/technical/whole-of-life-vs-relevant-life/" role="menuitem">Whole of Life vs Relevant Life Insurance</a></li>
                 <li><a href="/technical/coordinating-iht-planning-professionals/" role="menuitem">Coordinating IHT Planning with Professionals</a></li>
             </ul>
         </div>

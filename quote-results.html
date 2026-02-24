@@ -14,6 +14,13 @@
     </script>
 
     <title>Your Illustration - IHT Solutions</title>
+    <meta name="description" content="Your personalised insurance illustration showing Whole of Life and Relevant Life policy costs for inheritance tax cover.">
+    <link rel="canonical" href="https://ihtsolutions.co.uk/quote-results.html">
+    <meta property="og:title" content="Your Illustration - IHT Solutions">
+    <meta property="og:description" content="Your personalised insurance illustration for inheritance tax cover.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ihtsolutions.co.uk/quote-results.html">
+    <meta property="og:site_name" content="IHT Solutions">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -455,18 +462,24 @@
         .menu-panel a:hover { background: rgba(255, 255, 255, 0.1); color: white; }
         .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 999; }
         .menu-overlay.open { opacity: 1; visibility: visible; }
+        .menu-section-title { font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); padding: 15px 15px 5px; margin-top: 10px; }
     </style>
 </head>
 <body>
     <!-- Hamburger Menu -->
     <div class="menu-overlay" id="menuOverlay"></div>
-    <nav class="hamburger-menu" aria-label="Technical resources menu">
-        <button class="hamburger-btn" id="hamburgerBtn" aria-expanded="false" aria-controls="menuPanel" title="Technical Resources">
+    <nav class="hamburger-menu" aria-label="Site navigation menu">
+        <button class="hamburger-btn" id="hamburgerBtn" aria-expanded="false" aria-controls="menuPanel" title="Menu">
             <span></span><span></span><span></span>
         </button>
         <div class="menu-panel" id="menuPanel" role="menu">
-            <h3>Technical Resources</h3>
+            <h3>Menu</h3>
             <ul>
+                <li><a href="/" role="menuitem">IHT Calculator</a></li>
+                <li class="menu-section-title">Quote Tools</li>
+                <li><a href="/whole-of-life-insurance-quote/" role="menuitem">Whole of Life Quote</a></li>
+                <li><a href="/relevant-life-insurance-quote/" role="menuitem">Relevant Life Quote</a></li>
+                <li class="menu-section-title">Technical Resources</li>
                 <li><a href="/technical/" role="menuitem">Technical Overview</a></li>
                 <li><a href="/technical/post-2026-2027-planning-landscape/" role="menuitem">Post-2026 and Post-2027 Planning Landscape</a></li>
                 <li><a href="/technical/bpr-apr-changes-family-businesses-farms/" role="menuitem">BPR and APR Changes for Family Businesses</a></li>
@@ -620,40 +633,9 @@
         </div>
     </div>
 
+    <script src="/js/rates.js"></script>
     <script>
         (function() {
-        // Rate tables (per £1,000,000 cover) - Interpolated from Zurich rates, male, Jan 2026
-        const RLP_RATES = {
-            40: 82.93, 41: 89.76, 42: 96.59, 43: 103.41, 44: 110.24,
-            45: 117.07, 46: 130.78, 47: 144.48, 48: 158.19, 49: 171.89,
-            50: 185.60, 51: 199.93, 52: 214.25, 53: 228.58, 54: 242.91,
-            55: 257.24, 56: 281.12, 57: 305.00, 58: 328.88, 59: 352.76,
-            60: 376.64, 61: 407.04, 62: 437.44, 63: 467.84, 64: 498.24,
-            65: 528.64, 66: 532.23, 67: 535.82, 68: 539.41, 69: 542.99,
-            70: 546.58, 71: 563.57, 72: 633.28, 73: 711.48, 74: 799.25
-        };
-
-        // WOL rates extended to age 79
-        const WOL_RATES = {
-            40: 764.59, 41: 791.19, 42: 817.79, 43: 844.40, 44: 871.00,
-            45: 897.60, 46: 914.30, 47: 931.00, 48: 947.70, 49: 964.40,
-            50: 981.09, 51: 1013.70, 52: 1046.31, 53: 1078.91, 54: 1111.52,
-            55: 1144.12, 56: 1205.22, 57: 1266.33, 58: 1327.43, 59: 1388.53,
-            60: 1449.64, 61: 1543.55, 62: 1637.47, 63: 1731.38, 64: 1825.29,
-            65: 1919.21, 66: 2041.26, 67: 2163.31, 68: 2285.36, 69: 2407.41,
-            70: 2529.46, 71: 2685.92, 72: 2842.37, 73: 2998.83, 74: 3155.28,
-            75: 3311.74, 76: 3612.79, 77: 3913.83, 78: 4214.88, 79: 4515.92
-        };
-
-        // Format currency helper
-        function formatGBP(value) {
-            return '£' + value.toLocaleString('en-GB', {maximumFractionDigits: 2, minimumFractionDigits: 2});
-        }
-
-        function formatGBPWhole(value) {
-            return '£' + value.toLocaleString('en-GB', {maximumFractionDigits: 0});
-        }
-
         // Get data from session storage
         const storedData = sessionStorage.getItem('quoteData');
 

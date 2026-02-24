@@ -25,6 +25,23 @@
     <meta property="og:url" content="https://ihtsolutions.co.uk/">
     <meta property="og:site_name" content="IHT Solutions">
 
+    <!-- Schema.org Organisation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "IHT Solutions",
+      "url": "https://ihtsolutions.co.uk",
+      "description": "Instant indicative inheritance tax insurance cost estimates online. Calculate your IHT liability and see Whole of Life and Relevant Life quotes without speaking to an adviser.",
+      "founder": {
+        "@type": "Person",
+        "name": "Stephen Hunt",
+        "jobTitle": "Chartered Insurance Risk Manager",
+        "description": "ACII, STEP Affiliate with 45+ years' experience in insurance and financial services"
+      }
+    }
+    </script>
+
     <!-- Schema.org WebApplication Markup -->
     <script type="application/ld+json">
     {
@@ -491,21 +508,27 @@
             opacity: 1;
             visibility: visible;
         }
+        .menu-section-title { font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); padding: 15px 15px 5px; margin-top: 10px; }
     </style>
 </head>
 
 <body>
     <!-- Hamburger Menu -->
     <div class="menu-overlay" id="menuOverlay"></div>
-    <nav class="hamburger-menu" aria-label="Technical resources menu">
-        <button class="hamburger-btn" id="hamburgerBtn" aria-expanded="false" aria-controls="menuPanel" title="Technical Resources">
+    <nav class="hamburger-menu" aria-label="Site navigation menu">
+        <button class="hamburger-btn" id="hamburgerBtn" aria-expanded="false" aria-controls="menuPanel" title="Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
         <div class="menu-panel" id="menuPanel" role="menu">
-            <h3>Technical Resources</h3>
+            <h3>Menu</h3>
             <ul>
+                <li><a href="/" role="menuitem">IHT Calculator</a></li>
+                <li class="menu-section-title">Quote Tools</li>
+                <li><a href="/whole-of-life-insurance-quote/" role="menuitem">Whole of Life Quote</a></li>
+                <li><a href="/relevant-life-insurance-quote/" role="menuitem">Relevant Life Quote</a></li>
+                <li class="menu-section-title">Technical Resources</li>
                 <li><a href="/technical/" role="menuitem">Technical Overview</a></li>
                 <li><a href="/technical/post-2026-2027-planning-landscape/" role="menuitem">Post-2026 and Post-2027 Planning Landscape</a></li>
                 <li><a href="/technical/bpr-apr-changes-family-businesses-farms/" role="menuitem">BPR and APR Changes for Family Businesses</a></li>
@@ -658,8 +681,40 @@
                 reliefs, and changing legislation. For personalised advice, please consult a qualified professional.</p>
             <p><strong>Business valuation estimate:</strong> This figure is based on a simple multiple of annual net profit commonly used for broad comparison purposes. Real business valuations depend on many factors including assets, debt, growth prospects, customer concentration and transferability. This is not a valuation for sale, tax or legal purposes.</p>
         </div>
+
+        <!-- Professional Resources & Quote Tools -->
+        <div class="disclaimer" style="margin-top: 30px;">
+            <h3>Professional Resources &amp; Quote Tools</h3>
+            <p style="margin-bottom: 15px;">Explore our range of tools and technical resources for inheritance tax planning:</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <a href="/whole-of-life-insurance-quote/" style="display: block; color: white; background: rgba(11, 122, 143, 0.3); padding: 14px; border-radius: 8px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: background 0.2s;">
+                    <strong style="display: block; margin-bottom: 4px;">Whole of Life Quote</strong>
+                    <span style="font-size: 0.85em; opacity: 0.8;">Instant indicative premiums for IHT cover</span>
+                </a>
+                <a href="/relevant-life-insurance-quote/" style="display: block; color: white; background: rgba(11, 122, 143, 0.3); padding: 14px; border-radius: 8px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: background 0.2s;">
+                    <strong style="display: block; margin-bottom: 4px;">Relevant Life Quote</strong>
+                    <span style="font-size: 0.85em; opacity: 0.8;">Tax-efficient business cover with CT relief</span>
+                </a>
+                <a href="/technical/" style="display: block; color: white; background: rgba(11, 122, 143, 0.3); padding: 14px; border-radius: 8px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: background 0.2s;">
+                    <strong style="display: block; margin-bottom: 4px;">Technical Resources</strong>
+                    <span style="font-size: 0.85em; opacity: 0.8;">Expert articles on IHT planning</span>
+                </a>
+                <a href="/technical/post-2026-2027-planning-landscape/" style="display: block; color: white; background: rgba(11, 122, 143, 0.3); padding: 14px; border-radius: 8px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: background 0.2s;">
+                    <strong style="display: block; margin-bottom: 4px;">Post-2026/2027 Landscape</strong>
+                    <span style="font-size: 0.85em; opacity: 0.8;">BPR, APR and pension changes</span>
+                </a>
+                <a href="/technical/whole-of-life-vs-relevant-life/" style="display: block; color: white; background: rgba(11, 122, 143, 0.3); padding: 14px; border-radius: 8px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: background 0.2s;">
+                    <strong style="display: block; margin-bottom: 4px;">WOL vs Relevant Life</strong>
+                    <span style="font-size: 0.85em; opacity: 0.8;">Compare personal and business cover</span>
+                </a>
+                <a href="/technical/pension-death-benefits-iht-2027/" style="display: block; color: white; background: rgba(11, 122, 143, 0.3); padding: 14px; border-radius: 8px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: background 0.2s;">
+                    <strong style="display: block; margin-bottom: 4px;">Pension &amp; IHT 2027</strong>
+                    <span style="font-size: 0.85em; opacity: 0.8;">DC pension death benefit changes</span>
+                </a>
+            </div>
+        </div>
     </div>
-    
+
     <script>
         function formatCurrency(input) {
             let value = input.value.replace(/[^\d]/g, '');
