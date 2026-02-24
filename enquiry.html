@@ -400,6 +400,22 @@
                 <input type="hidden" name="totalEstate" id="hiddenEstate">
                 <input type="hidden" name="ihtLiability" id="hiddenIHT">
                 <input type="hidden" name="protectionAmount" id="hiddenProtection">
+                <!-- Estate breakdown -->
+                <input type="hidden" name="propertyValue" id="hiddenProperty">
+                <input type="hidden" name="savingsInvestments" id="hiddenSavings">
+                <input type="hidden" name="otherAssets" id="hiddenOther">
+                <input type="hidden" name="companyValue" id="hiddenCompany">
+                <input type="hidden" name="debts" id="hiddenDebts">
+                <input type="hidden" name="marriedCivilPartner" id="hiddenMarried">
+                <input type="hidden" name="totalAllowance" id="hiddenAllowance">
+                <!-- IHT breakdown -->
+                <input type="hidden" name="personalIHT" id="hiddenPersonalIHT">
+                <input type="hidden" name="businessIHT" id="hiddenBusinessIHT">
+                <!-- Quote details -->
+                <input type="hidden" name="age" id="hiddenAge">
+                <input type="hidden" name="personalCover" id="hiddenPersonalCover">
+                <input type="hidden" name="businessCover" id="hiddenBusinessCover">
+                <input type="hidden" name="monthlyBudget" id="hiddenBudget">
 
                 <div class="form-group">
                     <label for="name">Full Name <span class="required">*</span></label>
@@ -488,9 +504,30 @@
         }
 
         // Populate hidden fields for Netlify form submission
+        const ihtFields = storedData ? JSON.parse(storedData) : {};
         document.getElementById('hiddenEstate').value = formatGBP(totalEstate);
         document.getElementById('hiddenIHT').value = formatGBP(ihtLiability);
         document.getElementById('hiddenProtection').value = formatGBP(protectionAmount);
+
+        // Estate breakdown fields
+        document.getElementById('hiddenProperty').value = formatGBP(ihtFields.propertyValue || 0);
+        document.getElementById('hiddenSavings').value = formatGBP(ihtFields.savings || 0);
+        document.getElementById('hiddenOther').value = formatGBP(ihtFields.otherAssets || 0);
+        document.getElementById('hiddenCompany').value = formatGBP(ihtFields.companyValue || 0);
+        document.getElementById('hiddenDebts').value = formatGBP(ihtFields.debts || 0);
+        document.getElementById('hiddenMarried').value = ihtFields.married ? 'Yes' : 'No';
+        document.getElementById('hiddenAllowance').value = formatGBP(ihtFields.totalAllowance || 0);
+
+        // IHT breakdown
+        document.getElementById('hiddenPersonalIHT').value = formatGBP(ihtFields.personalIHT || 0);
+        document.getElementById('hiddenBusinessIHT').value = formatGBP(ihtFields.businessIHT || 0);
+
+        // Quote details (if user went through quote flow)
+        const quoteFields = JSON.parse(sessionStorage.getItem('quoteData') || '{}');
+        document.getElementById('hiddenAge').value = quoteFields.age || '';
+        document.getElementById('hiddenPersonalCover').value = quoteFields.personalCover ? formatGBP(quoteFields.personalCover) : '';
+        document.getElementById('hiddenBusinessCover').value = quoteFields.businessCover ? formatGBP(quoteFields.businessCover) : '';
+        document.getElementById('hiddenBudget').value = quoteFields.monthlyBudget ? formatGBP(quoteFields.monthlyBudget) : '';
 
         // Real-time validation - clear errors as user types
         document.getElementById('name').addEventListener('input', function() {
