@@ -1,6 +1,6 @@
 /**
  * IHT Solutions — Shared Rate Calculation Module
- * Zurich indicative rates (male, Jan 2026), per £1,000,000 cover
+ * Zurich indicative rates (male, Jan 2026), MONTHLY per £1,000,000 cover
  */
 
 // Rate tables
@@ -49,26 +49,26 @@ function calculateAge(dob) {
 function getWOLPremium(age, sumAssured, sex) {
     var rate = WOL_RATES[age];
     if (!rate) return null;
-    var annualPer1M = rate;
+    var monthlyPer1M = rate;
     if (sex === 'female') {
-        annualPer1M = annualPer1M * FEMALE_DISCOUNT;
+        monthlyPer1M = monthlyPer1M * FEMALE_DISCOUNT;
     }
-    var annual = (sumAssured / 1000000) * annualPer1M;
-    var monthly = annual / 12;
+    var monthly = (sumAssured / 1000000) * monthlyPer1M;
+    var annual = monthly * 12;
     return { monthly: monthly, annual: annual };
 }
 
 function getRLPPremium(age, sumAssured, sex) {
     var rate = RLP_RATES[age];
     if (!rate) return null;
-    var annualPer1M = rate;
+    var monthlyPer1M = rate;
     if (sex === 'female') {
-        annualPer1M = annualPer1M * FEMALE_DISCOUNT;
+        monthlyPer1M = monthlyPer1M * FEMALE_DISCOUNT;
     }
-    var grossAnnual = (sumAssured / 1000000) * annualPer1M;
+    var monthly = (sumAssured / 1000000) * monthlyPer1M;
+    var grossAnnual = monthly * 12;
     var ctRelief = grossAnnual * 0.25;
     var netCost = grossAnnual * 0.75;
-    var monthly = grossAnnual / 12;
     return {
         monthly: monthly,
         annual: grossAnnual,
