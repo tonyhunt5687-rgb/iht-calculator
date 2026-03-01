@@ -633,10 +633,7 @@
                 return;
             }
 
-            // Generate PDF
-            generatePDF(name, email, phone, message, marketingCheckbox.checked);
-
-            // Store enquiry details in session storage for thank you page
+            // Store enquiry details in session storage FIRST (before PDF which can fail on mobile)
             const enquiryData = {
                 name,
                 email,
@@ -650,6 +647,13 @@
             };
             sessionStorage.setItem('enquiryData', JSON.stringify(enquiryData));
 
+            // Generate PDF (may fail on some browsers — non-blocking)
+            try {
+                generatePDF(name, email, phone, message, marketingCheckbox.checked);
+            } catch (err) {
+                console.warn('PDF generation failed:', err);
+            }
+
             // Submit to Netlify Forms
             const formData = new FormData(document.getElementById('enquiryForm'));
             fetch('/', {
@@ -658,12 +662,10 @@
                 body: new URLSearchParams(formData).toString()
             })
             .then(() => {
-                // Redirect to thank you page after successful submission
                 window.location.href = 'thankyou.html';
             })
             .catch((error) => {
                 console.error('Form submission error:', error);
-                // Still redirect - PDF was generated and data saved
                 window.location.href = 'thankyou.html';
             });
         });
