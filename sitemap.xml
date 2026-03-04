@@ -73,4 +73,124 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Insights Landing Page -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/</loc>
+    <lastmod>2026-03-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Article 1: The Inheritance Tax Cliff Edge Still Exists -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/inheritance-tax-cliff-edge-still-exists/</loc>
+    <lastmod>2026-01-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article 2: A Trust Before April 2026 May Not Be Right for Everyone -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/trusts-before-april-2026/</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article 3: 86 Days: The Three Pillars of Protection -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/86-days-three-pillars-protection/</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article 4: Up to Your Alligators and Forgetting to Clear the Swamp -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/alligators-forgetting-clear-swamp/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article 5: Lifetime Trusts: Why They Get Such a Bad Name -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/lifetime-trusts-bad-name/</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article 6: The Tax Fears That Shouldn't Exist -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/tax-fears-shouldnt-exist/</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article 7: Two Certainties in Life: Death and Taxes -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/two-certainties-death-taxes-third/</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article 8: The £400,000 Mistake Some Couples May Make -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/400000-mistake-couples-april-2027/</loc>
+    <lastmod>2026-02-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article 9: Britain's Pension System Part 1: The Golden Age -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/pension-golden-age-part-1/</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article 10: Britain's Pension System Part 2: The Policy Shift -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/pension-policy-shift-1988-part-2/</loc>
+    <lastmod>2026-02-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article 11: Britain's Pension System Part 3: The IHT Reckoning -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/pension-iht-reckoning-part-3/</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article 12: Leave Your Pension to Your Children? You Still Can -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/leave-pension-children-grandchildren/</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article 13: The 87% Pension Tax from April 2027 -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/87-percent-pension-tax-april-2027/</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article 14: 34 Days: The IHT Time Bomb for Every Farm and Business -->
+  <url>
+    <loc>https://ihtsolutions.co.uk/insights/34-days-iht-time-bomb-farms-business/</loc>
+    <lastmod>2026-03-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
