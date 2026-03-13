@@ -516,7 +516,72 @@
             visibility: visible;
         }
         .menu-section-title { font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); padding: 15px 15px 5px; margin-top: 10px; }
-    </style>
+    
+        /* RNRB Caveat */
+        .rnrb-caveat {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .rnrb-caveat h3 {
+            margin-top: 0;
+            color: #856404;
+            font-size: 18px;
+        }
+
+        .rnrb-caveat p {
+            margin-bottom: 12px;
+            color: #856404;
+        }
+
+        .rnrb-caveat strong {
+            font-weight: 600;
+        }
+
+        .rnrb-caveat a {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        /* Regulatory Footer */
+        .regulatory-footer {
+            background: #f8f9fa;
+            border-top: 2px solid #e9ecef;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .regulatory-info {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #495057;
+        }
+
+        .regulatory-info h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #212529;
+        }
+
+        .regulatory-info p {
+            margin-bottom: 12px;
+        }
+
+        .regulatory-info strong {
+            color: #212529;
+        }
+
+        .regulatory-info .contact {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+        }
+        </style>
 </head>
 <body>
     <!-- Hamburger Menu -->
@@ -587,7 +652,30 @@
                 <div class="amount" id="ihtAmount">£0</div>
                 <div class="subtitle">Based on current rules and thresholds</div>
             </div>
-            
+
+            <div class="rnrb-caveat">
+                <h3>&#9888;&#65039; Important Note on RNRB Taper for Couples</h3>
+                <p>
+                    This calculator models the Residence Nil Rate Band (RNRB) taper as if
+                    both deaths occurred simultaneously. This approach is more generous than
+                    the strict "sequential death" position where each death is tested separately.
+                </p>
+                <p>
+                    <strong>For estates over £2 million, this may understate potential IHT
+                    liability by up to £100,000 depending on the timing of deaths.</strong>
+                </p>
+                <p>
+                    This calculator provides indicative figures for planning purposes.
+                    For detailed estate planning and precise calculations, please consult
+                    a qualified tax adviser or solicitor.
+                </p>
+                <p>
+                    <a href="/technical/post-2026-2027-planning-landscape/#rnrb-taper">
+                        Learn more about RNRB taper mechanics &rarr;
+                    </a>
+                </p>
+            </div>
+
             <div class="breakdown">
                 <h3>Calculation Breakdown</h3>
                 
@@ -988,5 +1076,32 @@
             });
         })();
     </script>
+
+    <footer class="regulatory-footer">
+      <div class="regulatory-info">
+        <h3>About IHT Solutions</h3>
+        <p>
+          <strong>IHT Solutions</strong> is operated by Arthur Raymond &amp; Co Limited,
+          Company Number: 15189672.
+        </p>
+        <p>
+          We provide software tools and educational information only.
+          <strong>We do not provide regulated financial advice.</strong>
+        </p>
+        <p>
+          For regulated financial advice, please consult an FCA-authorised
+          independent financial adviser.
+        </p>
+        <p>
+          <strong>Stephen Hunt ACII</strong> is a Chartered Insurance Risk Manager
+          and STEP Affiliate with 45+ years of experience in inheritance tax and
+          estate planning.
+        </p>
+        <p class="contact">
+          Email: <a href="mailto:info@ihtsolutions.co.uk">info@ihtsolutions.co.uk</a>
+        </p>
+      </div>
+    </footer>
+
 </body>
 </html>
