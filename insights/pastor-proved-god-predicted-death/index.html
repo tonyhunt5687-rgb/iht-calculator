@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9W3T81ZBV1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9W3T81ZBV1');
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ihtsolutions.co.uk/" },
+        { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://ihtsolutions.co.uk/insights/" },
+        { "@type": "ListItem", "position": 3, "name": "The Pastor Who Tried to Prove God and Accidentally Predicted Death", "item": "https://ihtsolutions.co.uk/insights/pastor-proved-god-predicted-death/" }
+      ]
+    }
+    </script>
+
+    <title>The Pastor Who Tried to Prove God and Accidentally Predicted Death | IHT Solutions</title>
+    <meta name="description" content="The untold origin story of life insurance: how a 1680s Lutheran pastor's quest to prove God's design accidentally created actuarial science. From Edmond Halley's mortality tables to the founding of the Equitable Society.">
+    <meta name="keywords" content="life insurance history, actuarial science history, Edmond Halley mortality table, Equitable Life history, Caspar Neumann, Abraham de Moivre, James Dodson, whole of life insurance history">
+    <link rel="canonical" href="https://ihtsolutions.co.uk/insights/pastor-proved-god-predicted-death/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="The Pastor Who Tried to Prove God and Accidentally Predicted Death">
+    <meta property="og:description" content="The untold origin story of life insurance: how a 1680s Lutheran pastor's quest to prove God's design accidentally created actuarial science and the modern life insurance industry.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ihtsolutions.co.uk/insights/pastor-proved-god-predicted-death/">
+    <meta property="og:site_name" content="IHT Solutions">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "The Pastor Who Tried to Prove God and Accidentally Predicted Death",
+      "description": "The untold origin story of the modern life insurance industry: how Caspar Neumann's theological quest created actuarial science, and how the brilliant minds who built it — from Edmond Halley to Abraham de Moivre to James Dodson — died poor and uninsured.",
+      "author": {
+        "@type": "Person",
+        "name": "Stephen Hunt",
+        "jobTitle": "Chartered Insurance Risk Manager",
+        "honorificSuffix": "ACII",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Society of Trust and Estate Practitioners",
+          "url": "https://www.step.org"
+        },
+        "alumniOf": {
+          "@type": "Organization",
+          "name": "Chartered Insurance Institute"
+        },
+        "url": "https://www.linkedin.com/in/steve-hunt-chartered-iht"
+      },
+      "datePublished": "2026-03-07",
+      "dateModified": "2026-03-07",
+      "publisher": {
+        "@type": "Organization",
+        "name": "IHT Solutions",
+        "url": "https://ihtsolutions.co.uk",
+        "description": "Instant indicative inheritance tax insurance cost estimates"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Life Insurance History"
+        },
+        {
+          "@type": "Thing",
+          "name": "Actuarial Science"
+        }
+      ],
+      "keywords": "life insurance history, actuarial science history, Edmond Halley mortality table, Equitable Life history, Caspar Neumann, Abraham de Moivre, James Dodson, whole of life insurance history"
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .hamburger-btn {
+            background: rgba(31, 78, 120, 0.9);
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .hamburger-btn:hover {
+            background: rgba(31, 78, 120, 1);
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-btn:hover span {
+            background: white;
+        }
+
+        .hamburger-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 320px;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a5566 0%, #0d3d4d 100%);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+            transition: right 0.3s ease;
+            padding: 80px 30px 30px;
+            overflow-y: auto;
+        }
+
+        .menu-panel.open {
+            right: 0;
+        }
+
+        .menu-panel h3 {
+            font-family: 'Gloock', serif;
+            color: white;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .menu-panel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-panel li {
+            margin-bottom: 8px;
+        }
+
+        .menu-panel a {
+            display: block;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            line-height: 1.4;
+            transition: all 0.2s ease;
+        }
+
+        .menu-panel a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .menu-section-title { font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); padding: 15px 15px 5px; margin-top: 10px; }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #1F4E78 0%, #0d3d4d 100%);
+            color: white;
+            padding: 60px 20px 50px;
+            text-align: center;
+        }
+
+        .page-header .logo-link {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .page-header .logo {
+            width: 200px;
+            height: auto;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+        }
+
+        .page-header h1 {
+            font-family: 'Gloock', serif;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.3;
+        }
+
+        .breadcrumbs {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+
+        .breadcrumbs a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+        }
+
+        /* Author Header */
+        .author-header {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 700px;
+            margin: 20px auto 0;
+            text-align: left;
+        }
+
+        .author-header h4 {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 8px;
+        }
+
+        .author-header .author-name {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 4px;
+        }
+
+        .author-header .author-credentials {
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
+        }
+
+        .author-header a {
+            color: #2fcae9;
+            text-decoration: none;
+        }
+
+        .author-header a:hover {
+            text-decoration: underline;
+        }
+
+        .pub-date {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 10px;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px 60px;
+        }
+
+        article h2 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.6em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        article h3 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            font-size: 1.3em;
+            margin: 30px 0 15px;
+        }
+
+        article p {
+            margin-bottom: 18px;
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        article a {
+            color: #1F4E78;
+            text-decoration: underline;
+        }
+
+        article a:hover {
+            color: #0d3d4d;
+        }
+
+        article ul, article ol {
+            margin: 15px 0 20px 25px;
+        }
+
+        article li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0fa 100%);
+            border-left: 4px solid #1F4E78;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .important-note {
+            background: #fff9e6;
+            border: 1px solid #f0d968;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+
+        .important-note h4 {
+            color: #856404;
+            font-size: 1em;
+            margin-bottom: 12px;
+        }
+
+        .important-note p {
+            color: #856404;
+            margin-bottom: 0;
+        }
+
+        .key-facts {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .key-facts h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .key-facts ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .key-facts li {
+            margin-bottom: 12px;
+        }
+
+        .key-facts strong {
+            color: #1F4E78;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1F4E78 0%, #0d3d4d 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            color: white;
+        }
+
+        .cta-section h3 {
+            font-family: 'Gloock', serif;
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            font-size: 1.05em;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 28px;
+            background: white;
+            color: #1F4E78;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #f0f7ff;
+            transform: translateY(-2px);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        /* Author Bio */
+        .author-bio {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .author-bio h3 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            margin-bottom: 15px;
+            margin-top: 0;
+        }
+
+        /* Related Resources */
+        .related-resources {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .related-resources h3 {
+            font-family: 'Gloock', serif;
+            color: #1F4E78;
+            margin-bottom: 15px;
+            margin-top: 0;
+        }
+
+        .related-resources ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .related-resources li {
+            margin-bottom: 10px;
+        }
+
+        /* Meta Info */
+        .article-meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        /* Footer */
+        .page-footer {
+            background: #1F4E78;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .page-footer a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .page-footer p {
+            margin-bottom: 8px;
+        }
+
+        .regulatory-footer {
+            background: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+            padding: 30px 20px;
+        }
+
+        .regulatory-info {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 0.85em;
+            color: #6c757d;
+            line-height: 1.8;
+        }
+
+        .regulatory-info h3 {
+            color: #495057;
+            font-size: 1em;
+            margin-bottom: 12px;
+        }
+
+        .regulatory-info p {
+            margin-bottom: 8px;
+        }
+
+        .regulatory-info strong {
+            color: #212529;
+        }
+
+        .regulatory-info .contact {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hamburger Menu -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <nav class="hamburger-menu" aria-label="Site navigation menu">
+        <button class="hamburger-btn" id="hamburgerBtn" aria-expanded="false" aria-controls="menuPanel" title="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="menu-panel" id="menuPanel" role="menu">
+            <h3>Menu</h3>
+            <ul>
+                <li><a href="/" role="menuitem">IHT Calculator</a></li>
+                <li class="menu-section-title">Quote Tools</li>
+                <li><a href="/whole-of-life-insurance-quote/" role="menuitem">Whole of Life Quote</a></li>
+                <li><a href="/relevant-life-insurance-quote/" role="menuitem">Relevant Life Quote</a></li>
+                <li class="menu-section-title">Insights</li>
+                <li><a href="/insights/" role="menuitem">All Articles</a></li>
+                <li class="menu-section-title">Technical Resources</li>
+                <li><a href="/technical/" role="menuitem">Technical Overview</a></li>
+                <li><a href="/technical/post-2026-2027-planning-landscape/" role="menuitem">Post-2026 and Post-2027 Planning Landscape</a></li>
+                <li><a href="/technical/bpr-apr-changes-family-businesses-farms/" role="menuitem">BPR and APR Changes for Family Businesses</a></li>
+                <li><a href="/technical/pension-death-benefits-iht-2027/" role="menuitem">Pension Death Benefits and IHT from 2027</a></li>
+                <li><a href="/technical/whole-of-life-vs-relevant-life/" role="menuitem">Whole of Life vs Relevant Life Insurance</a></li>
+                <li><a href="/technical/coordinating-iht-planning-professionals/" role="menuitem">Coordinating IHT Planning with Professionals</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>&rsaquo;</span>
+            <a href="/insights/">Insights</a>
+            <span>&rsaquo;</span>
+            <span>The Pastor Who Tried to Prove God</span>
+        </nav>
+
+        <a href="/" class="logo-link">
+            <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1190.6 841.9">
+                <style>.st0{fill:#fff;}</style>
+                <path class="st0" d="M444.3,555.3v-2.7h.3c6.4,0,11.6-2,15.5-5.9,3.9-3.9,5.9-9.1,5.9-15.5v-93.1c0-6.8-1.4-12-4.1-15.8-2.8-3.7-8.6-5.6-17.5-5.6v-2.7h27.3c9.1,0,16-1,20.9-2.9,4.5-2,7.6-4.4,9.4-7.2h2.7v127.4c0,6.4,2,11.6,5.9,15.5,3.9,3.9,9.1,5.9,15.5,5.9h.3v2.7h-81.8Z"/>
+                <path class="st0" d="M521.8,555.3v-2.7c6.2,0,10.9-1.3,14-3.9,3.1-2.6,5.2-5.9,6.2-10,1-4.1,1.5-8.6,1.5-13.4v-146.6c0-6.4-2-11.6-6-15.5-4-3.9-9.2-5.9-15.6-5.9v-2.7h27.3c9.1,0,16-1,20.9-2.9,4.5-2,7.6-4.4,9.4-7.2h2.7v101.6c4.8-9.4,11.9-16.9,21.1-22.3,9.3-5.4,19.2-8.2,29.7-8.2s15.5,1.9,21.4,5.8c5.9,3.8,10.4,9,13.5,15.4,3.1,6.4,4.7,13.6,4.7,21.7v72.7c0,6.6,2,11.8,6,15.6,4,3.8,9.2,5.7,15.6,5.7v2.7h-81.6v-2.7c6.4,0,11.6-1.9,15.6-5.7,4-3.8,6-9,6-15.6v-75.4c0-3.9-.5-8.2-1.6-12.7-1.1-4.5-3-8.5-5.8-11.8-2.8-3.3-6.6-4.9-11.6-4.9s-9.1,1.4-13.2,4.1c-4.2,2.8-8,6.2-11.4,10.3-3.4,4.1-6.2,8.2-8.6,12.3v72.2c0,4.8.5,9.3,1.5,13.4,1,4.1,3,7.4,6.2,10,3.1,2.6,7.8,3.9,14,3.9v2.7h-81.8Z"/>
+                <path class="st0" d="M736.6,559.1c-9.3,0-16.8-2.9-22.7-8.8-5.9-5.9-8.8-13.5-8.8-23v-103h-22.7v-3.5c12.3-.9,23.3-4.8,33-11.8,9.7-7,17.7-16.3,23.9-28.1h4.3v38.5h35.6l-2.7,4.8h-32.9v97.1c0,14.3,4.8,21.4,14.4,21.4s6.9-1,11.1-2.9c4.2-2,8.2-4.5,11.9-7.8v2.7c-5.9,7.5-12.8,13.4-20.9,17.8-8,4.4-15.9,6.6-23.5,6.6Z"/>
+                <g>
+                    <path class="st0" d="M514.5,332.1c35.6,13.3,74.6-12.8,74.5-51.1.2-37.6-38.6-63.7-73.3-49.3-21.6,8.5-35.9,32.5-32.4,55.5,1.4,8.4,5.1,16.7,10,23.8,3.5,5,7.6,9.5,11.1,14.6,5.7,8,8.2,18,7.9,27.7-2,44.8-58.4,62.1-85,26-25.6-36,8.4-84.2,50.7-70.4.3.1.5.5.4.8-.1.3-.4.5-.7.4-11.7-2.9-24.3-.8-34.1,5.5-20.4,12.7-26.4,41.2-11.9,60.6,23.6,31.7,73.4,16.4,74.9-23.1.2-8.6-1.9-17.2-7-24.1-3.4-5-7.6-9.5-11.1-14.5-5.5-7.9-9.5-16.8-11-26.4-3.9-25.9,12.1-52.4,36.3-61.9,38.6-15.7,81.3,13.1,81,54.7.2,33.1-29.5,60.5-62.5,57-6.2-.6-12.3-2.2-17.9-4.8-.7-.3-.2-1.4.5-1.1h0Z"/>
+                    <path class="st0" d="M498.4,352.6c.9,26.2-27.3,43.1-50.2,30.9-23.2-12.3-24.8-45.3-2.6-59.5,5.7-3.5,12.4-5.4,19.1-5.1.8,0,.8,1.1,0,1.2-1.6.2-3.2.2-4.8.6-25.1,4.6-35.3,35.6-17.2,53.8,13.8,13.9,37.2,11.7,48.4-4.3,3.7-5.1,5.7-11.3,6-17.7,0-.8,1.2-.8,1.2,0h0Z"/>
+                    <path class="st0" d="M465.1,376.6c-25.5.8-33.6-32.8-11.6-44.8,15.9-8.5,35.8,3.4,34.8,21.7,0,.8-1.2.8-1.2,0-.5-8.7-6.3-16.4-14-19.3-9.7-3.9-21.3.4-26.1,9.6-6.3,11.3-.3,26.2,11.9,30.4,2,.7,4.1,1.1,6.3,1.3.8,0,.7,1.2,0,1.2h0Z"/>
+                    <path class="st0" d="M494.8,280.8c-.9-38.8,45.4-57.8,72.8-30.8,22.9,23.1,13,62.7-18.5,71.4-4,1.1-8.2,1.5-12.3,1.4-.8,0-.8-1.2,0-1.2,3.9-.2,7.9-1,11.7-2.2,27.9-9.5,36.8-45,15.9-66.1-17.4-17.4-46.6-14.6-60.7,5.4-3.4,4.8-5.8,10.4-6.8,16.2-.5,2-.5,4-.8,6,0,.7-1.2.7-1.2,0h0Z"/>
+                    <path class="st0" d="M514.9,261.2c10-11.5,28.5-12.7,40.2-3.1,12.3,9.5,15.1,28.2,6.1,41-10.5,15.6-33.8,17.8-46.4,3.6-.5-.6.3-1.4.9-.9,12.5,11.2,32.7,9.1,41.8-5.1,12.7-19.9-4.2-45-27.3-41.4-5.4.8-10.4,3.3-14.5,6.8-.6.5-1.4-.3-.9-.9h0Z"/>
+                </g>
+                <g>
+                    <path class="st0" d="M423.1,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9,2.1.8,4.2,1.2,6.5,1.2s3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9c-.8-.7-1.8-1.3-3.1-1.8s-2.6-.8-4.1-1.2c-1.5-.3-3-.7-4.5-1.2-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8-.8-1.2-1.2-2.7-1.2-4.6s.5-3.5,1.4-5c1-1.5,2.4-2.7,4.4-3.7,2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7s2.3,1.6,3,2.8c.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/>
+                    <path class="st0" d="M469.3,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7s-1.4-4.6-1.4-7.1.5-5,1.4-7.1,2.2-4.1,3.9-5.7c1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7.9,2.2,1.4,4.6,1.4,7.2s-.5,5-1.4,7.2c-.9,2.2-2.2,4.1-3.9,5.7-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM469.3,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8,1.2-1.2,2.2-2.7,2.9-4.3.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9-1.2,1.2-2.2,2.7-2.9,4.3-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.7,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/>
+                    <path class="st0" d="M504.9,619.5v-35.2h5v30.8h19.1v4.4h-24.1Z"/>
+                    <path class="st0" d="M557.2,619.9c-4.6,0-8.3-1.3-10.9-4-2.6-2.6-4-6.5-4-11.6v-20h5v19.8c0,3.9.9,6.8,2.6,8.6s4.2,2.7,7.3,2.7,5.6-.9,7.4-2.7c1.7-1.8,2.6-4.7,2.6-8.6v-19.8h4.9v20c0,5.1-1.3,9-3.9,11.6-2.6,2.6-6.3,4-10.9,4Z"/>
+                    <path class="st0" d="M598.9,619.5v-30.8h-12.1v-4.4h29.1v4.4h-12.1v30.8h-5Z"/>
+                    <path class="st0" d="M630.7,619.5v-35.2h5v35.2h-5Z"/>
+                    <path class="st0" d="M671.5,619.9c-2.7,0-5.2-.5-7.5-1.4-2.3-.9-4.3-2.2-6-3.8-1.7-1.6-3-3.5-3.9-5.7-.9-2.2-1.4-4.6-1.4-7.1s.5-5,1.4-7.1c.9-2.2,2.2-4.1,3.9-5.7,1.7-1.6,3.7-2.9,5.9-3.8,2.3-.9,4.8-1.4,7.5-1.4s5.2.4,7.4,1.3c2.3.9,4.3,2.1,5.9,3.8,1.7,1.6,3,3.5,3.9,5.7s1.4,4.6,1.4,7.2-.5,5-1.4,7.2-2.2,4.1-3.9,5.7c-1.7,1.6-3.7,2.9-5.9,3.8-2.3.9-4.8,1.3-7.4,1.3ZM671.4,615.5c2,0,3.8-.3,5.5-1,1.7-.7,3.1-1.6,4.3-2.8s2.2-2.7,2.9-4.3c.7-1.6,1-3.4,1-5.4s-.3-3.7-1-5.4c-.7-1.6-1.6-3.1-2.9-4.3-1.2-1.2-2.7-2.2-4.3-2.9-1.7-.7-3.5-1-5.5-1s-3.7.3-5.4,1c-1.7.7-3.1,1.6-4.3,2.9s-2.2,2.7-2.9,4.3c-.7,1.6-1,3.4-1,5.4s.3,3.7,1,5.4c.7,1.6,1.6,3.1,2.9,4.3,1.2,1.2,2.7,2.2,4.3,2.8,1.7.7,3.5,1,5.4,1Z"/>
+                    <path class="st0" d="M707,619.5v-35.2h4.1l23.3,28.9h-2.2v-28.9h5v35.2h-4.1l-23.3-28.9h2.2v28.9h-5Z"/>
+                    <path class="st0" d="M767.3,619.9c-2.7,0-5.2-.4-7.7-1.2-2.4-.8-4.4-1.9-5.8-3.2l1.9-3.9c1.3,1.2,3,2.1,5.1,2.9s4.2,1.2,6.5,1.2,3.7-.2,5-.7c1.3-.5,2.2-1.1,2.8-1.9.6-.8.9-1.8.9-2.8s-.4-2.2-1.2-2.9-1.8-1.3-3.1-1.8c-1.3-.5-2.6-.8-4.1-1.2s-3-.7-4.5-1.2c-1.5-.5-2.9-1-4.2-1.7-1.3-.7-2.3-1.6-3-2.8s-1.2-2.7-1.2-4.6.5-3.5,1.4-5,2.4-2.7,4.4-3.7c2-.9,4.5-1.4,7.6-1.4s4.1.3,6.1.8c2,.5,3.8,1.3,5.2,2.3l-1.7,4c-1.5-1-3.1-1.7-4.8-2.2-1.7-.5-3.3-.7-4.9-.7s-3.6.3-4.9.8c-1.3.5-2.2,1.2-2.8,2-.6.8-.9,1.8-.9,2.8s.4,2.2,1.2,3c.8.7,1.8,1.3,3.1,1.8,1.3.4,2.6.8,4.1,1.2,1.5.4,3,.7,4.5,1.2,1.5.4,2.9,1,4.2,1.7,1.3.7,2.3,1.6,3,2.8.8,1.2,1.2,2.7,1.2,4.5s-.5,3.4-1.5,5c-1,1.5-2.5,2.7-4.5,3.7-2,.9-4.6,1.4-7.7,1.4Z"/>
+                </g>
+            </svg>
+        </a>
+
+        <h1>The Pastor Who Tried to Prove God and Accidentally Predicted Death</h1>
+
+        <div class="author-header">
+            <h4>Written By</h4>
+            <p class="author-name">Stephen Hunt ACII</p>
+            <p class="author-credentials">
+                Chartered Insurance Risk Manager<br>
+                Affiliate Member of STEP (Society of Trust and Estate Practitioners)<br>
+                45+ years&rsquo; experience in pensions, life assurance and estate planning
+            </p>
+            <p style="margin-top: 10px;">
+                <a href="https://www.linkedin.com/in/steve-hunt-chartered-iht" target="_blank" rel="noopener">LinkedIn Profile</a> |
+                <a href="https://www.vouchedfor.co.uk/financial-advisor-ifa/grantham/stephen-hunt" target="_blank" rel="noopener">VouchedFor Reviews</a>
+            </p>
+            <p class="pub-date">Published 7 March 2026</p>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <article>
+            <p class="article-meta">Last reviewed: 7 March 2026</p>
+
+            <div class="highlight-box">
+                <p><strong>Executive Summary:</strong> In the 1680s, a Lutheran pastor in Breslau began counting the dead to prove God&rsquo;s design. What Caspar Neumann discovered instead became the foundation of the modern life insurance industry. This is the untold story of how a theological quest to find God&rsquo;s rationality in mortality data led to the creation of actuarial science, and how the brilliant minds who built it &mdash; from Edmond Halley to Abraham de Moivre to James Dodson &mdash; died poor and uninsured, unable to benefit from the very system they created.</p>
+            </div>
+
+            <p>In the 1680s, a Lutheran pastor in the Silesian city of Breslau began counting the dead.</p>
+
+            <p>His pastoral duties did not require it, but Caspar Neumann believed that if God had designed the world, then the patterns of human death would reveal that design. Superstition said you were more likely to die in your 63rd year, or when the moon was full. Neumann thought that was nonsense. He believed God&rsquo;s creation was rational, orderly, and mathematically elegant. As was the thinking at the time, what was known as physico-theology.</p>
+
+            <p>So he set out to prove it.</p>
+
+            <p>He pulled years of birth and death records from his parish registers, organised them by age, and began looking for the fingerprint of God in the numbers.</p>
+
+            <p>What he found instead was something nobody expected. Death follows predictable statistical patterns. And he had absolutely no idea what he had done.</p>
+
+            <h2>The Data Travels Across Europe</h2>
+
+            <p>Neumann sent his findings to the greatest philosopher-mathematician in Europe: Gottfried Wilhelm Leibniz, co-inventor of calculus. Leibniz recognised something important in the Breslau numbers. In a letter dated 24 May 1692, he passed the data to Henri Justel, the Royal Librarian in England, who presented it to the Royal Society in London.</p>
+
+            <p>The Royal Society handed it to one of their members for analysis. His name was Edmond Halley. Yes, the exact Halley you know for the comet.</p>
+
+            <p>What you probably do not know is that Halley used this Lutheran pastor&rsquo;s parish death records to construct arguably the first scientific mortality table based on population data. It appeared in the Philosophical Transactions of the Royal Society in 1693.</p>
+
+            <p>But here is the first twist. Halley was not thinking about insurance. He was trying to solve a government finance problem. European states were selling life annuities to fund wars, and they were pricing them catastrophically badly. A 30-year-old and a 70-year-old could buy the same annuity for the same price. Halley realised that Neumann&rsquo;s mortality data made it possible, for the first time, to calculate what an annuity should actually cost based on the buyer&rsquo;s age.</p>
+
+            <p>He published his table, showed the mathematics, and made it available to anyone who wanted to use it.</p>
+
+            <p>Nobody in the insurance industry paid any attention whatsoever.</p>
+
+            <h2>The Industry That Ignored Its Own Mathematics</h2>
+
+            <p>The first life assurance office in England, the Amicable Society for a Perpetual Assurance Office, was founded in 1706. It was chartered by Queen Anne and limited to 2,000 members.</p>
+
+            <p>The Amicable completely ignored Halley&rsquo;s mathematics. It charged every member the same flat annual contribution regardless of age, with entry restricted to those aged 12 to 55. When a member died, the pot was simply divided among the families of the deceased that year. No age-based premiums, no actuarial calculations, no mortality tables.</p>
+
+            <p>The mathematical tools to run a proper life assurance office had existed since 1693. The insurance industry carried on without them for nearly 70 years.</p>
+
+            <h2>The Refugee Who Tore Out Newton&rsquo;s Masterpiece</h2>
+
+            <p>Halley had built the mortality table, but it sat unused by the insurance industry for decades. The man who turned it into usable financial mathematics was not English at all.</p>
+
+            <p>Abraham de Moivre was a French Protestant, driven out of France by the persecution of the Huguenots in 1685. He arrived in London as a refugee and scraped a living as a private mathematics tutor, walking miles across the city between pupils. When he first saw Newton&rsquo;s Principia Mathematica at the Earl of Devonshire&rsquo;s house, he realised it was beyond anything he had encountered. Too poor to buy a copy and too busy to sit and study one, he tore the pages out and carried them in his pocket, reading between lessons as he walked.</p>
+
+            <p>The approach paid off handsomely. He became one of Newton&rsquo;s closest mathematical friends. Newton would collect de Moivre from his regular coffee house each evening and bring him home for conversation. In old age, when people came to Newton with questions about the Principia, he would wave them away: &ldquo;Go to Mr. de Moivre. He knows these things better than I do.&rdquo;</p>
+
+            <p>In 1725, de Moivre published <em>Annuities upon Lives</em>, taking Halley&rsquo;s mortality data and transforming it into practical financial formulas for pricing annuities based on age. It has since been described as a foundational text for life insurance as a mathematical field.</p>
+
+            <p>Yet de Moivre, like so many in this story, remained poor throughout his life. His French origins barred him from any university position. A contemporary described him as &ldquo;struggling with want and misery.&rdquo; He spent his final years in coffee houses, advising gamblers on the odds for small fees. He died in 1754 at the ripe old age of 87, having gradually slept longer and longer each day until he simply did not wake up &mdash; something he apparently predicted.</p>
+
+            <p>Among his pupils was a mathematician named James Dodson.</p>
+
+            <h2>The Man Who Was Too Old</h2>
+
+            <p>Some time in the early 1750s, Dodson tried to join the Amicable Society. He was refused because he was over 45 years old. That rejection would change the course of financial history.</p>
+
+            <p>Dodson was a Fellow of the Royal Society and Master of the Royal Mathematical School at Christ&rsquo;s Hospital. Trained by de Moivre, who had been trained by studying Newton, the intellectual lineage ran directly: Newton to de Moivre to Dodson.</p>
+
+            <p>Dodson looked at the Amicable&rsquo;s flat-premium, age-capped model and saw immediately that it was fundamentally wrong. Using Halley&rsquo;s mortality framework and his own mathematical skills, he developed something revolutionary: the level premium system. Premiums calculated by age, based on mortality data, constant for the life of the policy. The excess collected in early years would accumulate to meet the higher mortality costs of later years.</p>
+
+            <p>In early 1756 Dodson wrote his founding treatise. He called a meeting on 2 March 1756 to present his proposals. A committee was formed and a petition for a Royal Charter was submitted.</p>
+
+            <p>Then, on 23 November 1757, James Dodson died. He was just 52 years old.</p>
+
+            <p>He died in poverty, leaving three motherless children with no provision. His friend William Mountaine petitioned Christ&rsquo;s Hospital, stating that Dodson had died &ldquo;in very mean circumstances, leaving three motherless children unprovided for: James, aged 15, Thomas, aged 11 and three quarters, and Elizabeth, aged 8.&rdquo;</p>
+
+            <p>The two youngest were taken in by the hospital as charity cases.</p>
+
+            <p>The man who invented the mathematics of life assurance could not get insured himself, and died without the very protection he had created for others.</p>
+
+            <h2>The Eccentric Who Made It Happen</h2>
+
+            <p>After Dodson&rsquo;s death, leadership of his project passed to one of the most extraordinary characters in British commercial history.</p>
+
+            <p>Edward Rowe Mores was born in 1731 at Gore Court in Tunstall, Kent. His father was a country rector, his mother the daughter of a City merchant. When his father died in 1740, the nine-year-old Edward inherited a considerable estate.</p>
+
+            <p>Mores was educated at Merchant Taylors&rsquo; School and Queen&rsquo;s College, Oxford, where he published his first scholarly work at the age of 19. He was elected a Fellow of the Society of Antiquaries at 21, and became an expert in heraldry, typography, and Anglo-Saxon manuscripts. None of it had anything to do with mathematics. He was a classics and antiquities scholar, not an &lsquo;actuary&rsquo;.</p>
+
+            <p>He was also deeply eccentric. He sometimes dressed in the academic robes of a Dominican friar and claimed a doctorate from the Sorbonne that he may never have earned. He believed passionately in the superiority of Latin and spoke exclusively in Latin to his own children. He married his stepsister, Susannah Bridgman, in 1753.</p>
+
+            <p>This unlikely figure was the man who created modern life assurance.</p>
+
+            <p>The charter petition that Dodson had set in motion was still grinding through the system, and three established companies (the Amicable, Royal Exchange, and London Assurance) were actively lobbying against it. They did not want a scientifically-run competitor exposing how badly they were pricing their own products. Some things never change!</p>
+
+            <p>In 1761, the Attorney General and Solicitor General refused the charter. Their reasoning has a bitter irony for anyone who knows how the story ends: &ldquo;It appears to us altogether uncertain whether this project will or can succeed in the manner it is proposed; and if the success is uncertain the fund for supporting it, which is to arise from the profits of the undertaking, will be precarious.&rdquo;</p>
+
+            <p>Mores did not give up. If the Crown would not grant a charter, he would do it by private deed instead. He recruited sixteen other subscribers and on 27 September 1762, they executed the Declaration of Trust for the Society for Equitable Assurances on Lives and Survivorships.</p>
+
+            <p>The world&rsquo;s first actuarially-priced life assurance office was open for business, and Policy Number One went to Edward Rowe Mores himself. Even the name was a deliberate provocation. Dodson had chosen the word &lsquo;equitable&rsquo; to reflect that his society would price assurance fairly, by age and risk, in contrast to the Amicable&rsquo;s crude one-size-fits-all approach that had rejected him for being too old.</p>
+
+            <p>Mores also coined the title for the Society&rsquo;s chief official. He called it the Actuary, borrowing from the Latin <em>actuarius</em>, the official who recorded the proceedings of the Roman Senate. It was, according to the definitive academic study by M.E. Ogborn, possibly an act of &ldquo;antiquarian whimsy.&rdquo; From that whimsy, an entire global profession took its name. And indeed the world&rsquo;s first &lsquo;Actuary&rsquo; was a classics and antiquities scholar!</p>
+
+            <h2>The Aftermath</h2>
+
+            <p>Mores fell out with the other founders within seven years. By 1769 he had walked away from the Society he had created. He spent his final years collecting ancient printing types and falling into what his biographers politely call &ldquo;negligent and dissipated habits.&rdquo; He died of gangrene on 28 November 1778, aged 47, and was buried beside his wife in Walthamstow churchyard.</p>
+
+            <p>The Equitable, meanwhile, thrived for nearly 240 years. It pioneered age-based premiums, actuarial valuations, reversionary bonuses, and interim bonuses. Its policyholders included Samuel Taylor Coleridge, William Wilberforce, and Sir Walter Scott. At its peak in the 1990s it had 1.5 million policyholders and &pound;26 billion under management.</p>
+
+            <p>Then it collapsed, catastrophically. The guaranteed annuity rate crisis of 2000 exposed decades of mismanagement. Hundreds of thousands of policyholders lost half their life savings. The world&rsquo;s oldest mutual insurer closed to new business on 8 December 2000 and was eventually absorbed into Utmost Life and Pensions in January 2020.</p>
+
+            <p>The Attorney General&rsquo;s warning from 1761 had proved prophetic. The fund had, ultimately, proved precarious.</p>
+
+            <h2>Where the Story Lives</h2>
+
+            <p>The founding documents of the Equitable &mdash; the Declaration of Trust executed on 27 September 1762, the record of Policy Number One issued to Edward Rowe Mores, the earliest policyholder registers, the original proposal forms asking applicants to declare their health and whether they had survived smallpox, even James Dodson&rsquo;s original premium tables &mdash; all of them survive.</p>
+
+            <p>They are held in the archive of the Institute and Faculty of Actuaries at Staple Inn, High Holborn, London. Staple Inn is a Tudor building with a Grade I listing, the last surviving Inn of Chancery.</p>
+
+            <p>The documents that represent the birth of modern life assurance are sitting in a Tudor building in the heart of London, available to researchers by appointment.</p>
+
+            <p>I intend to go and see them.</p>
+
+            <h2>The Point</h2>
+
+            <p>Today the global life insurance industry manages assets measured in the trillions. It employs hundreds of thousands of people. Its actuaries use computational tools that would have been unimaginable to Halley, de Moivre, Dodson, or Mores.</p>
+
+            <p>But every single calculation they make rests on one foundational insight: that while individual death is unpredictable, population mortality follows stable, measurable, mathematical patterns.</p>
+
+            <p>That insight exists because a Lutheran pastor in 1680s Silesia, operating in a tradition that believed God&rsquo;s creation must be rational and orderly, pulled out his parish death records and started counting.</p>
+
+            <p>He was trying to scientifically prove God. He became the catalyst for predicting death.</p>
+
+            <p>The <a href="/whole-of-life-insurance-quote/">whole of life</a> policies that protect families from inheritance tax today trace their intellectual lineage directly back to that parish register in Breslau.</p>
+
+            <div class="key-facts">
+                <h3>Technical Reference: Key Historical Dates</h3>
+                <ul>
+                    <li><strong>1680s:</strong> Caspar Neumann begins mortality data collection in Breslau</li>
+                    <li><strong>1692:</strong> Leibniz passes data to Royal Society</li>
+                    <li><strong>1693:</strong> Edmond Halley publishes first scientific mortality table</li>
+                    <li><strong>1706:</strong> Amicable Society founded (ignores Halley&rsquo;s mathematics)</li>
+                    <li><strong>1725:</strong> Abraham de Moivre publishes <em>Annuities upon Lives</em></li>
+                    <li><strong>1756:</strong> James Dodson proposes level premium system</li>
+                    <li><strong>1757:</strong> Dodson dies aged 52, unprovided for</li>
+                    <li><strong>1762:</strong> Edward Rowe Mores founds the Equitable Society</li>
+                    <li><strong>2000:</strong> Equitable collapses in guaranteed annuity rate crisis</li>
+                </ul>
+                <p style="margin-top: 15px; font-size: 0.95em; color: #555;">The archives of the Equitable Life Assurance Society (1762&ndash;1975) are held by the Institute and Faculty of Actuaries. Research access is available by appointment: <a href="mailto:libraries@actuaries.org.uk">libraries@actuaries.org.uk</a></p>
+            </div>
+
+            <div class="cta-section">
+                <h3>Calculate Your IHT Exposure</h3>
+                <p>The actuarial principles pioneered by Halley, de Moivre and Dodson underpin the whole of life policies that protect estates from inheritance tax today. See how much protection your estate might need.</p>
+                <div class="cta-buttons">
+                    <a href="/" class="cta-button">Use the IHT Calculator</a>
+                    <a href="/whole-of-life-insurance-quote/" class="cta-button secondary">Get a Whole of Life Quote</a>
+                </div>
+            </div>
+
+            <div class="important-note">
+                <h4>Important Disclaimer</h4>
+                <p>This article provides general information and historical context only. It does not constitute tax, legal, or financial advice. Always consult a specialist tax accountant, solicitor, or FCA-authorised independent financial adviser for personalised advice regarding inheritance tax planning and life assurance.</p>
+            </div>
+
+            <aside class="author-bio">
+                <h3>About the Author</h3>
+                <p>Stephen Hunt is a Chartered Insurance Risk Manager (ACII) and Affiliate Member of the Society of Trust and Estate Practitioners (STEP). With over 45 years&rsquo; experience spanning defined benefit schemes, retail and corporate pensions, life assurance and estate planning, Stephen specializes in helping families, business owners and high net worth individuals understand and plan for the practical consequences of inheritance tax exposure.</p>
+                <p>His current work focuses on coordinating life insurance solutions with accountants and solicitors to create practical liquidity strategies for complex estates, particularly in light of the post-2026 and post-2027 UK Budget reforms.</p>
+            </aside>
+
+            <nav class="related-resources">
+                <h3>Related Articles</h3>
+                <ul>
+                    <li><a href="/technical/whole-of-life-vs-relevant-life/">Whole of Life vs Relevant Life Insurance</a></li>
+                    <li><a href="/insights/two-certainties-death-taxes-third/">Two Certainties in Life: Death and Taxes &mdash; I Think There&rsquo;s a Third</a></li>
+                    <li><a href="/insights/34-days-iht-time-bomb-farms-business/">34 Days: The IHT Time Bomb for Every Farm and Business in Britain</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer class="page-footer">
+        <p>&copy; 2026 IHT Solutions. All rights reserved.</p>
+        <p><a href="/">Home</a> | <a href="/insights/">Insights</a> | <a href="/technical/">Technical Resources</a> | <a href="/privacy-policy.html">Privacy Policy</a></p>
+    </footer>
+
+    <!-- Hamburger Menu Script -->
+    <script>
+        (function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const menuPanel = document.getElementById('menuPanel');
+            const menuOverlay = document.getElementById('menuOverlay');
+
+            function toggleMenu() {
+                const isOpen = menuPanel.classList.contains('open');
+                menuPanel.classList.toggle('open');
+                menuOverlay.classList.toggle('open');
+                hamburgerBtn.classList.toggle('active');
+                hamburgerBtn.setAttribute('aria-expanded', !isOpen);
+            }
+
+            function closeMenu() {
+                menuPanel.classList.remove('open');
+                menuOverlay.classList.remove('open');
+                hamburgerBtn.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+            }
+
+            hamburgerBtn.addEventListener('click', toggleMenu);
+            menuOverlay.addEventListener('click', closeMenu);
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && menuPanel.classList.contains('open')) {
+                    closeMenu();
+                }
+            });
+
+            menuPanel.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab' && !e.shiftKey) {
+                    const links = menuPanel.querySelectorAll('a');
+                    if (document.activeElement === links[links.length - 1]) {
+                        e.preventDefault();
+                        hamburgerBtn.focus();
+                    }
+                }
+            });
+        })();
+    </script>
+
+    <footer class="regulatory-footer">
+      <div class="regulatory-info">
+        <h3>About IHT Solutions</h3>
+        <p>
+          <strong>IHT Solutions</strong> is operated by Arthur Raymond &amp; Co Limited,
+          Company Number: 15189672.
+        </p>
+        <p>
+          We provide software tools and educational information only.
+          <strong>We do not provide regulated financial advice.</strong>
+        </p>
+        <p>
+          For regulated financial advice, please consult an FCA-authorised
+          independent financial adviser.
+        </p>
+        <p>
+          <strong>Stephen Hunt ACII</strong> is a Chartered Insurance Risk Manager
+          and STEP Affiliate with 45+ years of experience in inheritance tax and
+          estate planning.
+        </p>
+        <p class="contact">
+          Email: <a href="mailto:info@ihtsolutions.co.uk">info@ihtsolutions.co.uk</a>
+        </p>
+      </div>
+    </footer>
+
+</body>
+
+</html>
