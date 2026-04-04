@@ -751,13 +751,23 @@
 
     // ── API helpers ───────────────────────────────────────────────────────────
     async function apiPost(path, body) {
-        const res = await fetch(CONFIG.API_URL + path, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
-        });
-        if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.error || 'HTTP ' + res.status); }
-        return res.json();
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 90000); // 90 second timeout
+        try {
+            const res = await fetch(CONFIG.API_URL + path, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body),
+                signal: controller.signal
+            });
+            clearTimeout(timer);
+            if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.error || 'HTTP ' + res.status); }
+            return res.json();
+        } catch (err) {
+            clearTimeout(timer);
+            if (err.name === 'AbortError') throw new Error('Request timed out — please try again');
+            throw err;
+        }
     }
     async function apiFetch(path) {
         const res = await fetch(CONFIG.API_URL + path);
