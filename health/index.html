@@ -643,21 +643,65 @@
         isWaiting = true;
         showTyping();
 
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 90000);
+
         try {
-            const data = await apiPost('/api/chat', { sessionId, message: text });
+            const response = await fetch(CONFIG.API_URL + '/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ sessionId, message: text }),
+                signal: controller.signal
+            });
+
+            if (!response.ok) throw new Error('HTTP ' + response.status);
+
+            // Switch from typing indicator to a live streaming bubble
             removeTyping();
-            addBotBubble(data.response);
-            if (data.progress) updateProgress(data.progress.section);
-            if (data.buttons) showButtons(data.buttons);
-            if (data.complete) {
-                handleComplete();
-            } else {
-                enableInput();
+            const bubble = createStreamingBubble();
+
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let buffer = '';
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+
+                buffer += decoder.decode(value, { stream: true });
+
+                // SSE lines are separated by \n\n — process complete lines only
+                const parts = buffer.split('\n\n');
+                buffer = parts.pop(); // keep any incomplete chunk
+
+                for (const part of parts) {
+                    const line = part.trim();
+                    if (!line.startsWith('data: ')) continue;
+                    try {
+                        const data = JSON.parse(line.slice(6));
+                        if (data.chunk !== undefined) {
+                            appendChunk(bubble, data.chunk);
+                        } else if (data.done) {
+                            clearTimeout(timer);
+                            // Replace streamed content with clean server-processed text
+                            setBubbleText(bubble, data.cleanText);
+                            if (data.progress) updateProgress(data.progress.section);
+                            if (data.buttons) showButtons(data.buttons);
+                            if (data.complete) handleComplete();
+                            else enableInput();
+                            saveSession(sessionId);
+                        } else if (data.error) {
+                            clearTimeout(timer);
+                            setBubbleText(bubble, data.error);
+                            enableInput();
+                        }
+                    } catch {}
+                }
             }
-            saveSession(sessionId);
-        } catch {
+        } catch (err) {
+            clearTimeout(timer);
             removeTyping();
-            addErrorBubble('Something went wrong. Please try again.');
+            addErrorBubble(err.name === 'AbortError' ? 'Request timed out — please try again.' : 'Something went wrong. Please try again.');
             enableInput();
         }
         isWaiting = false;
@@ -679,6 +723,35 @@
         wrap.className = 'bubble-wrap bot';
         wrap.innerHTML = `<div class="bubble-icon">&#128105;&#8205;&#9877;&#65039;</div><div class="bubble">${formatText(text)}</div>`;
         messagesEl.appendChild(wrap);
+        scrollBottom();
+    }
+
+    function createStreamingBubble() {
+        const wrap = document.createElement('div');
+        wrap.className = 'bubble-wrap bot';
+        wrap.innerHTML = `<div class="bubble-icon">&#128105;&#8205;&#9877;&#65039;</div><div class="bubble"></div>`;
+        messagesEl.appendChild(wrap);
+        scrollBottom();
+        return wrap.querySelector('.bubble');
+    }
+
+    // Append a raw chunk — strip known markers in real time
+    function appendChunk(bubble, chunk) {
+        const clean = chunk
+            .replace(/\[SECTION:\d+\]\s*/g, '')
+            .replace(/\[GENDER:(Male|Female)\]\s*/g, '')
+            .replace(/\[FLAG:\w+\]\s*/g, '')
+            .replace(/\[COMPLETE\]\s*/g, '')
+            .replace(/\[CONSENT_REFUSED\]\s*/g, '');
+        if (clean) {
+            bubble.innerHTML += clean.replace(/\n/g, '<br>');
+            scrollBottom();
+        }
+    }
+
+    // Replace bubble content with fully clean server-processed text
+    function setBubbleText(bubble, text) {
+        bubble.innerHTML = formatText(text);
         scrollBottom();
     }
 
