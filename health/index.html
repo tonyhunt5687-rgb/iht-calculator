@@ -422,6 +422,11 @@
             .breadcrumbs { display: none; }
             .content-wrapper { padding: 8px 8px 0; }
             .btn-choice { font-size: 12px; padding: 7px 12px; }
+
+            /* iOS Safari auto-zooms the page when an input has font-size < 16px.
+               That zoom breaks the flex layout and pushes the send button off screen.
+               Setting 16px prevents the zoom entirely. */
+            .input-area input { font-size: 16px; padding: 9px 14px; }
         }
     </style>
 </head>
