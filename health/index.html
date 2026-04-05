@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9W3T81ZBV1"></script>
@@ -372,10 +372,14 @@
         .regulatory-info strong { color: #212529; }
         .regulatory-info .contact { margin-top: 20px; padding-top: 20px; border-top: 1px solid #dee2e6; }
 
-        /* ── Mobile: fill the viewport so nothing breaks out ── */
+        /* ── Mobile: fill the visible viewport precisely ── */
         @media (max-width: 768px) {
-            html { height: 100%; }
-            body { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+            /* dvh = dynamic viewport height — updates to the actual visible area
+               as browser chrome (address bar, bottom toolbar) shows/hides.
+               100% uses the initial containing block which can include hidden
+               chrome, cutting off the input with no way to reach it. */
+            html { height: 100dvh; }
+            body { height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
 
             .page-header { padding: 28px 20px 20px; }
             .page-header .logo-link { margin-bottom: 12px; }
@@ -408,6 +412,11 @@
             .chat-messages { min-height: 0; }
 
             .bubble-wrap { max-width: 90%; }
+
+            /* Push the input and button row above the iOS home indicator.
+               env(safe-area-inset-bottom) is 0 on non-notch devices. */
+            .input-area  { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+            .button-row  { padding-bottom: max(10px, env(safe-area-inset-bottom)); }
 
             /* Footer not needed while chatting on mobile */
             .page-footer, .regulatory-footer { display: none; }
