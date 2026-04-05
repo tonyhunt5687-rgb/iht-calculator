@@ -398,10 +398,14 @@
 
             .chat-card {
                 flex: 1;
-                height: auto;
+                height: 0;    /* flex:1 sizes it; height:auto would grow with content */
                 min-height: 0;
                 border-radius: 12px 12px 0 0;
             }
+
+            /* Without min-height:0, the messages area won't shrink below its
+               content size, defeating overflow-y:auto and making the card grow */
+            .chat-messages { min-height: 0; }
 
             .bubble-wrap { max-width: 90%; }
 
