@@ -560,8 +560,8 @@
           independent financial adviser.
         </p>
         <p>
-          <strong>Stephen Hunt ACII</strong> is a Chartered Insurance Risk Manager
-          and STEP Affiliate with 45+ years of experience in inheritance tax and
+          <strong>Stephen Hunt ACII TEP</strong> is a Chartered Insurance Risk Manager
+          with 45+ years of experience in inheritance tax and
           estate planning.
         </p>
         <p class="contact">
@@ -705,6 +705,7 @@
 
             // Keep typing dots visible until the first text chunk arrives
             let bubble = null;
+            let inJsonBlock = false; // suppress <JSON_OUTPUT> blocks from appearing
 
             const reader = response.body.getReader();
             const decoder = new TextDecoder();
@@ -726,7 +727,12 @@
                     try {
                         const data = JSON.parse(line.slice(6));
                         if (data.chunk !== undefined) {
-                            // First chunk — swap typing dots for the streaming bubble
+                            // Track JSON output blocks — suppress them from the bubble
+                            if (data.chunk.includes('<JSON_OUTPUT>')) inJsonBlock = true;
+                            if (data.chunk.includes('</JSON_OUTPUT>')) { inJsonBlock = false; continue; }
+                            if (inJsonBlock) continue;
+
+                            // First visible chunk — swap typing dots for the streaming bubble
                             if (!bubble) {
                                 removeTyping();
                                 bubble = createStreamingBubble();
