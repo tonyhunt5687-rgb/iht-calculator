@@ -372,16 +372,22 @@
         .regulatory-info strong { color: #212529; }
         .regulatory-info .contact { margin-top: 20px; padding-top: 20px; border-top: 1px solid #dee2e6; }
 
-        /* ── Mobile: fill the visible viewport precisely ── */
+        /* ── Mobile layout ── */
         @media (max-width: 768px) {
-            /* dvh = dynamic viewport height — updates to the actual visible area
-               as browser chrome (address bar, bottom toolbar) shows/hides.
-               100% uses the initial containing block which can include hidden
-               chrome, cutting off the input with no way to reach it. */
-            html { height: 100dvh; }
-            body { height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+            /* position:fixed with explicit edges is the most reliable way to fill
+               exactly the visible viewport on mobile. dvh/100% both have quirks in
+               iOS Safari — they can include areas under the browser chrome, cutting
+               off the input with no escape. fixed+inset anchors to real pixel edges. */
+            html { overflow: hidden; height: 100%; }
+            body {
+                position: fixed;
+                top: 0; right: 0; bottom: 0; left: 0;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+            }
 
-            .page-header { padding: 28px 20px 20px; }
+            .page-header { padding: 28px 20px 20px; flex-shrink: 0; }
             .page-header .logo-link { margin-bottom: 12px; }
             .page-header .logo { width: 140px; }
             .page-header h1 { font-size: 1.4em; margin-bottom: 6px; }
@@ -394,7 +400,6 @@
                 padding: 12px 12px 0;
                 display: flex;
                 flex-direction: column;
-                overflow: hidden;
             }
 
             /* Privacy notice takes too much space on mobile — Clara covers it verbally */
@@ -402,21 +407,29 @@
 
             .chat-card {
                 flex: 1;
-                height: 0;    /* flex:1 sizes it; height:auto would grow with content */
                 min-height: 0;
+                height: 0;
+                display: flex;
+                flex-direction: column;
                 border-radius: 12px 12px 0 0;
+                overflow: hidden;
             }
 
-            /* Without min-height:0, the messages area won't shrink below its
-               content size, defeating overflow-y:auto and making the card grow */
-            .chat-messages { min-height: 0; }
+            /* Allows the messages area to shrink below its content size so
+               overflow-y:auto takes over and the list scrolls */
+            .chat-messages {
+                flex: 1;
+                min-height: 0;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
 
             .bubble-wrap { max-width: 90%; }
 
-            /* Push the input and button row above the iOS home indicator.
-               env(safe-area-inset-bottom) is 0 on non-notch devices. */
-            .input-area  { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
-            .button-row  { padding-bottom: max(10px, env(safe-area-inset-bottom)); }
+            /* Keep input above the iOS home indicator bar.
+               env(safe-area-inset-bottom) is 0 on devices without one. */
+            .input-area { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+            .button-row { padding-bottom: max(10px, env(safe-area-inset-bottom)); }
 
             /* Footer not needed while chatting on mobile */
             .page-footer, .regulatory-footer { display: none; }
