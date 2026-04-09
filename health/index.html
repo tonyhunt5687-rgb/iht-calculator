@@ -383,7 +383,18 @@
             html { overflow: hidden; height: 100%; }
             body {
                 position: fixed;
-                top: 0; right: 0; bottom: 0; left: 0;
+                top: 0; right: 0; left: 0;
+                /* Layered fallbacks for iOS Safari toolbar problem.
+                   bottom:0 / 100vh / 100dvh all measure the layout viewport which
+                   includes the area *behind* the browser toolbar, so the input
+                   ends up physically underneath it.
+                   -webkit-fill-available = actual visible height on iOS Safari.
+                   100svh = small viewport height on modern browsers (toolbar shown).
+                   The JS visualViewport listener below keeps this live as
+                   the keyboard and toolbar move. */
+                height: 100vh;
+                height: -webkit-fill-available;
+                height: 100svh;
                 display: flex;
                 flex-direction: column;
                 overflow: hidden;
@@ -597,6 +608,24 @@
     </footer>
 
     <script>
+    // ── Visual viewport height — iOS Safari toolbar fix ───────────────────────
+    // Sets body height to the actual visible area whenever the browser toolbar
+    // or keyboard moves. Without this, fixed layouts size to the layout viewport
+    // (which includes the toolbar area) and the input sits behind the toolbar.
+    (function () {
+        function syncHeight() {
+            var h = (window.visualViewport ? window.visualViewport.height : window.innerHeight);
+            document.body.style.height = h + 'px';
+        }
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', syncHeight);
+            window.visualViewport.addEventListener('scroll', syncHeight);
+        }
+        window.addEventListener('resize', syncHeight);
+        syncHeight();
+    })();
+    // ─────────────────────────────────────────────────────────────────────────
+
     // ── Configuration ────────────────────────────────────────────────────────
     // Update API_URL after deploying to Railway
     const CONFIG = {
