@@ -43,7 +43,9 @@
         .hamburger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .hamburger-btn.active span:nth-child(2) { opacity: 0; }
         .hamburger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-        .menu-panel { position: fixed; top: 0; right: -320px; width: 320px; height: 100vh; background: linear-gradient(135deg, #1a5566 0%, #0d3d4d 100%); box-shadow: -4px 0 20px rgba(0,0,0,0.3); transition: right 0.3s ease; padding: 80px 30px 30px; overflow-y: auto; z-index: 1001; }
+        /* bottom:0 instead of height:100vh — anchors to the actual visible screen edge
+           so the panel is always fully scrollable without being clipped by browser chrome */
+        .menu-panel { position: fixed; top: 0; right: -320px; bottom: 0; width: 320px; background: linear-gradient(135deg, #1a5566 0%, #0d3d4d 100%); box-shadow: -4px 0 20px rgba(0,0,0,0.3); transition: right 0.3s ease; padding: 80px 30px 30px; overflow-y: auto; z-index: 1001; }
         .menu-panel.open { right: 0; }
         .menu-panel h3 { font-family: 'Gloock', serif; color: white; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.2); }
         .menu-panel ul { list-style: none; }
@@ -387,12 +389,12 @@
                 overflow: hidden;
             }
 
-            .page-header { padding: 28px 20px 20px; flex-shrink: 0; }
-            .page-header .logo-link { margin-bottom: 12px; }
-            .page-header .logo { width: 140px; }
-            .page-header h1 { font-size: 1.4em; margin-bottom: 6px; }
-            .page-header .subtitle { font-size: 0.85em; }
-            .breadcrumbs { margin-bottom: 10px; }
+            /* Compact header — just the title, nothing else */
+            .page-header { padding: 12px 20px; flex-shrink: 0; }
+            .page-header .logo-link { display: none; }
+            .page-header .subtitle { display: none; }
+            .breadcrumbs { display: none; }
+            .page-header h1 { font-size: 1.1em; margin: 0; }
 
             .content-wrapper {
                 flex: 1;
@@ -437,11 +439,7 @@
 
         /* ── Small phones ── */
         @media (max-width: 480px) {
-            .page-header { padding: 20px 16px 16px; }
-            .page-header .logo { width: 110px; }
-            .page-header h1 { font-size: 1.2em; }
-            .page-header .subtitle { display: none; }
-            .breadcrumbs { display: none; }
+            .page-header { padding: 10px 16px; }
             .content-wrapper { padding: 8px 8px 0; }
             .btn-choice { font-size: 12px; padding: 7px 12px; }
 
