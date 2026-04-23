@@ -279,7 +279,7 @@
             border: 2px solid #dee2e6;
             border-radius: 99px;
             padding: 10px 18px;
-            font-size: 14px;
+            font-size: 16px;
             font-family: 'Montserrat', sans-serif;
             outline: none;
             transition: border-color 0.2s;
@@ -376,88 +376,71 @@
 
         /* ── Mobile layout ── */
         @media (max-width: 768px) {
-            /* position:fixed with explicit edges is the most reliable way to fill
-               exactly the visible viewport on mobile. dvh/100% both have quirks in
-               iOS Safari — they can include areas under the browser chrome, cutting
-               off the input with no escape. fixed+inset anchors to real pixel edges. */
-            html { overflow: hidden; height: 100%; }
-            body {
-                position: fixed;
-                top: 0; right: 0; left: 0;
-                /* Layered fallbacks for iOS Safari toolbar problem.
-                   bottom:0 / 100vh / 100dvh all measure the layout viewport which
-                   includes the area *behind* the browser toolbar, so the input
-                   ends up physically underneath it.
-                   -webkit-fill-available = actual visible height on iOS Safari.
-                   100svh = small viewport height on modern browsers (toolbar shown).
-                   The JS visualViewport listener below keeps this live as
-                   the keyboard and toolbar move. */
-                height: 100vh;
+            /* KEY FIX: -webkit-fill-available on a position:fixed child uses the
+               LAYOUT viewport as its containing block — not the visual viewport.
+               That's why every prior attempt still ended up behind the tab bar.
+
+               Setting -webkit-fill-available on the ROOT <html> element uses the
+               visual viewport directly (above the tab bar). Then propagate
+               height:100% down the DOM chain to #chat-card. No position:fixed needed.
+
+               iOS < 15.4  → html uses -webkit-fill-available (visual viewport)
+               iOS 15.4+   → html uses 100dvh (overrides the above) */
+            html {
                 height: -webkit-fill-available;
-                height: 100svh;
-                display: flex;
-                flex-direction: column;
-                overflow: hidden;
+                height: 100dvh;
+            }
+            html, body { overflow: hidden; }
+            body {
+                height: 100%;
+                min-height: 0;
             }
 
-            /* Compact header — just the title, nothing else */
-            .page-header { padding: 12px 20px; flex-shrink: 0; }
-            .page-header .logo-link { display: none; }
-            .page-header .subtitle { display: none; }
-            .breadcrumbs { display: none; }
-            .page-header h1 { font-size: 1.1em; margin: 0; }
+            .page-header  { display: none; }
+            .breadcrumbs  { display: none; }
+            .page-footer, .regulatory-footer { display: none; }
+            .privacy-notice  { display: none; }
 
             .content-wrapper {
-                flex: 1;
-                min-height: 0;
-                padding: 12px 12px 0;
-                display: flex;
-                flex-direction: column;
+                padding: 0;
+                max-width: 100%;
+                width: 100%;
+                height: 100%;
+                margin: 0;
             }
 
-            /* Privacy notice takes too much space on mobile — Clara covers it verbally */
-            .privacy-notice { display: none; }
-
-            .chat-card {
-                flex: 1;
-                min-height: 0;
-                height: 0;
+            /* height:100% fills the chain: html → body → .content-wrapper → here.
+               height: var(--vvh) overrides with the live visual viewport height set by
+               the Visual Viewport API listener below — handles keyboard on iOS < 15.4.
+               No position:fixed — that was the root cause of the tab-bar problem. */
+            #chat-card {
+                height: 100%;
+                height: var(--vvh, 100dvh);
+                width: 100%;
+                border-radius: 0;
                 display: flex;
                 flex-direction: column;
-                border-radius: 12px 12px 0 0;
                 overflow: hidden;
             }
 
-            /* Allows the messages area to shrink below its content size so
-               overflow-y:auto takes over and the list scrolls */
             .chat-messages {
                 flex: 1;
                 min-height: 0;
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
+                touch-action: pan-y;
             }
 
             .bubble-wrap { max-width: 90%; }
 
-            /* Keep input above the iOS home indicator bar.
-               env(safe-area-inset-bottom) is 0 on devices without one. */
-            .input-area { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
-            .button-row { padding-bottom: max(10px, env(safe-area-inset-bottom)); }
-
-            /* Footer not needed while chatting on mobile */
-            .page-footer, .regulatory-footer { display: none; }
+            .input-area { padding-bottom: max(8px, env(safe-area-inset-bottom)); }
+            .button-row { padding-bottom: max(6px, env(safe-area-inset-bottom)); }
         }
 
         /* ── Small phones ── */
         @media (max-width: 480px) {
-            .page-header { padding: 10px 16px; }
-            .content-wrapper { padding: 8px 8px 0; }
             .btn-choice { font-size: 12px; padding: 7px 12px; }
-
-            /* iOS Safari auto-zooms the page when an input has font-size < 16px.
-               That zoom breaks the flex layout and pushes the send button off screen.
-               Setting 16px prevents the zoom entirely. */
-            .input-area input { font-size: 16px; padding: 9px 14px; }
+            .input-area input { padding: 9px 14px; }
         }
     </style>
 </head>
@@ -608,23 +591,24 @@
     </footer>
 
     <script>
-    // ── Visual viewport height — iOS Safari toolbar fix ───────────────────────
-    // Sets body height to the actual visible area whenever the browser toolbar
-    // or keyboard moves. Without this, fixed layouts size to the layout viewport
-    // (which includes the toolbar area) and the input sits behind the toolbar.
-    (function () {
-        function syncHeight() {
-            var h = (window.visualViewport ? window.visualViewport.height : window.innerHeight);
-            document.body.style.height = h + 'px';
-        }
-        if (window.visualViewport) {
-            window.visualViewport.addEventListener('resize', syncHeight);
-            window.visualViewport.addEventListener('scroll', syncHeight);
-        }
-        window.addEventListener('resize', syncHeight);
-        syncHeight();
-    })();
+    // ── iOS Safari height chain ───────────────────────────────────────────────
+    // CSS sets html { height: -webkit-fill-available / 100dvh } so the root
+    // element is sized to the visual viewport (above the tab bar). #chat-card
+    // then uses height:100% to fill that chain. No JS override needed here —
+    // adding one would re-introduce the wrong innerHeight value.
     // ─────────────────────────────────────────────────────────────────────────
+
+    // ── Visual Viewport API — keeps #chat-card sized to the visible window on
+    // iOS < 15.4 where 100dvh does not shrink when the keyboard opens ──────────
+    if (window.visualViewport) {
+        const setVvh = () => {
+            document.documentElement.style.setProperty('--vvh', window.visualViewport.height + 'px');
+        };
+        window.visualViewport.addEventListener('resize', setVvh);
+        window.visualViewport.addEventListener('scroll', setVvh);
+        setVvh();
+    }
+    // ────────────────────────────────────────────────────────────────────────
 
     // ── Configuration ────────────────────────────────────────────────────────
     // Update API_URL after deploying to Railway
