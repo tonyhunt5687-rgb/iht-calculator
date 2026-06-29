@@ -33,11 +33,11 @@
   }
 
   function hideMainContent() {
-    document.body.style.visibility = 'hidden';
+    document.body.style.overflow = 'hidden';
   }
 
   function showMainContent() {
-    document.body.style.visibility = 'visible';
+    document.body.style.overflow = '';
   }
 
   function handlePasswordSubmit() {
